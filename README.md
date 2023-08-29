@@ -2,6 +2,12 @@
 네이버 클라우드 데브옵스 3기 과정
 
 
+#git이 처음일 경우#
+이메일과 유저명 확인
+git config --global user.name "[사용자명]"
+git config --global user.email "[사용자이메일]"
+
+
 git bash
 
 1. git init -> git과 연동할 폴더 초기화
