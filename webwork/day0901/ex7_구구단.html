@@ -1,38 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>원하는대로 구구단</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap"
+        rel="stylesheet">
+    <style>
+        body * {
+            /* body의 모든 하위태그 */
+            font-size: 30px;
+            font-family: 'Black Ops One';
+            font-weight: 300;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        th, td {
+            border: 1px solid red;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        th:nth-child(odd), td:nth-child(odd) {
+            background-color: lightyellow ;
+        }
+
+        .title th, .title td, .title table:nth-child(odd){
+        text-align: center;
+        border: none;
+        background-color: white;
+        }
+
+        p {
+        font-size: 100px;
+        }
+
+    </style>
+
 </head>
+
 <body>
+    <h3 style="background-color: white;"></h3>
     <!-- 
          start와 end 값을 입력 받아 해당 구구단을 출력
          가로 방향 - 테이블 사용
          단, start가 end보다 클 경우 두 값을 서로 바꾼 후 출력
      -->
 
-     <script>
+    <script>
         let start = prompt("구구단의 시작단을 입력하세요");
         let end = prompt("구구단의 끝단을 입력하세요");
 
-        if(start > end){
+        if (start > end) {
             let temp = start;
             start = end;
             end = temp;
         }
+
+        document.write(`<table class = "title"><tr><td><div class = "title"></td><td><img src = "../비둘기.jpg"></td><td><img src = "../비둘기.jpg"></td><td><p>단</p></td></div><table>`);
+
         document.write(`<table>`);
         document.write(`<tr>`);
-        for(let a = start; a <= end; a++){
+        for (let a = start; a <= end; a++) {
             document.write(`<th>`);
             document.write(`** ${a}단 **&emsp;`);
             document.write(`</th>`);
         }
         document.write(`</tr>`);
 
-        for(let i = 1; i <= 9; i++){
+        for (let i = 1; i <= 9; i++) {
             document.write(`<tr>`);
-            for(let j = start; j <= end; j++){
+            for (let j = start; j <= end; j++) {
                 document.write(`<td>`);
                 document.write(`${j} x ${i} = ${j * i}&emsp;`);
                 document.write(`</td>`);
@@ -40,7 +89,8 @@
             document.write(`</tr>`);
         }
         document.write(`</table>`);
-     </script>
+    </script>
 
 </body>
+
 </html>
