@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES6 : ECMA에서 2015년에 채택된 자바스크립트 표준
+        /*
+            es6에서 추가된 기능들
+            1. 블록범위 변수 : let(영역형 변수), const(상수), 이전에는 var(함수형 변수)를 사용
+            2. 함수에서 기본 매개변수
+            3. 템플릿 리터럴(백틱, `)(Multiline Literal) : ``
+            4. 화살표 함수
+            5. 클래스, 상속
+            6. 모듈 개념 추가
+        */
+
+        var a = 10;
+        document.write(`<h3>a = ${a}</h3>`);
+        
+        if (true) {
+            var a = 20; // 밖의 a에 덮어쓰여짐(새로 생성x)
+            document.write(`<h3>a = ${a}</h3>`);
+        }
+        
+        document.write(`<h3>a = ${a}</h3><hr>`);
+
+        let b = 10;
+        document.write(`<h3>b = ${b}</h3>`);
+        
+        if (true) {
+            let b = 20; // 새로 생성
+            document.write(`<h3>b = ${b}</h3>`);
+        } //구역이 종료되면 구역 안에 선언된 b도 소멸됨
+        
+        document.write(`<h3>b = ${b}</h3><hr>`);
+
+        let s1 = "Hello"; // 변수 선언
+        const MSG = "Happy Day"; // 상수 선언
+        document.write(`s1 = ${s1}, MSG = ${MSG}<br>`);
+
+        // 값 변경
+        s1 = "안녕하세요";
+        // MSG = "반가워요!"; // 오류 발생 : 상수는 값 변경 할 수 없음
+        document.write(`s1 = ${s1}, MSG = ${MSG}<br>`);
+    </script>
+</body>
+</html>

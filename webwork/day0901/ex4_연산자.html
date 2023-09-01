@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap" rel="stylesheet">
+    <style>
+        body *{/* body의 모든 하위태그 */
+            font-size: 30px;
+            font-family: 'Dongle';
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let su1 = prompt("숫자 1 입력", 10);
+        let su2 = prompt("숫자 2 입력", 20);
+
+        console.log("su1 = " + typeof(su1)); // 내부적으로 어떤 타입으로 저장되어있는지 확인
+        console.log("su2 = " + typeof(su2)); // 둘다 string(string일경우 +만 나열됨(예:10+20->1020), 나머지 연산은 잘됨)
+        
+        // let add = parseInt(su1) + parseInt(su2); /* 더하기 일 때는 자동으로 형변환이 안되서 직접 바꿔줘야 함 */
+
+        let add = Number(su1) + Number(su2); // 정수든 실수든 문자열을 숫자 타입으로 변환
+        let sub = su1 - su2;
+        let mul = su1 * su2;
+        let div = su1 / su2;
+
+        let s = `<b>add = ${add}<br>sub = ${sub}<br>mul = ${mul}<br>div = ${div}<br>`;
+
+        document.write(s);
+    </script>
+</body>
+</html>

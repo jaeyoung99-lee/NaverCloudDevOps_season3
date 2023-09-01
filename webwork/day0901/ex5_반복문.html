@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap" rel="stylesheet">
+    <style>
+        body *{/* body의 모든 하위태그 */
+            font-size: 30px;
+            font-family: 'Black Ops One';
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <h1>반복문 for 연습</h1>
+    <script>
+        for(let i = 1; i <= 5; i++){
+            document.write(`<b>${i}</b>&nbsp;&nbsp;&nbsp;`); // &nbsp; : 1칸 띄어쓰기
+        }
+    </script>
+
+    <h1>mycar의 짝수번의 이미지만 출력하기(width = 150)</h1>
+    <script>
+        let num = "";
+        for(let i = 1; i <= 10; i++){
+            if(i % 2 == 0){
+                num = `<img alt = mycar${i} src="../mycar/mycar${i}.png" width = 150 border = "2" hspace = "10">`; // hspace : 수평 공백, vspace : 수직 공백
+                document.write(num);
+            }
+        }
+    </script>
+</body>
+</html>

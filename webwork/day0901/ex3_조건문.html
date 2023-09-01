@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap" rel="stylesheet">
+    <style>
+        /* h3의 one 클래스에 글꼴, 글자색 적용 */
+        h3.one{
+            font-family: 'Nanum Pen Script';
+            color:aquamarine;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let answer = prompt("숫자를 입력하세요");
+        document.write(`<h3 class = "one">answer = ${answer}</h3>`);
+        
+        // 이미지 너비 입력
+        let img_width = prompt("너비를 입력하세요");
+        if (img_width == null){ // 취소 시에 적용
+            img_width = 300;
+        }
+
+        let imgTag="";
+        // 1 ~ 15일경우 해당 자동차 이미지를 나타내고 범위를 벗어날 경우 연예인 사진 중 하나를 나타내기
+        if(answer >= 1 && answer <= 15) {
+            imgTag = `<img alt = "자동차" src = "../mycar/mycar${answer}.png" width = ${img_width}>`;
+        }
+        else{
+            imgTag = `<img alt = "박보영" src ="../연예인사진/parkboyoung.jpg" width = ${img_width}>`;
+        }
+        document.write(imgTag);
+    </script>
+</body>
+</html>

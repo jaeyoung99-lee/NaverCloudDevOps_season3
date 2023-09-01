@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+         start와 end 값을 입력 받아 해당 구구단을 출력
+         가로 방향 - 테이블 사용
+         단, start가 end보다 클 경우 두 값을 서로 바꾼 후 출력
+     -->
+
+     <script>
+        let start = prompt("구구단의 시작단을 입력하세요");
+        let end = prompt("구구단의 끝단을 입력하세요");
+
+        if(start > end){
+            let temp = start;
+            start = end;
+            end = temp;
+        }
+        document.write(`<table>`);
+        document.write(`<tr>`);
+        for(let a = start; a <= end; a++){
+            document.write(`<th>`);
+            document.write(`** ${a}단 **&emsp;`);
+            document.write(`</th>`);
+        }
+        document.write(`</tr>`);
+
+        for(let i = 1; i <= 9; i++){
+            document.write(`<tr>`);
+            for(let j = start; j <= end; j++){
+                document.write(`<td>`);
+                document.write(`${j} x ${i} = ${j * i}&emsp;`);
+                document.write(`</td>`);
+            }
+            document.write(`</tr>`);
+        }
+        document.write(`</table>`);
+     </script>
+
+</body>
+</html>
