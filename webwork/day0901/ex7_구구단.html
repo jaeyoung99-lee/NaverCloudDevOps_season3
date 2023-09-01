@@ -16,6 +16,11 @@
             font-weight: 300;
             text-align: center;
         }
+        
+        body{
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
         table {
             border-collapse: collapse;
@@ -36,10 +41,14 @@
             background-color: lightyellow ;
         }
 
+        th:nth-child(even), td:nth-child(even) {
+            background-color: white ;
+        }
+
         .title th, .title td, .title table:nth-child(odd){
         text-align: center;
         border: none;
-        background-color: white;
+        background-color: lightcyan;
         }
 
         p {
@@ -50,7 +59,7 @@
 
 </head>
 
-<body>
+<body background="../background.jpg">
     <h3 style="background-color: white;"></h3>
     <!-- 
          start와 end 값을 입력 받아 해당 구구단을 출력
