@@ -1,7 +1,6 @@
-package day0904;
+package bit701.day0904;
 
 public class Ex9_String {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -28,5 +27,4 @@ public class Ex9_String {
 		System.out.println(str1.compareTo(str2)); // str1과 str2의 차이 (양수값 : str1이 더 큰 값, 음수값 : str2가 더 큰 값)
 		System.out.println(str1.compareTo("apple")); // 완전 같을 경우 0
 	}
-
 }

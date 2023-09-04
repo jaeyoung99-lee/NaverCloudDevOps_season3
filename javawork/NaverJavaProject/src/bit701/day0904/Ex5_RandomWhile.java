@@ -1,9 +1,8 @@
-package day0904;
+package bit701.day0904;
 
 import java.util.Scanner;
 
 public class Ex5_RandomWhile {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -50,5 +49,4 @@ public class Ex5_RandomWhile {
 		}
 		System.out.println("** 프로그램 종료 **");
 	}
-
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap" rel="stylesheet">
+    <style>
+        div#msg {
+            font-family: 'Black Ops One';
+            font-size: 30px;
+            margin-top: 30px;
+            color: palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <input type = "text" id = "txtmsg">
+    <input type = "button" id = "btn1" value = "읽기">
+    <div id = "msg">Message 출력되는 곳</div>
+    <script>
+        let t = document.getElementById("txtmsg");
+        let b = document.getElementById("btn1");
+        let msg = document.getElementById("msg");
+
+        // 버튼 이벤트
+        b.onclick = function(){
+            // 입력한 문자열을 가져온다
+            let data = t.value;
+            
+            // msg에 출력
+            // msg.innerText = "<u>" + data + "</u>"; // innerText는 태그도 그대로 문자열로 출력
+            // msg.innerHTML = "<u>" + data + "</u>"; // 태그가 적용되도록 하려면 innerHTML 써야 함
+            msg.innerHTML += "<br><u>" + data + "</u>"; // += : 이전의 내용이 지워지지 않고 남은 채로 계속 추가됨
+            
+            // 입력한 값을 지운 후 포커스를 준다
+            t.value = "";
+            t.focus();
+        }
+    </script>
+</body>
+</html>

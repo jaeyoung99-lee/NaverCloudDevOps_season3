@@ -1,7 +1,6 @@
-package day0904;
+package bit701.day0904;
 
 public class Ex3_Random {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		

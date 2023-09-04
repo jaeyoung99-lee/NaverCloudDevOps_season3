@@ -1,7 +1,6 @@
-package day0904;
+package bit701.day0904;
 
 public class Ex1_While {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -52,5 +51,4 @@ public class Ex1_While {
 				break;
 		}while(n < 10);
 	}
-
 }

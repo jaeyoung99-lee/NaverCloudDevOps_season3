@@ -1,9 +1,8 @@
-package day0904;
+package bit701.day0904;
 
 import java.util.Random;
 
 public class Ex4_Random {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -26,5 +25,4 @@ public class Ex4_Random {
 		}
 		System.out.println("=".repeat(30));
 	}
-
 }

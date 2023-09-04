@@ -1,9 +1,8 @@
-package day0904;
+package bit701.day0904;
 
 import java.util.Scanner;
 
 public class Ex8_Book133 {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
