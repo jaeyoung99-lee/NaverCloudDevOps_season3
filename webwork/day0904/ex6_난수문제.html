@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <input type = "button" value = "새로운 난수 발생하기" id = "btnrnd">
 
+<body>
+    <input type="button" value="새로운 난수 발생하기" id="btnrnd">
+    <br>
+    <input type="text" id="txt">
+    <input type="button" id="btn" value="OK">
+    <br><br>
+    <div id="msg"></div>
     <script>
         let rnd; // 난수를 구할 변수
         // 난수 버튼 이벤트
-        document.getElementById("btnrnd").onclick = function(){
+        document.getElementById("btnrnd").onclick = function () {
             // 1 ~ 100 사이의 난수 구하기
             rnd = parseInt((Math.random() * 100)) + 1;
             //console에 출력
             console.log(rnd);
         }
-    </script>
-    <br>
-    <input type = "text" id = "txt">
-    <input type = "button" id = "btn" value = "OK">
-    <div id = "msg">Message</div>
-    <script>
-        let t = document.getElementById("txtmsg");
-        let b = document.getElementById("btn1");
+
+
+        
+        let t = document.getElementById("txt");
+        let b = document.getElementById("btn");
         let msg = document.getElementById("msg");
 
         // 버튼 이벤트
-        b.onclick = function(){
+        b.onclick = function () {
             // 입력한 문자열을 가져온다
             let data = t.value;
-            
+
             // msg에 출력
-            // msg.innerText = "<u>" + data + "</u>"; // innerText는 태그도 그대로 문자열로 출력
-            // msg.innerHTML = "<u>" + data + "</u>"; // 태그가 적용되도록 하려면 innerHTML 써야 함
-            msg.innerHTML += "<br><u>" + data + "</u>"; // += : 이전의 내용이 지워지지 않고 남은 채로 계속 추가됨
+            "<br>";
+            if (data > rnd) {
+                msg.innerHTML += data + "보다 작습니다<br>";
+            }
+            else if (data < rnd) {
+                msg.innerHTML += data + "보다 큽니다<br>";
+            }
+            else {
+                msg.innerHTML += `정답입니다(${rnd})<br><img src = '../mycar/mycar${parseInt((Math.random() * 15)) + 1}.png'>`;
+            }
             
             // 입력한 값을 지운 후 포커스를 준다
             t.value = "";
@@ -43,4 +53,5 @@
         }
     </script>
 </body>
+
 </html>
