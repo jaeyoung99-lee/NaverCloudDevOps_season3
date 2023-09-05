@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap"
+        rel="stylesheet">
+    <style>
+        #message {
+            font-family: 'Black Ops One';
+            background-color: #cfcfcc;
+            color: palevioletred;
+            position: absolute;
+            left: 30px;
+            top: 100px;
+            width: 500px;
+            height: 150px;
+            box-shadow: 5px 5px 5px pink;
+            text-align: center;
+            line-height: 150px;
+            /* 한 줄일 경우 행 높이를 height하고 같은 값을 주면 세로 방향 가운데에 온다 */
+        }
+
+        #buttons {
+            position: absolute;
+            left: 200px;
+            top: 300px;
+        }
+
+        #buttons button {
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="message" style="font-size: 30px;">Have a Nice Day!!!</div>
+    <div id="buttons">
+        <button type="button" id="btnminus">-</button>
+        <button type="button" id="btnplus">+</button>
+    </div>
+
+    <script>
+        // + 버튼
+        document.getElementById("btnplus").onclick = function () {
+            // 현재 글꼴의 크기를 얻어보자
+            let m = document.getElementById("message");
+            // alert(m.style.fontSize); // 30px
+
+            let fs = parseInt(m.style.fontSize, 10); // 10진수로 숫자부분만 가져온다
+            alert(fs); // 30
+
+            // 얻어온 글꼴 크기에 3 증가, fs가 48보다 같거나 작은 경우에만 변경
+            if (fs <= 48) {
+                fs += 3;
+
+                // 글꼴 스타일 변경
+                m.style.fontSize = fs + "px";
+            }
+        }
+
+        // - 버튼
+        document.getElementById("btnminus").onclick = function () {
+            // 현재 글꼴의 크기를 얻어보자
+            let m = document.getElementById("message");
+            // alert(m.style.fontSize); // 30px
+
+            let fs = parseInt(m.style.fontSize, 10); // 10진수로 숫자부분만 가져온다
+            alert(fs); // 30
+
+            // 얻어온 글꼴 크기에 3 감소, fs가 5보다 클 경우에만 변경
+            if (fs > 5) {
+                fs -= 3;
+
+                // 글꼴 스타일 변경
+                m.style.fontSize = fs + "px";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>숫자를 입력하면 그 숫자만큼 행, 열로 별표(*) 출력하기</h3>
+    <input type="text" id="su1" size="3">
+    <div style="margin-top: 30px; font-size: 25px;" id = "result"></div>
+    <script>
+        document.getElementById("su1").onkeyup=function(e){
+            console.log(this.value); // this : 자기 자신의 요소값
+            console.log(e.target.value); // event가 발생되는 target(자기자신)이 입력한 value값
+            console.log(e.keyCode); // 엔터를 누르면 13이 출력되는 것을 알 수 있음
+
+            // 숫자를 입력 후 엔터를 누르면 그 숫자만큼 행, 열로 별표를 출력한다
+            if(e.keyCode == 13){ // 반드시 C는 대문자
+                // 입력한 숫자
+                let su = Number(e.target.value);
+
+                let s = "";
+                for(let i = 1; i<=su;i++){
+                    for(let j = 1;j<=su;j++){
+                        s+="★";
+                    }
+                    s+="<br>";
+                }
+                document.getElementById("result").innerHTML=s;
+                // 입력한 값 지우기
+                this.value = "";
+
+                // 포커스 주기
+                this.focus();
+            }
+        }
+    </script>
+</body>
+</html>

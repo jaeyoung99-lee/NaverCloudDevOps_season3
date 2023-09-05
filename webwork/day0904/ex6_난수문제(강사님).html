@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #message {
+            width: 400px;
+            border: 2px solid gray;
+            height: 400px;
+            padding: 20px 10px; /* top left */
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        #carphoto{
+            position: absolute; /* 절대좌표 */
+            left: 200px;
+            top:3px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="새로운 난수 발생하기" id="btnrnd">
+    <br><br>
+    <input type="text" id="txtsu" style="width: 70px; font-size: 25px;" autofocus>
+    <button type="button" id="btnresult" style="font-size: 25px;">OK</button>
+    <div id="message"></div>
+    <script>
+        let rnd; // 난수를 구할 변수
+        let m;
+
+        // 난수 버튼 이벤트
+        document.getElementById("btnrnd").onclick = function () {
+            // 1 ~ 100 사이의 난수 구하기
+            rnd = parseInt((Math.random() * 100)) + 1;
+            //console에 출력
+            console.log(rnd);
+            alert("새로운 난수가 발생되었습니다."); // 메시지 창 띄움
+            
+            // 출력할 div 요소값
+            m = document.getElementById("message");
+            m.innerHTML=""; // 메시지 영역 지우기
+        }
+
+        // OK 버튼 이벤트
+        document.getElementById("btnresult").onclick = function () {
+
+            // 입력한 값을 읽어서 숫자 타입으로 변환
+            let su = Number(document.getElementById("txtsu").value);
+
+            // 비교
+            if (su > rnd)
+                m.innerHTML += su + "보다 작습니다<br>";
+            else if (su < rnd)
+                m.innerHTML += su + "보다 큽니다<br>";
+            else {
+                m.innerHTML += `축하합니다. 정답입니다(${rnd})<br>`;
+                // 이미지 변경(1 ~ 15 사이의 난수를 구한 후 그 사진으로 변경)
+                let idx = parseInt(Math.random()*15)+1;
+
+                // 이미지의 요소값을 얻는다
+                let  photo = document.getElementById("carphoto");
+                photo.setAttribute("src", `../mycar/mycar${idx}.png`);
+            }
+            // 입력값 지운 후 포커스 주기
+            document.getElementById("txtsu").value = "";
+            document.getElementById("txtsu").focus();
+        }
+    </script>
+    <!-- 기본 이미지 -->
+    <img src ="../mycar/mycar1.png" width="200" id = "carphoto">
+</body>
+
+</html>

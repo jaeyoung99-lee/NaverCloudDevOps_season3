@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap"
+        rel="stylesheet">
+    <style>
+        #buttons button{
+            font-family: "Song Myung";
+            color: red;
+            width: 80px;
+            height: 40px;
+        }
+        #buttons{
+            padding-left: 30px;
+        }
+        
+        #photo{
+            border: 10px groove skyblue;
+            border-radius: 100px;
+        }
+
+        #imgwidth{
+            padding-left: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 3개의 버튼 : 점점 작게, 점점 크게, 랜덤
+    점점 작게 : 사진이 5px씩 줄어든다(최소 50px)
+    점점 크게 : 사진이 5px씩 커진다(최대 600px)
+    랜덤 : 1 ~ 20 사이 난수 구한 후 해당 사진으로 변경하기 -->
+
+    <div id="buttons">
+        <button type="button" id="btnminus">점점 작게</button>
+        <button type="button" id="btnplus">점점 크게</button>
+        <button type="button" id="imgrandom">랜덤</button>
+    </div>
+    <div id = "imgwidth">현재 사진 너비 : <span id="imgsize"></span></div>
+    <br>
+    <img src="../연예인사진/12.jpg" style="width: 300px;" id = "photo">
+
+    <script>
+        // 점점 작게
+        document.getElementById("btnminus").onclick=function(){
+            let pic = document.getElementById("photo");
+            let ps = parseInt(pic.style.width, 10);
+            
+            if(ps >= 50){
+                ps -= 5;
+                pic.style.width = ps + "px";
+                imgsize.innerText=ps;
+            }
+            else
+                alert(`현재 width값은 ${ps}px(으)로 최소값인 50px보다 작아서 더이상 작아지지 않습니다`);
+        }
+
+        // 점점 크게
+        document.getElementById("btnplus").onclick=function(){
+            let pic = document.getElementById("photo");
+            let ps = parseInt(pic.style.width, 10);
+            
+            if(ps <= 600){
+                ps += 5;
+                pic.style.width = ps + "px";
+                imgsize.innerText=ps;
+            }
+            else
+                alert(`현재 width값은 ${ps}px(으)로 최대값인 600px보다 커서 더이상 커지지 않습니다`);
+        }
+
+        // 랜덤 이미지
+        document.getElementById("imgrandom").onclick=function(){
+            rnd = parseInt(Math.random() * 20) + 1;
+            document.getElementById("photo").setAttribute("src", `../연예인사진/${rnd}.jpg`);
+        }
+    </script>
+</body>
+</html>
