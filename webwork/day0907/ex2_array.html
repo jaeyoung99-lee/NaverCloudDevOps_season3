@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap"
+        rel="stylesheet">
+    <style>
+        body * {
+            font-family: "East Sea Dokdo";
+        }
+    </style>
+</head>
+<body>
+    <h3>자바스크립트에서 2차원 배열 선언하는 방법</h3>
+    <script>
+        let arr1 = [["장미꽃", "red"], ["국화꽃", "pink"], ["수국", "orange"], ["다알리아", "green"]];
+        document.write(`<h3>0,0:${arr1[0][0]}</h3>`);
+        document.write(`<h3>0,1:${arr1[0][1]}</h3>`);
+
+        for(let i = 0; i < arr1.length; i++){
+            document.write(`<h3 style = "color:${arr1[i][1]}">${arr1[i][0]}</h3>`);
+        }
+        document.write("<hr>");
+
+        let arr2 = new Array();
+        arr2.push([2, 3, 4]);
+        arr2.push([5, 6, 7]);
+        arr2.push([10, 20, 30, 40]);
+
+        for(let i = 0; i < arr2.length; i++){
+            for(let j = 0; j < arr2[i].length; j++){
+                document.write(`<b>[${i}, ${j}] = ${arr2[i][j]} </b>`);
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+</html>

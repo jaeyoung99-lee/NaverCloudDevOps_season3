@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img.photo {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            border-radius: 100px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>자바스크립트에서 배열 선언하는 방법 #1</h3>
+    <script>
+        let arr1 = ["../shop/11.jpg", "../shop/30.jpg", "../mycar/mycar13.png"];
+        document.write("<h3>배열개수 : " + arr1.length + "</h3>");
+
+        for (let i = 0; i < arr1.length; i++) {
+            document.write("<img src='" + arr1[i] + "'width = 100>");
+        }
+    </script>
+
+
+    <h3>자바스크립트에서 배열 선언하는 방법 #2</h3>
+    <script>
+        let arr2 = new Array(3); // 배열 할당, 개수는 안줘도 됨
+        arr2[0] = 30;
+        arr2[1] = 100;
+        arr2[2] = 130;
+
+        for (let i = 0; i < arr2.length; i++) {
+            document.write("<h1>" + arr2[i] + "</h1>");
+        }
+    </script>
+
+    <h3>자바스크립트에서 배열 선언하는 방법 #3</h3>
+    <script>
+        let arr3 = new Array();
+        arr3.push(17);
+        arr3.push(19);
+        arr3.push(12);
+        document.write("<h3>arr3의 배열 개수 : " + arr3.length + "</h3>");
+
+        for (let i = 0; i < arr3.length; i++) {
+            document.write("<img class = 'photo' src = '../연예인사진/" + arr3[i] + ".jpg'>");
+        }
+
+        document.write("<br><br>");
+        arr3.pop(); // 배열의 마지막 데이터가 제거
+        arr3.pop();
+
+        for (let i = 0; i < arr3.length; i++) {
+            document.write("<img class = 'photo' src = '../연예인사진/" + arr3[i] + ".jpg'>");
+        }
+
+        arr3.push(15);
+        arr3.push(3);
+        document.write("<br><br>");
+
+        for (let i = 0; i < arr3.length; i++) {
+            document.write("<img class = 'photo' src = '../연예인사진/" + arr3[i] + ".jpg'>");
+        }
+
+    </script>
+</body>
+
+</html>
