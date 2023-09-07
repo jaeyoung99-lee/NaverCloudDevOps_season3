@@ -56,6 +56,7 @@ public class Ex3_ArrayBinggo {
 			if((data[0][2] == data[1][1]) && (data[0][2] == data[2][0])) {
 				binggo++;
 			}
+			
 			if(binggo != 0) {
 				System.out.println("빙고 개수 : " + binggo);
 			}
