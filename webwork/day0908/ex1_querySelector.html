@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+    <div class = "boxa">
+        <h3 class= "titlea">Have a Good Day!!</h3>
+        <h3 class= "titleb">오늘은 즐거운 금요일입니다!</h3>
+        <h3 class= "titlec">태그 클래스 요소값 접근하기 연습</h3>
+    </div>
+
+    <hr>
+    
+    <div class = "boxb">
+        <h3 class= "titlea">Have a Good Day!!</h3>
+        <h3 class= "titleb">오늘은 즐거운 금요일입니다!</h3>
+        <h3 class= "titlec">태그 클래스 요소값 접근하기 연습</h3>
+    </div>
+
+    <script>
+        // div.boxa 바로 아래 태그인 h3.titlea
+        document.querySelector("div.boxa>h3.titlea").style.color = "red";
+
+        // h3 중에 클래스명이 titlea인 요소의 배경색을 변경
+        // querySelector : 선택자 개수가 여러 개일 경우 첫 번째 요소 값만 얻음
+        document.querySelector("h3.titlea").style.backgroundColor = "pink";
+
+        // querySelectorAll : 선택자 개수가 여러 개일 경우 배열 타입으로 얻음
+        let tag1 = document.querySelectorAll("h3.titleb");
+        for(let i = 0; i < tag1.length; i++){
+            tag1[i].style.color = "blue";
+        }
+
+        // for문의 다른 형태로 배경색 변경(자바의 : for문과 같음)
+        for(let s of tag1){
+            s.style.backgroundColor = "yellow";
+        }
+
+        /*
+        // in은 index만 얻음
+        for(let idx in tag1){  // 0, 1
+            tag1[idx].style.border = "2px solid magenta";
+        }
+        */
+
+        // 이벤트도 가능합니다
+        // 마우스를 올리면 배경색을 오렌지색으로 변경
+        document.querySelector("div.boxa>h3.titlec").onmouseover = function(){
+            this.style.backgroundColor = "orange";
+        }
+
+        // 마우스를 벗어나면 다시 배경색을 흰색으로 변경
+        document.querySelector("div.boxa>h3.titlec").onmouseout = function(){
+            this.style.backgroundColor = "white";
+        }
+    </script>
+
+    <h4>간단한 문제</h4>
+    <div class = "food_photo">
+        <div>
+            <img src="../음식사진/11.jpg" class = "photo">
+            <br><b class = "title">망고빙수</b>
+        </div>
+
+        <div>
+            <img src="../음식사진/1.jpg" class = "photo">
+            <br><b class = "title">샌드위치</b>
+        </div>
+
+        <div>
+            <img src="../음식사진/4.jpg" class = "photo">
+            <br><b class = "title">카레라이스</b>
+        </div>
+    </div>
+
+    <script>
+        // 1번 문제 : 모든 사진의 너비를 200px로 변경
+        let pic = document.querySelectorAll("div.food_photo>div>img.photo");
+        for(let i = 0; i < pic.length; i++){
+            pic[i].style.width = "200px";
+        }
+
+        // 2번 문제 : b.title 중 첫 번째의 글자색을 'red', 배경색을 'gray'로 변경
+        document.querySelector("div.food_photo>div>b.title").style.color = "red";
+        document.querySelector("div.food_photo>div>b.title").style.backgroundColor = "gray";
+        
+        // 3번 문제 : 사진에 마우스를 올리면 border-radius를 100px로 변경하고 벗어나면 다시 0px로 변경
+        for(let photo of pic){
+            let pre_photo;
+
+            photo.onmouseover = function(){
+                // this.style.borderRadius = "100px";
+                // this.style.border = "3px solid red";
+                
+                // 변경 전 현재 사진을 저장해둔다
+                prev_photo = this.getAttribute("src");
+
+                // 동물 사진으로 변경(랜덤)
+                let rnd = parseInt(Math.random() * 8) + 1;
+                this.setAttribute("src", `../이쁜동물이미지/C${rnd}.png`);
+            }
+
+            photo.onmouseout = function(){
+                this.style.borderRadius = "0px"; 
+                this.style.border = "none";
+                // 원래 사진으로 변경
+                this.setAttribute("src", prev_photo);
+            }
+        }
+    </script>
+    </body>
+</html>
