@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        body * {
+            font-family: 'Jua';
+        }
+
+        div.container{
+            width: 500px;
+            height: 250px;
+            background-color: #b0e0e6;
+        }
+
+        div.container div.title{
+            text-align: center;
+            font-size: 22px;
+            padding-top: 10px;
+        }
+
+        div.container div.title b.day{
+            color: #aaa;
+            margin-left: 10px;
+        }
+
+        div.container div.box{
+            background-color: white;
+            width:430px;
+            height: 100px;
+            margin: 0 auto; /* 가운데로 이동 */
+            margin-top: 20px;
+            border-radius: 50px;
+            padding-left: 20px;
+        }
+
+        div.container div.box div.lotto{
+            float: left;
+            width: 62px;
+            height: 62px;
+            border-radius: 100px;
+            background-color: cadetblue;
+            margin-right: 7px;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 62px;
+            font-size: 25px;
+            font-family: "Comic Sans MS";
+        }
+
+        #btngo{
+            width: 150px;
+            height: 50px;
+            margin: 10px 172px;
+            background-color: #ff1493;
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+            create_lotto(); // 처음 로딩 시 한 번 호출
+
+            // 버튼 클릭 시에도 위의 함수를 호출
+            document.getElementById("btngo").onclick = create_lotto;
+        }
+
+        function create_lotto(){
+            // 1 ~ 45 사이의 중복되지 않은 6개의 숫자를 구하자
+            let lotto_array = new Array(6);
+            for(let i = 0; i < lotto_array.length; i++){
+                lotto_array[i] = parseInt(Math.random() * 45) + 1;
+                // 중복처리
+                for(let j = 0; j < i; j++){
+                    if(lotto_array[i] == lotto_array[j]){
+                        i--;
+                        break;
+                    }
+                }
+            }
+
+            // 순서대로 정렬
+            for(let i = 0; i < lotto_array.length - 1; i++){
+                for(let j = i + 1; j < lotto_array.length; j++){
+                    if(lotto_array[i] > lotto_array[j]){
+                        let temp = lotto_array[i];
+                        lotto_array[i] = lotto_array[j];
+                        lotto_array[j] = temp;
+                    }
+                }
+            }
+            // alert(lotto_array); // 잘 나오나 확인용
+            // div.lotto에 입력
+            // div.lotto 여러 개의 요소값을 배열형태로 얻어보자
+            let div_lotto = document.querySelectorAll("div.lotto");
+            for(let i = 0; i < div_lotto.length; i++){
+                div_lotto[i].innerHTML = lotto_array[i];
+            }
+
+            // div.lotto의 배경색을 rgb를 이용해서 임의로 변경
+            for(let i = 0; i < div_lotto.length; i++){
+                let r = parseInt(Math.random() * 200); // 255, 255, 255가 흰색이라 흰색이 안나오게 1 ~ 199까지만 함
+                let g = parseInt(Math.random() * 200);
+                let b = parseInt(Math.random() * 200);
+
+                // div_lotto[i].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                div_lotto[i].style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.5)`; // 반투명
+
+                // 글자색은 일부만 변경
+                div_lotto[1].style.color = "white";
+                div_lotto[3].style.color = "yellow";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class = "container">
+        <div class = "title">
+            <b style="color: blue;">1026</b>회
+            <b class = "day">
+                <script>
+                    let date = new Date();
+                    let year = date.getFullYear();
+                    let month = date.getMonth() + 1;
+                    let day = date.getDate();
+                    document.write(`${year}-${month < 10 ? "0" + month : month}-${day < 10 ? "0" + day : day}`);
+                </script>
+            </b>
+        </div>
+
+        <div class = "box">
+            <div class = "lotto"></div>
+            <div class = "lotto"></div>
+            <div class = "lotto"></div>
+            <div class = "lotto"></div>
+            <div class = "lotto"></div>
+            <div class = "lotto"></div>
+        </div>
+        <button type="button" id = "btngo">로또 숫자 구하기</button>
+    </div>
+</body>
+</html>
