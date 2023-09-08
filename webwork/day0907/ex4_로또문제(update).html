@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Dongle:wght@300&family=East+Sea+Dokdo&family=Nanum+Pen+Script&family=Pacifico&family=Song+Myung&display=swap"
+        rel="stylesheet">
+    <style>
+        body * {
+            font-family: "East Sea Dokdo";
+        }
+
+        body {
+            background-color: skyblue;
+        }
+
+        #total {
+            text-align: center;
+            margin-top: 250px;
+        }
+
+        div.box {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid white;
+            border-radius: 100px;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+        }
+
+        #btnrandom {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btnlotto {
+            border-radius: 10px;
+            background-color: mediumspringgreen;
+            font-size: large;
+            padding: 10px 20px;
+        }
+
+        .bigbox {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 100px;
+            padding: 20px;
+            width: 800px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        #num {
+            text-align: center;
+            display: inline-block;
+        }
+
+
+        /* 형난 */
+        .bigbox {
+            display: inline-block;
+            width: auto;
+        }
+        div.box:last-child { 
+            margin-right: 0; 
+        }
+        div.box {
+            display: inline-block;
+            float: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            init_time();
+            // 여러 개의 class 요소들을 배열 변수로 얻는다
+            let num = new Array(6);
+            let box = document.querySelectorAll("div.box");
+            console.log(box.length);
+            Loop:
+            for (let i = 0; i < box.length; i++) {
+                num[i] = parseInt(Math.random() * 45) + 1;
+                for (let j = 0; j < i; j++) {
+                    if (num[i] == num[j]) {
+                        i--;
+                        continue Loop;
+                    }
+                }
+            }
+
+            for (let i = 0; i < box.length; i++) {
+                for (let j = i + 1; j < box.length; j++) {
+                    if (num[i] > num[j]) {
+                        let temp = num[i];
+                        num[i] = num[j];
+                        num[j] = temp;
+                    }
+                }
+                box[i].innerHTML = num[i];
+            }
+        }
+
+        function init_time() {
+            let date = new Date();
+            let y = date.getFullYear();
+            let m = (date.getMonth() + 1).toString().padStart(2, '0');
+            let d = date.getDate().toString().padStart(2, '0');
+
+            time.innerHTML = `${y}-${m}-${d}`;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="total">
+        <div id="num">
+            <p><span style="color: blue; font-size: 40px;">1026</span><span style="font-size: 40px;">회</span> <span id="time" style="color: gray; font-size: 20px;"></span></p>
+        </div>
+        <div>
+            <div class="bigbox">
+                <div class="box" style="background-color: pink; color: black;"></div>
+                <div class="box" style="background-color: orange; color: white;"></div>
+                <div class="box" style="background-color: pink; color: black;"></div>
+                <div class="box" style="background-color: #8d5a18a1; color: white;"></div>
+                <div class="box" style="background-color: purple; color: yellow;"></div>
+                <div class="box" style="background-color: pink; color: black;"></div>
+            </div>
+            <div id="btnrandom">
+                <button type="button" class="btnlotto">로또 숫자 구하기</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 새로고침 버튼
+        document.getElementById("btnrandom").onclick = function () {
+            let num = new Array(6);
+            let box = document.querySelectorAll("div.box");
+            console.log(box.length);
+            Loop:
+            for (let i = 0; i < box.length; i++) {
+                num[i] = parseInt(Math.random() * 45) + 1;
+                for (let j = 0; j < i; j++) {
+                    if (num[i] == num[j]) {
+                        i--;
+                        continue Loop;
+                    }
+                }
+            }
+
+            for (let i = 0; i < box.length; i++) {
+                for (let j = i + 1; j < box.length; j++) {
+                    if (num[i] > num[j]) {
+                        let temp = num[i];
+                        num[i] = num[j];
+                        num[j] = temp;
+                    }
+                }
+                box[i].innerHTML = num[i];
+            }
+        }
+    </script>
+</body>
+
+</html>
