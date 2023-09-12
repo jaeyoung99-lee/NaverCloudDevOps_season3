@@ -33,7 +33,7 @@ class SubD extends SuperD{
 	SubD(String carName, String carColor, int carPrice){
 		super(carName, carColor);
 		System.out.println("sub의 두번째 생성자");
-		this.carPrice = 4000;
+		this.carPrice = carPrice;
 	}
 	
 	@Override
