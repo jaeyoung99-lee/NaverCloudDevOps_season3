@@ -50,4 +50,5 @@ public class Account_Pro {
 	public void accountWrite() {
 		System.out.println(accountNo + "\t" + accountName + "\t" + money);
 	}
+	
 }
