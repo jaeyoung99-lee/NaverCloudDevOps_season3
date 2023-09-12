@@ -7,7 +7,7 @@ class SuperB{
 }
 
 class SubB extends SuperB{
-	@Override // 어노테이션
+	@Override // 어노테이션 : 컴파일 단계에서 정확히 오버라이딩 되었는지 체크해줌
 	public void processA() {
 		// TODO Auto-generated method stub
 		// this로 하면 자신이 호출되기 때문에 무한의 늪에 빠져버림
