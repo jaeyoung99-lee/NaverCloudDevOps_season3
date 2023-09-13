@@ -15,4 +15,9 @@
     <fullyQualifiedTypeName name="bit701.day0911.Car2"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="bit701.day0911.Student"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="java.nio.file.spi.FileSystemProvider"/>
+    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+    <fullyQualifiedTypeName name="bit701.day0913.OuterA.InnerA"/>
+    <fullyQualifiedTypeName name="bit701.day0913.OuterA.InnerB"/>
 </qualifiedTypeNameHistroy>
