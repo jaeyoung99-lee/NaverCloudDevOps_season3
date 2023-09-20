@@ -23,7 +23,7 @@ select * from emp where ename like '_A%'; -- 언더바(_)는 임의의 한 글자를 의미
 -- 세 번째 글자가 A인 사람들만 조회
 select * from emp where ename like '__A%'; -- 언더바(_) 두 개 사용
 
--- S로 시작하거나 J로 ㅣㅅ작하는 모든 사람 조회
+-- S로 시작하거나 J로 시작하는 모든 사람 조회
 select * from emp where ename like 'S%' or ename like 'J%';
 
 -- sal이 2000이상인 사람 중에 S로 시작하는 사람 조회
