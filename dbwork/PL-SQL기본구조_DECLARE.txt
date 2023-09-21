@@ -1,0 +1,6 @@
+DECLARE
+
+BEGIN
+
+	DBMS_Output.put_line();
+end;
