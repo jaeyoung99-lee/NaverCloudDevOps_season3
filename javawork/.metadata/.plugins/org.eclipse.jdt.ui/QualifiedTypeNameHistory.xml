@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="javax.lang.model.util.SimpleAnnotationValueVisitor14"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.text.NumberFormat"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.ClassCastException"/>
     <fullyQualifiedTypeName name="bit701.day0911.Car2"/>
@@ -35,7 +28,6 @@
     <fullyQualifiedTypeName name="java.awt.Component.AccessibleAWTComponent"/>
     <fullyQualifiedTypeName name="bit701.day0915.Ex5_ArrayButton"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
-    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
     <fullyQualifiedTypeName name="bit701.day0915.Ex8_FileImageLoad"/>
     <fullyQualifiedTypeName name="java.awt.FileDialog"/>
     <fullyQualifiedTypeName name="java.awt.event.ItemListener"/>
@@ -59,4 +51,13 @@
     <fullyQualifiedTypeName name="javax.swing.Action"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="bit701.day0922.Ex1_OracleJdbc"/>
+    <fullyQualifiedTypeName name="bit701.day0922.Ex2_MysqlJdbc"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.jdbc.AbandonedConnectionCleanupThread"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="bit701.day0922.Ex3_MysqlGroupSawon"/>
 </qualifiedTypeNameHistroy>
