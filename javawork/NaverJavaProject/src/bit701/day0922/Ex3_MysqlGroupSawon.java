@@ -40,21 +40,18 @@ public class Ex3_MysqlGroupSawon {
 			
 			System.out.println("buseo\tcount\tmaxScore\tminScore\tavgScore");
 			System.out.println("=".repeat(40));
-			int total = 0;
-			int count = 0;
-			double avg;
 			
 			while(rs.next()) {
 				//데이터를 가져올 때 인덱스로 가져오거나 컬럼명으로 가져온다
 				
 				// 컬럼명으로 가져오기
 				String buseo = rs.getString("buseo");
-				String num = rs.getString("count");
+				int count = rs.getInt("count");
 				int minscore = rs.getInt("minScore");
 				int maxscore = rs.getInt("maxScore");
-				int avgscore = rs.getInt("avgScore");
+				double avgscore = rs.getDouble("avgScore");
 				
-				System.out.println(buseo + "\t" + num + "\t" + maxscore + "\t" + minscore + "\t" + avgscore);
+				System.out.println(buseo + "\t" + count + "\t" + maxscore + "\t" + minscore + "\t" + avgscore);
 			}
 		} catch (SQLException e) {
 			System.out.println("Mysql 연결 실패 : " + e.getMessage());

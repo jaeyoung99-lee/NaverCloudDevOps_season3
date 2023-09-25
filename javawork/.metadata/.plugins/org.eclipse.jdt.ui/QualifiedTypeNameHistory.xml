@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.lang.ClassCastException"/>
-    <fullyQualifiedTypeName name="bit701.day0911.Car2"/>
-    <fullyQualifiedTypeName name="bit701.day0911.Student"/>
-    <fullyQualifiedTypeName name="java.io.FileWriter"/>
-    <fullyQualifiedTypeName name="java.nio.file.spi.FileSystemProvider"/>
-    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
-    <fullyQualifiedTypeName name="bit701.day0913.OuterA.InnerA"/>
-    <fullyQualifiedTypeName name="bit701.day0913.OuterA.InnerB"/>
-    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
-    <fullyQualifiedTypeName name="java.sql.Date"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.util.Set"/>
-    <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
-    <fullyQualifiedTypeName name="java.util.Stack"/>
-    <fullyQualifiedTypeName name="java.util.Iterator"/>
-    <fullyQualifiedTypeName name="bit701.day0914.Ex15_ListStudent"/>
-    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
-    <fullyQualifiedTypeName name="bit701.day0915.Ex1_ThreadTest"/>
     <fullyQualifiedTypeName name="bit701.day0915.Ex2_RunnableTest"/>
     <fullyQualifiedTypeName name="bit701.day0915.SwingGibon"/>
     <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
@@ -54,10 +35,29 @@
     <fullyQualifiedTypeName name="bit701.day0922.Ex1_OracleJdbc"/>
     <fullyQualifiedTypeName name="bit701.day0922.Ex2_MysqlJdbc"/>
     <fullyQualifiedTypeName name="com.mysql.cj.jdbc.AbandonedConnectionCleanupThread"/>
-    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
     <fullyQualifiedTypeName name="bit701.day0922.Ex3_MysqlGroupSawon"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.nio.file.spi.FileSystemProvider"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex1_OracleShopInsert"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex2_MysqlSawonInsert"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex3_OracleShopDelete"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex4_MysqlSawonDelete"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex5_OracleShopUpdate"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex6_MysqlSawonUpdate"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex7_SawonCrud"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex8_SawonSearch"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="DB.DbConnect"/>
+    <fullyQualifiedTypeName name="bit701.day0925.Ex9_StudentCrud"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.security.Timestamp"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
 </qualifiedTypeNameHistroy>
