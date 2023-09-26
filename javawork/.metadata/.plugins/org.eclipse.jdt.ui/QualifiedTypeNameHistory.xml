@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="bit701.day0915.Ex2_RunnableTest"/>
-    <fullyQualifiedTypeName name="bit701.day0915.SwingGibon"/>
-    <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
-    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-    <fullyQualifiedTypeName name="bit701.day0915.Ex4_SwingButton"/>
-    <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
     <fullyQualifiedTypeName name="java.awt.Component.AccessibleAWTComponent"/>
     <fullyQualifiedTypeName name="bit701.day0915.Ex5_ArrayButton"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
@@ -16,8 +10,6 @@
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="javax.swing.DefaultBoundedRangeModel"/>
     <fullyQualifiedTypeName name="javax.swing.table.DefaultTableCellRenderer"/>
-    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
-    <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="bit701.day0918.Orange"/>
     <fullyQualifiedTypeName name="bit701.day0918.Ex4_Lambda"/>
     <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
@@ -30,7 +22,6 @@
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="javax.swing.Action"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="bit701.day0922.Ex1_OracleJdbc"/>
     <fullyQualifiedTypeName name="bit701.day0922.Ex2_MysqlJdbc"/>
@@ -52,12 +43,21 @@
     <fullyQualifiedTypeName name="bit701.day0925.Ex7_SawonCrud"/>
     <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare"/>
     <fullyQualifiedTypeName name="bit701.day0925.Ex8_SawonSearch"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="DB.DbConnect"/>
     <fullyQualifiedTypeName name="bit701.day0925.Ex9_StudentCrud"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.security.Timestamp"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+    <fullyQualifiedTypeName name="DB.DbConnect"/>
+    <fullyQualifiedTypeName name="java.util.Vector"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="bit701.day0926.Ex1_StudentSwingCRUD"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 </qualifiedTypeNameHistroy>
