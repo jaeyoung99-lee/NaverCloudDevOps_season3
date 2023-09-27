@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+	
+	h1 {
+		font: bold 2em "Gamja Flower";
+		text-align: center;
+	}
+	
+	/* 1024 이상 */
+	@media all and (min-width: 1024px) {
+		body {
+			background: url(../image/C8.png);
+		}
+		
+		h1 {
+			color: #f00;
+		}
+	}
+	
+	/* 761 ~ 1023 */
+	@media all and (min-width: 761px) and (max-width: 1024px) {
+		body {
+			background: url(../image/C1.png);
+		}
+		
+		h1 {
+			color: #abcabc;
+		}
+	}
+	
+	/* 760 이하 */
+	@media all and (min-width: 760px) {
+		body {
+			background: url(../image/C7.png);
+		}
+		
+		h1 {
+			color: #cbacba;
+		}
+	}
+</style>
+<script>
+	window.onload = function(){
+		
+	}
+</script>
+</head>
+<body>
+	<h1>반응형 테스트</h1>
+</body>
+</html>

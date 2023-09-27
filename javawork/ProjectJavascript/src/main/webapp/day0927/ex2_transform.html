@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+	
+	div {
+		border: 1px solid #000;
+		width: 200px;
+		height: 200px;
+		float: left; /* 가로 방향 정렬 */
+		margin: 30px;
+	}
+	
+	div img {
+		width: 100px;
+		height: 100px;
+	}
+	
+	#img1 {
+		transform: translate(50px, 30px);/* x, y 좌표만큼 이동 */
+		
+		/* 크로스 브라우징 : 웹페이지 제작 시 모든 브라우저에서 깨지지 않고 의도한대로 올바르게 나오게 하는 작업 */
+		/* 크로스 브라우징 테스트를 위해서 아래 코드처럼 넣는다 */
+		-webkit-transform: translate(50px, 30px); /* 크롬, 사파리 */
+		-o-transform: translate(50px, 30px); /* 오페라 */
+		-moz-transform: translate(50px, 30px); /* 익스플로러 */
+	}
+	
+	#img2 {
+		transform: rotate(45deg); /* 45도 회전(시계 방향) */
+	}
+	
+	#img3 {
+		transform: scale(2); /* 2배 확대, scale : 확대, 축소 시 사용 */
+	}
+	
+	#img4 {
+		transform: skew(30deg, 40deg); /* skew : x, y 방향으로 경사 변형을 줌, 비틀기 */
+	}
+</style>
+<script>
+	window.onload = function(){
+		
+	}
+</script>
+</head>
+<body>
+	<div id="img1">
+		<img src="../food/1.jpg">
+	</div>
+	<div id="img2">
+		<img src="../food/11.jpg">
+	</div>
+	<div id="img3">
+		<img src="../food/10.jpg">
+	</div>
+	<div id="img4">
+		<img src="../food/4.jpg">
+	</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+</style>
+<script>
+	window.onload = function(){
+		
+	}
+</script>
+</head>
+<body>
+	<marquee>Have a Nice Day!!</marquee> <!--우에서 좌로 반복-->
+	<marquee direction="right">Have a Nice Day!!</marquee> <!--좌에서 우로 반복-->
+	<marquee direction="right" behavior="alternate">Have a Nice Day!!</marquee> <!--좌에서 우로 반복, alternate 때문에 창 끝에 갔을 때 부딪히듯이 튕겨나옴-->
+	<marquee direction="right" behavior="slide">Have a Nice Day!!</marquee> <!--좌에서 우로 반복, slide 때문에 한 번만 이동(창 끝에 도착하면 거기서 멈춤)-->
+	
+	<marquee>
+		<script direction="right" behavior="slide">
+			for(let i = 1; i <= 8; i++){
+				document.write(`<img src = "../image/C${i}.png" width = "60">`);
+			}
+		</script>
+	</marquee>
+	
+	<marquee width="100" height="400" direction="down" hebhavior="alternate">
+		<img src="../food/11.jpg" width="100">
+	</marquee>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<style>
+	body * {
+		font-family: 'Jua';
+		box-sizing: border-box; /* 크기 설정 시 테두리선까지 포함 */
+	}
+	
+	body {
+		background-color: #222;
+		height: 100%;
+		margin: 0;
+	}
+	
+	#container {
+		position: absolute; /* 절대좌표 */
+		left: 50%;
+		margin-left: -450px;
+		width: 900px;
+		height: 100%;
+		background: #fff;
+	}
+	
+	aside {
+		float: left;
+		width: 250px;
+		padding: 20px 50px;
+		height: 100%;
+		background: rgb(204, 204, 204);
+	}
+	
+	aside>div>img {
+		width: 120px;
+		height: 120px;
+		border: 1px solid yellow;
+		border-radius: 100px;
+	}
+	
+	#main {
+		float: right;
+		padding: 20px;
+		margin: 10px;
+	}
+</style>
+<script>
+	window.onload = function(){
+		
+	}
+</script>
+</head>
+<body>
+	<div id="container">
+		<!--사이드바-->
+		<asdie>
+			<div id="namecard">
+				<img src="../image/17.jpg">
+				<h3>신민아</h3>
+				<p>오늘을 즐겁게 살자</p>
+			</div>
+			
+			<div id="detail">
+				<p>Seoul, Koera</p>
+				<p>shinmina@gmail.com</p>
+			</div>
+			
+			<div id="sns">
+				<h2>SNS</h2>
+				<ul>
+					<li><a href="http://www.facebook.com">facebook</a></li>
+					<li><a href="http://www.instagram.com">instagram</a></li>
+				</ul>				
+			</div>
+		</asdie>
+		
+		<div id="main">
+			<!--자기소개-->
+			<section>
+				<h3 class="subtitle">Profile</h3>
+				<p>
+					<mark>프론트 웹 기술</mark>에 관심이 많아
+					프로젝트 개발 중입니다.<br>
+					현재는 스타트업에서 백엔드 개발 중입니다.
+				</p>
+			</section>
+			
+			<!--경력-->
+			<section>
+				<h3 class="subtitle">Employment History</h3>
+				<ul>
+					<li>백엔드 개발
+						<ul>
+							<li>자바 프로젝트</li>
+							<li>오라클</li>
+							<li>스프링 프로젝트 진행중</li>
+						</ul>
+					</li>
+					<li>앱 디자인
+						<ul>
+							<li>CSS</li>
+							<li>HTML</li>
+							<li>앱 디자인 프로젝트 참여중</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			
+			<!--학력-->
+			<section>
+				<h3 class="subtitle">Education</h3>
+				<table>
+					<caption><b>학력사항</b></caption>
+					<thead>
+						<tr>
+							<th>출신학교</th>
+							<th>전공</th>
+							<th>기간</th>
+							<th>구분</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>**대학교</td>
+							<td>영문과</td>
+							<td>2018.3.1 ~ 2025.2.10</td>
+							<td>졸업</td>
+						</tr>
+						<tr>
+							<td>**고등학교</td>
+							<td>-</td>
+							<td>2015.3.1 ~ 2017.2.20</td>
+							<td>졸업</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</div>
+	</div>
+</body>
+</html>
