@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+	
+	.calendar {
+		margin-top: 30px;
+	}
+	
+	.calendar table {
+		width: 600px;
+		border: 6px groove gray;
+	}
+	
+	.calendar table thead tr {
+		height: 50px;
+	}
+	
+	.calendar table thead tr th {
+		background-color: aquamarine;
+		color: blue;
+		text-align: center;
+		border-bottom: 3px double gray;
+		font-size: 22px;
+	}
+</style>
+<script>
+	window.onload = function(){
+		calendarview(); // 처음 시작 시 달력 출력
+		
+		// 년도 변경 이벤트
+		document.querySelector(".selyear").onchange = function(){
+			curyear = Number(this.value);
+			calendarview();	
+		}
+		
+		// 월 변경 이벤트
+		document.querySelector(".selmonth").onchange = function(){
+			curmonth = Number(this.value);
+			calendarview();
+		}
+	}
+	
+	// 달력을 출력하는 함수
+	function calendarview(){
+		console.log(curyear, curmonth);
+		
+		// 요일 숫자(해당 월의 1일의 요일)
+		let date2 = new Date(curyear, curmonth - 1, 1);
+		let weekday = date2.getDay();
+		console.log("1일 요일:" + weekday);
+		
+		// 해당 년도의 해당 월이 몇 일까지 있는지 구하기
+		let endday;
+		switch(curmonth){
+			case 2:
+				endday = curyear % 4 == 0 && curyear % 100 != 0 || curyear % 400 == 0 ? 29 : 28;
+				break;
+			case 4: case 6: case 9: case 11:
+				endday = 30;
+				break;
+			default:
+				endday = 31;
+				break;
+		}
+		
+		console.log("endday:" + endday);
+		
+		let s = `
+				<table class = "table table-bordered">
+					<caption align = "top"><h3>${curyear}년 ${curmonth}월 달력</h3></caption>
+					<thead>
+						<tr>
+							<th>일</th>
+							<th>월</th>
+							<th>화</th>
+							<th>수</th>
+							<th>목</th>
+							<th>금</th>
+							<th>토</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+				`;
+				
+		// 앞에 빈칸 부분
+		s += "<tr>";
+		for(let i = 1; i <= weekday; i++){
+			s += "<td></td>";
+		}
+		// 1 ~ endday 출력(단, 토요일은 </tr><tr>)
+		for(let i = 1; i <= endday; i++){
+			++weekday;
+			//출력 후 7의 배수일 때 tr 닫기
+			s += `<td style = "color: ${weekday % 7 == 1 ? 'red' : 'black'}">${i}</td>`;
+			if(weekday % 7 == 0 && i < endday){
+				s += `</tr><tr>`;
+			}
+			else if(weekday % 7 == 0 && i == endday){
+				s += "</tr>";
+			}
+		}
+		
+		// 나머지 칸 그리기(위에서 토요일까지 칸이 그려지지 않은 경우에만 해당)
+		let n = 1;
+		if(weekday % 7 != 0){
+			while (true) {
+				weekday++;
+				s += `<td style = "color: #ccc;">${n++}</td>`;
+				if(weekday % 7 == 0){
+					break;
+				}
+			}
+			s += "</tr>";
+		}
+		
+		s += "</tbody></table>";
+		
+		document.querySelector(".calendar").innerHTML = s;
+	}
+</script>
+</head>
+<body>
+	<script>
+		// 현재 년도 구하기
+		let date = new Date();
+		let curyear = date.getFullYear();
+		let curmonth = date.getMonth() + 1;
+		console.log(curyear, curmonth);
+	</script>
+	<div style="margin: 50px;">
+		<div class="input-group" style="width: 300px;">
+			<select class="form-select selyear">
+				<script>
+					for(let i = curyear; i >= 1950; i--){
+						document.write(`<option>${i}</option>`);
+					}
+				</script>
+			</select>
+			년
+			&nbsp;
+			<select class="form-select selmonth">
+				<script>
+					for(let i = 1; i <= 12; i++){
+						if(i == curmonth)
+							document.write(`<option selected>${i}</option>`);
+						else
+							document.write(`<option>${i}</option>`);
+					}
+				</script>
+			</select>
+			월
+		</div>
+		
+		<div class="calendar"></div>
+	</div>
+</body>
+</html>

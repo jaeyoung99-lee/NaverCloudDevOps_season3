@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+	</style>
+	<script>
+		let columncount = 5;
+		window.onload = function () {
+			imageview();
+
+			document.querySelector(".selcolumn").onchange = function () {
+				columncount = Number(document.querySelector(".selcolumn").value);
+				imageview();
+			}
+		}
+
+		function imageview() {
+			let s = `
+				<table class = "table table-bordered" style = "width: 700px;">
+				`;
+
+			let idx = 0;
+
+			s += `<tr height = "100px">`;
+
+			for (let i = 1; i <= 34; i++) {
+				idx++;
+				s += `
+					<td align = center>
+						<img src = "../shop/${i}.${i == 24 ? 'gif' : 'jpg'}" width = "90%">
+					</td>
+					`;
+
+				if (idx % columncount == 0 && i == 34)
+					s += "</tr>";
+				else if (idx % columncount == 0 && i < 34)
+					s += "</tr><tr>";
+			}
+
+			if (idx % columncount != 0) {
+				while (true) {
+					idx++;
+					s += `
+						<td align = center valign = middle>
+							<img src = "../image/C8.png" width = "60%">
+						</td>
+						`;
+					if (idx % columncount == 0)
+						break;
+				}
+				s += "</tr>";
+			}
+			s += "</table>";
+
+			document.querySelector(".imagetable").innerHTML = s;
+
+		}
+	</script>
+</head>
+
+<body>
+	<div style="margin: 50px;">
+		<div class="input-group" style="width: 200px;">
+			column 개수 :
+			<select class="form-select selcolumn">
+				<script>
+					for (let i = 3; i <= 10; i++) {
+						document.write(`<option ${i == 7 ? "selected" : ""}>${i}</option>`);
+					}
+				</script>
+			</select>
+			칸
+		</div>
+
+		<div class="imagetable"></div>
+	</div>
+</body>
+
+</html>

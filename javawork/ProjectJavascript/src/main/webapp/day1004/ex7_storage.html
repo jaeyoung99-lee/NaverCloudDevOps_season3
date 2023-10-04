@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+</style>
+<script>
+	window.onload = function(){
+		
+	}
+</script>
+</head>
+<body>
+	<h4 class="alert alert-danger">Local Storage 공부</h4>
+	<br>
+	<button type="button" id="btn1" class="btn btn-success">저장</button>
+	<button type="button" id="btn2" class="btn btn-success">삭제</button>
+	<button type="button" id="btn3" class="btn btn-success">전체 삭제</button>
+	<button type="button" id="btn4" class="btn btn-success">내용 보기</button>
+	<br><br>
+	<div id="view"></div>
+	<script>
+		document.getElementById("btn1").onclick = function(){
+			// 로컬스토리지에 저장하는 방법(키(key)-값(value) 쌍으로 저장)
+			// 로컬스토리지는 직접 지우기 전엔 안지워짐(영구적)
+			// 방법1
+			// localStorage.키="값";
+			localStorage.myid="bitcamp";
+			
+			// 방법2
+			// localStorage.setItem("키", "값");
+			localStorage.setItem("name", "이미자");
+			
+			// 방법3
+			// localStorage["키"] = "값";
+			localStorage["addr"] = "강남구 역삼동";
+			
+			// 세션스토리지에 저장(로컬스토리지의 방법2, 3으로도 가능)
+			// 세션스토리지는 브라우저 닫는 순간 지워짐
+			sessionStorage.age = "30세";
+			// 방법2
+			// sessionStorage.setItem("blood", "B");
+			// 방법3
+			// sessionStorage["height"] = 180;
+		}
+		
+		document.getElementById("btn2").onclick = function(){
+			let a = prompt("삭제할 키를 입력하세요", "myid");
+			// 삭제
+			localStorage.removeItem(a);
+		}
+		
+		document.getElementById("btn3").onclick = function(){
+			localStorage.clear(); // 전체 지우기			
+		}
+		
+		document.getElementById("btn4").onclick = function(){
+			let s = `
+					myid: ${localStorage.myid}<br>
+					name: ${localStorage.name}<br>
+					addr: ${localStorage.addr}<br>
+					`;
+					
+			document.getElementById("view").innerHTML = s;
+		}
+	</script>
+</body>
+</html>
