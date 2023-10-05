@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+	
+	div.a {
+		width: 200px;
+		height: 70px;
+		text-align: center;
+		margin-bottom: 5px;
+	}
+	
+	.hello_0 {
+		border: 10px inset orange;
+	}
+	
+	.hello_1 {
+		border: 10px double deeppink;
+	}
+	
+	.hello_2 {
+		border: 10px groove lime;
+	}
+	
+	.hello_3 {
+		border: 10px dotted yellow;
+	}
+	
+	.hello_4 {
+		border: 10px dashed cyan;
+	}
+</style>
+<script>
+	$(function(){
+		// $(selector).each : selector 갯수만큼 반복
+		$("div.a").each(function(index){
+			$(this).html(`<h5>${index}:Hello</h5>`);
+			
+			// hello_index 클래스 적용
+			// $(this).addClass(`hello_${index}`);
+			$(this).addClass("hello_" + index);
+		});
+		
+		$("img").each(function(idx){
+			$(this).attr("src", `../shop/${idx + 25}.jpg`);
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	
+	<hr>
+	
+	<img src="" width="100">
+	<img src="" width="100">
+	<img src="" width="100">
+	<img src="" width="100">
+	<img src="" width="100">
+	<img src="" width="100">
+</body>
+</html>

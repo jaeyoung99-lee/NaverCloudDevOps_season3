@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+</style>
+<script>
+	$(function(){
+		let arr = ["#afeeee", "#214214", "#ff00ee", "#42bf33", "#1852fe", "#15ee23"];
+		
+		// 문제 1
+		// td에 배경색으로 배열의 값을 차례대로 적용
+		$("td").each(function(index){
+			$(this).css("background-color", arr[index]);
+		});
+		
+		// 문제 2
+		// td에 마우스를 올리면 배경색을 추출해서 이미지의 배경색으로 넣기
+		$("td").mouseover(function(){
+			// 배경색 추출
+			let bg = $(this).css("background-color");
+			// 이미지에 적용
+			$("img").css("background-color", bg);
+		})
+	});
+</script>
+</head>
+<body>
+	<table class="table table-bordered" style="width: 600px; margin: 50px">
+		<tr height="50">
+			<td></td><td></td><td></td><td></td><td></td><td></td>
+		</tr>
+	</table>
+	
+	<br><br>
+	
+	<img src="../image/C7.png" style="margin-left: 200px; border: 5px solid gray;">
+</body>
+</html>

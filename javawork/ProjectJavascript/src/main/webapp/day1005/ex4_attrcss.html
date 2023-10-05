@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+</style>
+<script>
+	$(function(){
+		// attr : 속성값을 얻거나 속성값을 변경
+		// css : 스타일값을 얻거나 스타일값을 변경
+		
+		// imga의 0번 이미지의 width와 title 변경
+		$("div.imga>img:eq(0)").attr("width", "50").attr("title", "youngsik");
+		
+		// 여러 속성을 한번에 변경
+		$("div.imga>img:eq(1)").attr({
+			"src":"../shop/30.jpg",
+			"width" : "90",
+			"title" : "lala"
+		});
+		
+		// 3번째 사진은 속성과 스타일을 동시에 변경
+		$("div.imga>img:eq(2)").attr("src", "../shop/26.jpg").css("width", "150px").css("border-radius", "50px");
+		
+		// imga의 두 번째 사진을 첫 번째에 넣기, width 스타일 속성을 추가해서 100px로 맞추기
+		
+		/*
+		// 방법1 : 풀어쓰기
+		let a = $("div.imga>img:eq(1)").attr("src");
+		$("div.imgb>img:eq(0)").attr("src", a);
+		$("div.imgb>img:eq(0)").css("width", "100px");
+		*/
+		
+		// 방법2 : 한 줄로 쓰기
+		$("div.imgb>img:eq(0)").attr("src", $("div.imga>img:eq(1)").attr("src")).css("width", "100px");
+		
+		// imga의 3번째 사진을 imgb의 2번 인덱스 이후에 모두 넣기
+		$("div.imgb>img:gt(2)").attr("src", $("div.imga>img:eq(2)").attr("src")).css("width", "100px");
+		
+		// imgb의 1번 인덱스에 shop의 28.jpg를 넣고 속성 변경 - width, border, border-radius 변경
+		$("div.imgb>img:eq(1)").attr("src", "../shop/28.jpg").css({
+			"width" : "100px",
+			"border" : "5px solid red",
+			"border-radius" : "100px"
+		});
+		
+		// imgb의 2번 인덱스에 food의 11.jpg를 넣고 title을 망고빙수로 변경, width 속성을 100으로 변경
+		$("div.imgb>img:eq(2)").attr({
+			"src" : "../food/11.jpg",
+			"title" : "망고빙수",
+			"width" : "100"
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="imga">
+		<img src="../image/C7.png" width="120" title="영식" border="2"> <!--속성에는 px 안붙이고 스타일에는 px 붙임-->
+		<img src="../image/C3.png" width="120" title="영숙">
+		<img src="../image/C8.png" style="width:90px" title="영철">
+		<img src="../image/C1.png" width="120" title="옥순" style="border: 2px solid pink;">
+		<img src="../image/C2.png" width="120" title="영호">
+	</div>
+	
+	<div class="imgb">
+		<img src="">
+		<img src="">
+		<img src="">
+		<img src="">
+		<img src="">
+		<img src="">
+	</div>
+</body>
+</html>

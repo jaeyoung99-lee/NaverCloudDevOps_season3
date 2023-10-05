@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+</style>
+<script>
+	window.onload = function(){
+		// 로컬 스토리지로부터 값을 가져와서 각 요소들의 초기값 지정
+		document.getElementById("fcolor").value = localStorage.fcolor;
+		document.getElementById("bcolor").value = localStorage.bcolor;
+		document.getElementById("selfont").value = localStorage.fname;
+		document.getElementById("selsize").value = localStorage.fsize;
+		
+		
+		let fcolor = document.getElementById("fcolor").value;
+		let bcolor = document.getElementById("bcolor").value;
+		let fname = document.getElementById("selfont").value;
+		let fsize = document.getElementById("selsize").value;
+		
+		// 적용
+		let m = document.querySelector(".message");
+		m.style.color = fcolor;
+		m.style.backgroundColor = bcolor;
+		m.style.fontFamily = fname;
+		m.style.fontSize = fsize;
+		
+		// 이벤트들
+		document.getElementById("fcolor").onchange = function(){
+			m.style.color = this.value;
+			// 로컬 스토리지에 저장
+			localStorage.fcolor = this.value;
+		}
+		
+		document.getElementById("bcolor").onchange = function(){
+			m.style.backgroundColor = this.value;
+			// 로컬 스토리지에 저장
+			localStorage.bcolor = this.value;
+		}
+		
+		document.getElementById("selfont").onchange = function(){
+			m.style.fontFamily = this.value;
+			// 로컬 스토리지에 저장
+			localStorage.fname = this.value;
+		}
+		
+		document.getElementById("selsize").onchange = function(){
+			m.style.fontSize = this.value;
+			// 로컬 스토리지에 저장
+			localStorage.fsize = this.value;
+		}
+	}
+</script>
+</head>
+<body>
+	<div style="margin: 30px; width: 400px;">
+		<input type="color" id="fcolor" class="form-control" value="#768945"><br>
+		<input type="color" id="bcolor" class="form-control" value="#ddffdd"><br>
+		<select class="form-select" id="selfont">
+			<option>Gamja Flower</option> <!--selected 따로 안주면 첫 번째가 자동 selected-->
+			<option>Jua</option>
+			<option>Lobster</option>
+			<option>Nanum Pen Script</option>
+			<option>Permanent Marker</option>
+			<option>Single Day</option>
+		</select>
+		<br>
+		<select class="form-select" id="selsize">
+			<option>20px</option>
+			<option selected>30px</option>
+			<option>40px</option>
+			<option>50px</option>
+		</select>
+		<br><br>
+		<div class="message">
+			안녕하세요
+			<br>
+			Have a Nice Day!!!
+		</div>
+	</div>
+</body>
+</html>
