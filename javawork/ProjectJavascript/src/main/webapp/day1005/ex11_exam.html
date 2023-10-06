@@ -13,6 +13,12 @@
 		body * {
 			font-family: 'Jua';
 		}
+
+		.photo {
+			border: 3px solid red;
+			border-radius: 30px;
+			width: 120px;
+		}
 	</style>
 	<script>
 		$(function () {
@@ -28,26 +34,17 @@
 			// h3 아래의 span 태그를 클릭하면 안의 텍스트를 읽어서 이미지 photo의 src에 넣기
 			// 해당 텍스트를 h4 아래의 b 태그에도 텍스트로 넣기
 			$("h3>span").click(function () {
-				$("img").removeClass(); // 모든 클래스 제거
 				let txt = $(this).text();
-				$("img").attr("src", txt).addClass("photo");
+				$("img").attr("src", txt);
 				$("h4>b").text(txt);
 			});
 
 			// 문제 3
 			// photo라는 클래스로 스타일을 만든 후(border 등 마음대로 추가) 사진에 마우스 올리면 photo 적용, 벗어나면 photo 제거(hover 이벤트 이용)
 			$("img").hover(function () {
-				$(this).addClass("photo").css({
-					"border": "3px solid red",
-					"border-radius": "30px",
-					"width": "120px"
-				});
+				$(this).addClass("photo");
 			}, function () {
-				$(this).removeClass("photo").css({
-					"border": "none",
-					"border-radius": "0",
-					"width": "auto"
-				});
+				$(this).removeClass("photo");
 			});
 		});
 	</script>

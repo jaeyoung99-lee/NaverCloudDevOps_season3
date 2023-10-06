@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+	</style>
+	<script>
+		$(function () {
+			// 문제 1 : food의 1 ~ 12번까지의 이미지를 .photo>img에 차례대로 넣기(each문 사용)
+			$(".photo>img").each(function (index) {
+				$(this).attr("src", `../food/${index + 1}.jpg`);
+			});
+			// 문제 2 : .photo>img에 스타일 추가(너비 : 80, 높이 : 80, 테두리 선, 우측 여백(3px 정도), 커서 변경) - css 사용
+			$(".photo>img").css({
+				"width": "80px",
+				"height": "80px",
+				"border": "1px solid gray",
+				"margin-right": "3px",
+				"cursor": "pointer"
+			});
+			// 문제 3 : large에 스타일 추가(왼쪽 여백 : 200px, 너비 : 300, 높이 : 300, 테두리 선 굵게, 그림자, 테두리 둥글게)
+			//          초기값은 이미지의 첫 번째를 얻어서 넣기
+			$("img.large").attr("src", $(".photo>img:eq(0)").attr("src"));
+			$("img.large").css({
+				"margin-left" : "200px",
+				"margin-top" : "100px",
+				"width" : "300px",
+				"height" : "300px",
+				"border" : "10px groove gold",
+				"box-shadow" : "5px 5px 5px pink",
+				"border-radius" : "40px"
+			});
+			// 문제 4 : 작은 이미지에 마우스를 올리면 src를 얻어서 큰 이미지에 넣기
+			$(".photo>img").mouseover(function(){
+				let txt = $(this).attr("src");
+				$("img.large").attr("src", txt);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h3 class="alert alert-danger">이미지 10개를 each문으로 넣고 이벤트 주기</h3>
+	<div class="photo">
+		<img src=""><img src=""><img src=""><img src=""><img src=""><img src="">
+		<img src=""><img src=""><img src=""><img src=""><img src=""><img src="">
+	</div>
+	<img src="" class="large">
+</body>
+
+</html>

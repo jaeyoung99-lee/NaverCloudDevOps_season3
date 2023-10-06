@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+
+		div.a {
+			float: left;
+			width: 100px;
+			height: 70px;
+			line-height: 70px;
+			text-align: center;
+			margin: 5px;
+			border: 1px solid gray;
+			font-size: 1.5em;
+			font-weight: bold;
+		}
+		
+		div.show>div {
+			width: 300px;
+			height: 70px;
+			line-height: 70px;
+			font-size: 20px;
+			margin-bottom: 5px;
+		}
+	</style>
+	<script>
+		$(function () {
+			let arr = ["pink", "cyan", "orange", "gray", "magenta", "tomato"];
+			// 배열 개수만큼 반복문을 돌릴 때
+			// $.each
+			$.each(arr, function (index, item) {
+				console.log(index, item); // 0, pink..
+				$("div.a").eq(index).css("background-color", item).text(item);
+			});
+
+			// 배열에 json 형태의 데이터 넣기
+			let arr2 = [{
+				"font": "Gamja Flower",
+				"bcolor": "yellow",
+				"fcolor": "blue",
+				"border": "5px double green"
+			},
+			{
+				"font": "Jua",
+				"bcolor": "black",
+				"fcolor": "yellow",
+				"border": "5px inset red"
+			},
+			{
+				"font": "Nanum Pen Script",
+				"bcolor": "pink",
+				"fcolor": "purple",
+				"border": "5px groove cyan"
+			},
+			{
+				"font": "Lobster",
+				"bcolor": "lime",
+				"fcolor": "orange",
+				"border": "5px dotted magenta"
+			}
+			];
+			
+			$.each(arr2, function(index, item){
+				let s = `
+						<div style = "font-family : ${item.font}; border : ${item.border}; background-color : ${item.bcolor}; color : ${item.fcolor}">${item.font}</div>
+						`;
+				$("div.show").append(s);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<div class="a"></div>
+	<hr style="clear: both;">
+	<div class="show"></div>
+</body>
+
+</html>
