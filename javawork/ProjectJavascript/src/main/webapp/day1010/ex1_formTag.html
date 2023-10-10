@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+	</style>
+	<script>
+		$(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<form>
+		<legend>폼 태그 연습</legend>
+		<table class="table table-bordered" style="width: 400px;">
+			<thead>
+				<tr>
+					<th width="200">폼 태그</th>
+					<th>결과</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<input type="text" class="form-control txtmsg" placeholder="input text">
+						<!--이벤트-->
+						<script>
+							$(".txtmsg").keyup(function () {
+								$(".resultA").text($(this).val());
+							});
+						</script>
+					</td>
+					<td>
+						<h3 class="resultA"></h3>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="color" class="mycolor form-control" value="#ccffcc">
+
+						<script>
+							$(".mycolor").change(function () {
+								let bg = $(this).val();
+								$(this).parent.next().css("background-color", bg).text(bg);
+							});
+						</script>
+					</td>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label><input type="checkbox" class="mycheck">운전면허 있음</label>
+						<script>
+							$(".mycheck").click(function () {
+								let v = $(this).val();
+								let ck = $(this).is(":checked"); // 체크 상태
+
+								$(".resultB").html(`value : ${v} <br> check : ${ck} <br> ${ck == true ? "면허 있음" : "면허 없음"}`);
+							});
+						</script>
+					</td>
+					<td>
+						<h3 class="resultB"></h3>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>
+							<input type="radio" class="bcolor" value="yellow" name="bcolor">노랑
+						</label>
+						<label>
+							<input type="radio" class="bcolor" value="pink" name="bcolor">핑크
+						</label>
+						<br>
+						<label>
+							<input type="radio" class="bcolor" value="green" name="bcolor">초록
+						</label>
+						<label>
+							<input type="radio" class="bcolor" value="black" name="bcolor">검정
+						</label>
+
+						<script>
+							$(".bcolor").click(function () {
+								let v = $(this).val();
+								$(".resultC").html(`<b style = "background-color : ${v}">${v}</b>`);
+							});
+						</script>
+					</td>
+					<td>
+						<h3 class="resultC"></h3>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select class="form-select mysel1">
+							<option hidden disabled selected>select #1</option>
+							<option>orange</option>
+							<option>pink</option>
+							<option>red</option>
+							<option>blue</option>
+						</select>
+
+						<script>
+							$(".mysel1").change(function () {
+								let v = $(this).val();
+								$(".resultD").text(v).css("color", v);
+							});
+						</script>
+					</td>
+					<td>
+						<h3 class="resultD"></h3>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<select class="form-select mysel2">
+							<option hidden disabled selected>select #2</option>
+							<option value="../image/C1.png">귀요미</option>
+							<option value="../image/C7.png">하트</option>
+							<option value="../image/C8.png">깜댕이</option>
+							<option value="../image/C5.png">소녀</option>
+						</select>
+
+						<script>
+							$(".mysel2").change(function () {
+								// option의 value와 text가 서로 다른 경우
+								let v = $(this).val();
+								// let t = $(".mysel2 option:selected").text();
+								let t = $("option:selected", this).text(); // 바로 윗 줄과 같은 내용
+								// 다음 td에 이미지 추가
+								$(this).parent().next().html(`<img src = "${v}" width = "140"><br><b>${t}</b>`);
+							});
+						</script>
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</body>
+
+</html>

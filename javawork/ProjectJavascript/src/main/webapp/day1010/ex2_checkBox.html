@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+
+		div.box {
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin: 3px;
+			border: 1px solid black;
+			border-radius: 100px;
+		}
+	</style>
+	<script>
+		$(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<h3 class="alert alert-danger">여러 개 체크박스일 경우</h3>
+	<br>
+	<h5>취미 선택</h5>
+	<label>
+		<input type="checkbox" name="hobby" value="낚시">낚시
+	</label>
+	<label>
+		<input type="checkbox" name="hobby" value="게임">게임
+	</label>
+	<label>
+		<input type="checkbox" name="hobby" value="여행">여행
+	</label>
+	<label>
+		<input type="checkbox" name="hobby" value="음악감상">음악감상
+	</label>
+	<br>
+	<button type="button" class="btn btn-outline-danger" id="btn1">결과 확인 #1</button>
+	<br><br>
+	<div class="result" style="font-size: 20px;"></div>
+
+	<script>
+		$("#btn1").click(function () {
+			let s = "";
+			// 체크박수 개수
+			s += "체크박스 개수 : " + $("input[name = 'hobby']").length + "<br>";
+			// 그 중 선택된 체크박수 개수
+			let sel = $("input[name = 'hobby']:checked").length;
+			s += "선택된 체크박스 개수 : " + sel + "<br>";
+
+			if (sel == 0)
+				s += "저는 취미가 없습니다.";
+			else {
+				s += "저의 취미는 ";
+
+				/*
+				// 방법1
+				$("input[name = 'hobby']").each(function (idx) {
+					if ($(this).is(":checked"))
+						s += idx + " : " + $(this).val() + "&nbsp;";
+				});
+				*/
+
+				// 방법2 
+				$("input[name = 'hobby']:checked").each(function (idx) {
+					s += idx + " : " + $(this).val() + "&nbsp;";
+				});
+				s += '입니다.';
+			}
+			$(".result").html(s);
+		});
+	</script>
+	<hr>
+	<h5>좋아하는 색을 모두 선택</h5>
+	<label>
+		<input type="checkbox" class="mycolor" value="orange">오렌지색
+	</label>
+	<label>
+		<input type="checkbox" class="mycolor" value="pink">핑크색
+	</label>
+	<label>
+		<input type="checkbox" class="mycolor" value="red">빨강색
+	</label>
+	<label>
+		<input type="checkbox" class="mycolor" value="green">초록색
+	</label>
+	<br>
+	<button type="button" class="btn btn-outline-info" id="btn2">결과 확인 #2</button>
+	<br>
+	<div class="result2" style="font-size: 20px;"></div>
+	<script>
+		$("#btn2").click(function () {
+			$(".result2").empty();
+			$(".mycolor:checked").each(function () {
+				let v = $(this).val();
+				let s = `<div class = "box" style = "background-color : ${v}"></div>`;
+				$(".result2").append(s);
+			});
+		});
+	</script>
+</body>
+
+</html>

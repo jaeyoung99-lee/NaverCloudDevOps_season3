@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+	</style>
+	<script>
+		$(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<h4 class="alert alert-warning">학력사항</h4>
+	<script>
+		let arr1 = ["고등학교졸", "전문대졸", "대학교졸", "대학원", "박사", "유학파"];
+		$.each(arr1, function (idx, item) {
+			let s = `
+					<label>
+						<input type = "radio" name = "grade" value = "${item}" ${idx == 2 ? "checked" : ""}>${item}
+					</label>
+					`;
+			document.write(s);
+		});
+	</script>
+
+	<h4 class="alert alert-danger">구현 가능한 언어</h4>
+	<script>
+		let lang = ["Java", "HTML5", "CSS", "JavaScript", "ES6", "Spring Framework", "Spring Boot", "Python", "Git", "Oracle", "Linux", "Mysql", "JSP", "ThymeLeaf", "Naver Cloud"];
+		// 체크박스로 나열(name = "lang"), 한 줄에 5개씩 출력
+		$.each(lang, function (idx, item) {
+			let s = `
+					<label style = "width : 160px">
+						<input type="checkbox" class="mycolor" name = "lang" value = "${item}">${item};
+					</label>
+					`;
+			document.write(s);
+			if ((idx + 1) % 5 == 0) // 5개 표시되고 줄바꿈
+				document.write("<br>");
+		});
+	</script>
+
+	<h4 class="alert alert-info">거주 지역</h4>
+	<script>
+		let city = ["서울시 강남구", "서울시 강북구", "서울시 여의도", "제주시 애월읍", "제주시 한림읍", "부산 해운대구", "부산 달맞이길", "대구", "광주"];
+
+		// select 문으로 만들기, 첫 줄은 "지역 선택" 고정, class = "city"
+		let s = `<select class = "form-select city" style = "width : 200px">`;
+		s += `<option hidden disabled selected>지역 선택</option>`;
+		// 반복문
+		$.each(city, function (idx, item) {
+			s += `<option>${item}</option>`;
+		});
+		s += "</select>";
+		document.write(s);
+	</script>
+	<button type="button" class="btn btn-lg btn-outline-success" style="margin: 30px 200px;">결과
+		출력</button>
+	<div class="result" style="font-size: 20px; margin: 30px;"></div>
+
+	<script>
+		$(".btn").click(function () {
+			let s = "";
+			let grade = $("input[name = 'grade']:checked").val();
+			s +=  `최종 학력 : ${grade} <br>`;
+			
+			let lang_count = $("input[name = 'lang']:checked").length;
+			if(lang_count == 0)
+				s += "구현 가능한 언어가 없음 <br>";
+			else {
+				s += "<h5>구현 가능한 언어</h5>";
+				$("input[name = 'lang']:checked").each(function(idx){
+					s += (idx + 1) + " : " + $(this).val() + "<br>";
+				});
+			}
+			
+			let city = $(".city").val();
+			s += `거주 지역 : ${city}`;
+			
+			$(".result").html(s);
+			
+		});
+	</script>
+</body>
+
+</html>

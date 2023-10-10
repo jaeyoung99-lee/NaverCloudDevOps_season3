@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+	</style>
+	<script>
+		$(function () {
+
+		});
+	</script>
+</head>
+
+<body>
+	<div style="margin: 30px 50px">
+		<h5 class="alert alert-danger">글꼴 스타일을 선택</h5>
+		<label>
+			<input type="checkbox" class="style1">굵게
+		</label>
+		&nbsp;&nbsp;
+		<label>
+			<input type="checkbox" class="style2">기울게
+		</label>
+		&nbsp;&nbsp;
+		<label>
+			<input type="checkbox" class="style3">밑줄
+		</label>
+		&nbsp;&nbsp;
+		<label>
+			<input type="checkbox" class="style4">취소선
+		</label>
+		&nbsp;&nbsp;
+
+		<script>
+			/*
+			// 내 방법
+			$(".style1").click(function () {
+				$(".msg").css("font-weight", "bold");
+			})
+
+
+			$(".style2").click(function () {
+				$(".msg").css("font-style", "italic");
+			})
+
+
+			$(".style3").click(function () {
+				$(".msg").css("text-decoration", "underline");
+			})
+
+
+			$(".style4").click(function () {
+				$(".msg").css("text-decoration", "line-through");
+			})
+			*/
+			
+			
+			// 강사님 방법
+			// 굵게
+			$(".style1").click(function(){
+				let ck = $(this).is(":checked");
+				if(ck)
+					$(".msg").css("font-weight", "bold");
+				else
+					$(".msg").css("font-weight", "normal");
+			});
+			
+			// 기울기
+			$(".style2").click(function(){
+				let ck = $(this).is(":checked");
+				if(ck)
+					$(".msg").css("font-style", "italic");
+				else
+					$(".msg").css("font-style", "normal");
+			});
+			
+			/*
+			// 밑줄
+			$(".style3").click(function(){
+				let ck = $(this).is(":checked");
+				if(ck)
+					$(".msg").css("text-decoration", "underline");
+				else
+					$(".msg").css("text-decoration", "none");
+			});
+			
+			// 취소선
+			$(".style4").click(function(){
+				let ck = $(this).is(":checked");
+				if(ck)
+					$(".msg").css("text-decoration", "line-through");
+				else
+					$(".msg").css("text-decoration", "none");
+			});
+			*/
+			
+			// 혼합
+			$(".style3, .style4").click(function(){
+				let ck3 = $(".style3").is(":checked");
+				let ck4 = $(".style4").is(":checked");
+				
+				if(ck3 && ck4)
+					$(".msg").css("text-decoration", "underline line-through");
+					
+				else if(ck3)
+					$(".msg").css("text-decoration", "underline");
+					
+					
+				else if(ck4)
+					$(".msg").css("text-decoration", "line-through");
+					
+				else
+					$(".msg").css("text-decoration", "none");
+			});
+		</script>
+
+		<h5 class="alert alert-danger">글꼴 선택</h5>
+		<label>
+			<input type="radio" name="fname" value="Jua">Jua
+		</label>
+		&nbsp;&nbsp;
+		<label>
+			<input type="radio" name="fname" value="Gamja Flower">Gamja
+		</label>
+		&nbsp;&nbsp;
+		<label>
+			<input type="radio" name="fname" value="Lobster">Lobster
+		</label>
+		&nbsp;&nbsp;
+		<label>
+			<input type="radio" name="fname" value="Nanum Pen Script">Nanum
+		</label>
+		&nbsp;&nbsp;
+
+		<script>
+			$("input[type='radio']").click(function () {
+				let v = $(this).val();
+				$(".msg").css("font-family", v);
+			});
+		</script>
+
+		<h5 class="alert alert-danger">글꼴 크기 선택</h5>
+		<select class="form-select" style="width: 130px;">
+			<script>
+				for (let i = 10; i <= 60; i += 5) {
+					document.write(`<option ${i == 25 ? "selected" : ""}>${i}px</option>`);
+				}
+				
+				$(".form-select").change(function(){
+					$(".msg").css("font-size", $(this).val());
+				});
+			</script>
+		</select>
+	</div>
+
+	<div class="msg" style="font-size: 25px; margin: 30px 50px; border: 10px inset gold; width: 400px;">Have a Good
+		Day!!!<br>오늘은 화요일입니다</div>
+</body>
+
+</html>
