@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+
+		#mypen>div {
+			width: 30px;
+			height: 30px;
+			float: left;
+			margin-right: 3px;
+			border: 1px solid black;
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		$(function () {
+			let draw = false; // 마우스 클릭 시 true, 마우스 버튼 놓으면 false
+			let can = document.getElementById("can");
+			let ctx = can.getContext("2d");
+			let preX, preY; // mousemove 시, 이전 좌표로 현재 좌표 저장
+			// 초기펜 색상
+			ctx.strokeStyle = "black"; // 선 색
+			// 초기펜 굵기
+			ctx.lineWidth = 3;
+			// 선의 끝모양
+			ctx.lineCap = "round";
+
+			// 이벤트 - Canvas에 그림을 그리기 위한 이벤트들
+			$("#can").bind({
+				mousedown: function (e) {
+					draw = true;
+					// 현재 좌표 저장
+					preX = e.pageX;
+					preY = Number(e.pageY) - 100;;
+				}, mouseup: function (e) {
+					draw = false;
+				}, mousemove: function (e) {
+					if (draw) {
+						ctx.beginPath();
+						ctx.moveTo(preX, preY); // 선을 그리기 위한 위치로 이동
+						ctx.lineTo(e.pageX, Number(e.pageY) - 100); // 현재 좌표까지 선을 그림
+						ctx.stroke(); // 실제 선을 그려줌
+						ctx.closePath();
+
+						// 다시 현재 좌표를 직전 좌표로 저장
+						preX = e.pageX;
+						preY = Number(e.pageY) - 100;
+					}
+				}
+			});
+
+			// 화면 초기화
+			$("#btn1").click(function () {
+				ctx.clearRect(0, 0, 500, 500);
+			});
+
+			// 색상표 클릭 시 펜의 색상 변경
+			$("#mypen>div").click(function () {
+				let pen = $(this).css("background-color");
+				ctx.strokeStyle = pen; // 적용
+			});
+
+			// 지우개
+			$("#penSizeSlider").on('input', function () {
+				let penSize = $(this).val(); // 슬라이더의 값 가져오기
+				ctx.lineWidth = penSize; // 펜의 굵기 설정
+				$("#penSizeValue").text(penSize); // 값을 표시하는 요소 업데이트
+				let v = $(this).val();
+
+				// 값 출력
+				$("#penSizeValue").text(v);
+			});
+
+			$("#btn2").click(function () {
+				ctx.strokeStyle = "#fff"; // 선 색을 흰색으로 변경
+				let penSize = $("#penSizeSlider").val(); // 슬라이더의 값 가져오기
+				ctx.lineWidth = penSize; // 펜의 굵기 설정
+				$("#penSizeValue").text(penSize); // 값을 표시하는 요소 업데이트
+			});
+
+			// 별도 보관3
+			$("#btn3").click(function () {
+				let myimg = "<img src='" + can.toDataURL() + "'>";
+				$("hr.save").after(myimg);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h4 class="alert alert-info">HTML5의 Canvas를 이용한 간단 그림판</h4>
+	<br>
+	<canvas id="can" width="500" height="500" style="border: 1px solid black; cursor: crosshair;"></canvas>
+	<div id="mypen" style="margin-left: 80px;">
+		<div style="background-color: orange;"></div>
+		<div style="background-color: rgb(239, 189, 16);"></div>
+		<div style="background-color: rgb(147, 236, 220);"></div>
+		<div style="background-color: rgb(255, 128, 255);"></div>
+		<div style="background-color: rgb(0, 255, 64);"></div>
+		<div style="background-color: rgb(255, 0, 0);"></div>
+		<div style="background-color: rgb(0, 128, 255);"></div>
+		<div style="background-color: rgb(128, 0, 255);"></div>
+		<div style="background-color: rgb(6, 163, 185);"></div>
+		<div style="background-color: rgb(166, 89, 89);"></div>
+		<br><br>
+		<div style="background-color: rgb(164, 162, 242);"></div>
+		<div style="background-color: rgb(255, 255, 0);"></div>
+		<div style="background-color: rgb(198, 255, 198);"></div>
+		<div style="background-color: rgb(128, 128, 0);"></div>
+		<div style="background-color: rgb(243, 12, 116);"></div>
+		<div style="background-color: rgb(250, 251, 187);"></div>
+		<div style="background-color: rgb(171, 255, 45);"></div>
+		<div style="background-color: rgb(232, 191, 130);"></div>
+		<div style="background-color: rgb(254, 129, 129);"></div>
+		<div style="background-color: rgb(9, 255, 255);"></div>
+	</div>
+	<br style="clear: both;">
+	<br>
+	<button type="button" id="btn1" class="btn btn-outline-danger btn-sm" style="margin-left: 120px;">화면 초기화</button>
+	<button type="button" id="btn2" class="btn btn-outline-danger btn-sm">지우개</button>
+	<button type="button" id="btn3" class="btn btn-outline-danger btn-sm">별도 보관</button>
+	<br><br>
+	<input type="range" id="penSizeSlider" min="1" max="20" value="3" style="margin-left: 150px;">
+	&nbsp;&nbsp;
+	<b id="penSizeValue">3</b>
+	<hr class="save">
+</body>
+
+</html>

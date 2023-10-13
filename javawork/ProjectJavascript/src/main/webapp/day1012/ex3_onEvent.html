@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+	
+	.seat {
+		position: absolute;
+		left: 100px;
+		top: 150px;
+	}
+	
+	.message {
+		position: absolute;
+		left: 150px;
+		top: 460px;
+		font-size: 25px;
+	}
+	
+	table.movie {
+		border: 10px groove gray;
+		width: 400px;
+		height: 300px;
+	}
+	
+	table.movie td:hover {
+		background-color: pink;
+		cursor: pointer;
+	}
+</style>
+<script>
+	$(function(){
+		$("#btnseat").click(function(){
+			let s = `<table class = "table table-bordered movie">`;
+			for(let row = 1; row <= 5; row++){
+				s += "<tr>";
+				for(let col = 1; col <= 5; col++){
+					s += `<td row = "${row}" col = "${col}"></td>`;
+				}
+				s += "</tr>";
+			}
+			
+			s += "</table>";
+			$("div.seat").html(s);
+		});
+		
+		// 해당 td에서 클릭 시 행, 열 값을 얻어서 "2행 3열 좌석을 예약했습니다" 라고 .message에 출력
+		$(document).on("click", "table.movie td", function(){
+			let col = $(this).attr("col");
+			let row = $(this).attr("row");
+			$(".message").html(`${row}행 ${col}열 좌석을 예약했습니다.`);
+		});
+	});
+</script>
+</head>
+<body>
+	<button type="button" class="btn btn-outline-danger" id="btnseat" style="margin: 30px 200px;">영화관 좌석표 확인하기</button>
+	<div class="seat">1</div>
+	<div class="message">2</div>
+</body>
+</html>

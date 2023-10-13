@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<link rel="stylesheet" href="./gunGame.css">
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+		
+		.doll-number {
+			margin-left: 60px;
+			color: red;
+			background-color: white;
+			padding: 1px;
+		}
+	</style>
+	<script>
+		$(function () {
+			// 총을 클릭 시 이벤트
+			$(".gun").click(function () {
+				// 0 ~ 11 사이의 난수값 발생 후 해당 이미지가 있으면 "x번 인형을 맞췄습니다~" 출력
+				// 인형이 이미 사라지고 없는 경우는 "꽝(x번)!" 출력
+				let idx = parseInt(Math.random() * 12);
+				if ($(".sunban img").eq(idx).is(":hidden")) {
+					$("#msg").html(`꽝(${idx + 1}번)!`);
+				}
+				else {
+					// $(".sunban img").eq(idx).hide(); // 그냥 사라짐
+					$(".sunban img").eq(idx).fadeOut('fast'); // 효과 발동하면서 사라짐
+					$("#msg").html(`${idx + 1}번 인형을 맞췄습니다~`);
+				}
+				
+				// hidden의 개수 구하기
+				let n = $(".sunban img:hidden").length;
+				console.log(n);
+				
+				// 12개의 인형이 모두 없어지면 "You Win!" 출력
+				if(n == 12){
+					$("#msg").html("You Win!").css({"font-size" : "40px", "color" : "red"});
+				}
+			});
+			
+			// 지폐 클릭 시 모두 초기화하고 해당 지폐는 사라지게 하기
+			$(".money img").click(function(){
+				$(".sunban img").show();
+				$("#msg").html("").css({"font-size" : "22px", "color" : "black"});
+				
+				// 현재 지폐를 사라지게 함
+				$(this).css("display", "none"); // 자리차지를 하지 않음
+				// $(this).css("visibility", "hidden"); // 자리차지함
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div id="control-wrapper">
+		<div class="gun">총</div>
+		<ul class="money">
+			<li><img src="../jQuery/jquery_image/money.png"></li>
+			<li><img src="../jQuery/jquery_image/money.png"></li>
+			<li><img src="../jQuery/jquery_image/money.png"></li>
+		</ul>
+	</div>
+
+	<div id="sunban-wrapper">
+		<ul class="sunban">
+			<li><img src="../jQuery/jquery_image/01.png"><span class="doll-number">1</span></li>
+			<li><img src="../jQuery/jquery_image/02.png"><span class="doll-number">2</span></li>
+			<li><img src="../jQuery/jquery_image/03.png"><span class="doll-number">3</span></li>
+			<li><img src="../jQuery/jquery_image/04.png"><span class="doll-number">4</span></li>
+			<li><img src="../jQuery/jquery_image/05.png"><span class="doll-number">5</span></li>
+			<li><img src="../jQuery/jquery_image/06.png"><span class="doll-number">6</span></li>
+		</ul>
+		<ul class="sunban">
+			<li><img src="../jQuery/jquery_image/07.png"><span class="doll-number">7</span></li>
+			<li><img src="../jQuery/jquery_image/08.png"><span class="doll-number">8</span></li>
+			<li><img src="../jQuery/jquery_image/09.png"><span class="doll-number">9</span></li>
+			<li><img src="../jQuery/jquery_image/10.png"><span class="doll-number">10</span></li>
+			<li><img src="../jQuery/jquery_image/11.png"><span class="doll-number">11</span></li>
+			<li><img src="../jQuery/jquery_image/12.png"><span class="doll-number">12</span></li>
+		</ul>
+	</div>
+	<div id="msg"></div>
+</body>
+
+</html>

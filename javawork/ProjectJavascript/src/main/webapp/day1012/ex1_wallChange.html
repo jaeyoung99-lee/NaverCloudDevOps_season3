@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="./wallChange.css">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+</style>
+<script>
+	$(function(){
+		// 벽지 이미지 클릭 시 이벤트
+		$("ul.list img").click(function(){
+			// 1. 현재 클릭한 이미지의 부모 태그인 li에 active 클래스 추가
+			$(this).parent().addClass("active");
+			
+			// 2. 그 이전에 추가된 active는 제거(siblings 이용)
+			$(this).parent().siblings().removeClass("active");
+			
+			// 3. 클릭한 이미지의 title 얻기
+			let title = $(this).attr("title");
+			
+			// 4. 위의 title을 h1.title에 적용
+			$("h1.title").text(title);
+			
+			// 5. 클릭한 이미지의 src 얻기
+			let src = $(this).attr("src");
+			
+			// 6. 위의 src를.wall에 넣는데 background-image로 넣기
+			let url = "url(" + src + ")";
+			$(".wall").css("background-image", url);
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="wall">
+		<h1 class="title">Select Page</h1>
+		<img src="../jQuery/jquery_image/cover2.png">
+		<ul class="list">
+			<li><img src="../jQuery/jquery_image/b01.png" title="Pear"></li>
+			<li><img src="../jQuery/jquery_image/b02.png" title="Checker"></li>
+			<li><img src="../jQuery/jquery_image/b03.png" title="Bamboo"></li>
+			<li><img src="../jQuery/jquery_image/b04.png" title="School"></li>
+			<li><img src="../jQuery/jquery_image/b05.png" title="Leap"></li>
+			<li><img src="../jQuery/jquery_image/b06.png" title="Forest"></li>
+		</ul>
+	</div>
+</body>
+</html>
