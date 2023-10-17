@@ -28,5 +28,5 @@
 	dao.updateShop(dto);
 	
 	// myshopDetail.jsp로 이동하기(?로 num 넘겨야 함)
-	
+	response.sendRedirect("myshopDetail.jsp?num=" + num);
 %>

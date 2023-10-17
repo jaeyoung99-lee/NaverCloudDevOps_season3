@@ -92,7 +92,7 @@ public class MyshopDao {
 	
 	// update
 	public void updateShop(MyShopDto dto) {
-		String sql = "update myshop set (sangpum, color, price, photo, writeday) values (?, ?, ?, ?, now())";
+		String sql = "update myshop set sangpum=?, color=?, price=?, photo=?, writeday=now() where num=?";
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
@@ -103,6 +103,7 @@ public class MyshopDao {
 			pstmt.setString(2, dto.getColor());
 			pstmt.setInt(3, dto.getPrice());
 			pstmt.setString(4, dto.getPhoto());
+			pstmt.setInt(5, dto.getNum());
 			
 			// 실행
 			pstmt.execute();
