@@ -44,7 +44,7 @@
 			if ($(this)[0].files[0]) {
 				var reader = new FileReader();
 				reader.onload = function(e) {
-					$("#showimg").attr("src", e.target.result);
+					$("#showimg").attr("src", e.target.result).css("display", "block");
 				}
 				reader.readAsDataURL($(this)[0].files[0]);
 			}
