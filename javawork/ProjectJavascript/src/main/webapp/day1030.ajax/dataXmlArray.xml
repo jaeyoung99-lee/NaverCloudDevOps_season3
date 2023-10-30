@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<stu name="이효리">
+		<ban>햇님반</ban>
+		<java>90</java>
+		<spring>98</spring>
+		<html>79</html>
+	</stu>
+	
+	<stu name="강호동">
+		<ban>별님반</ban>
+		<java>100</java>
+		<spring>75</spring>
+		<html>78</html>
+	</stu>
+	
+	<stu name="이병헌">
+		<ban>기린반</ban>
+		<java>86</java>
+		<spring>99</spring>
+		<html>87</html>
+	</stu>
+	
+	<stu name="손흥민">
+		<ban>꽃님반</ban>
+		<java>67</java>
+		<spring>98</spring>
+		<html>67</html>
+	</stu>
+</data>

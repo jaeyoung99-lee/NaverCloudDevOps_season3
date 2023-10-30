@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap"
+		rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<style>
+		body * {
+			font-family: 'Jua';
+		}
+	</style>
+	<script>
+		$(function () {
+			$("#btn1").click(function () {
+				$.ajax({
+					type: "get",
+					dataType: "json",
+					url: "data1.json",
+					success: function (res) {
+						let s = "";
+						// alert($(res).length);
+						s += "name : " + res.name + "<br>";
+						s += "addr : " + res.addr + "<br>";
+						$(".result").html(s);
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+				});
+			});
+
+			$("#btn2").click(function () {
+				$.ajax({
+					type: "get",
+					dataType: "xml",
+					url: "data2.xml",
+					success: function (res) {
+						// alert(res);
+						let s = "";
+						s += "이름 : " + $(res).find("name").text() + "<br>";
+						s += "지역 : " + $(res).find("name").attr("city") + "<br>";
+						s += "나이 : " + $(res).find("age").text() + "<br>";
+						$(".result").html(s);
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+				});
+			});
+
+			$("#btn3").click(function () {
+				$.ajax({
+					type: "get",
+					dataType: "json",
+					url: "dataJsonArray.json",
+					success: function (res) {
+						let s = "";
+						s += "총 개수 : " + $(res).length + "개<br><hr>";
+						// 배열은 each 문으로 반복
+						$.each(res, function(idx, item){
+							s +=
+							`
+							번호 : ${idx + 1}<br>
+							이름 : ${item.name}<br>
+							취미 : ${item.hobby}<br>
+							핸드폰 : ${item.hp}<hr>
+							`;	
+						});
+						
+						$(".result").html(s);
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+				});
+			});
+			
+			$("#btn4").click(function(){
+				$.ajax({
+					type: "get",
+					dataType: "xml",
+					url: "dataXmlArray.xml",
+					success: function (res) {
+						let s = "";
+						s += "총 인원 : " + $(res).find("stu").length + "명<hr>";
+						$(res).find("stu").each(function(idx, item){
+							// 먼저 3과목을 읽어서 총점, 평균 구하기
+							let java = $(item).find("java").text();
+							let spring = $(item).find("spring").text();
+							let html = $(item).find("html").text();
+							let total = Number(java) + Number(spring) + Number(html);
+							let avg = (total / 3).toFixed(2); // 소수점 둘째짜리까지 나타냄
+							let name = $(item).attr("name");
+							let ban = $(item).find("ban").text();
+							
+							s +=
+							`
+							반 : ${ban}<br>
+							이름 : ${name}<br>
+							Java 점수 : ${java}<br>
+							Spring 점수 : ${spring}<br>
+							HTML 점수 : ${html}<br>
+							총점 : ${total}<br>
+							평균 : ${avg}<hr>
+							`;
+						});
+						
+						$(".result").html(s);
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+				});
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<div>
+		<button type="button" class="btn btn-info" id="btn1">json 읽기 #1</button>
+		<button type="button" class="btn btn-info" id="btn2">xml 읽기 #2</button>
+		<button type="button" class="btn btn-info" id="btn3">json 배열 읽기 #3</button>
+		<button type="button" class="btn btn-info" id="btn4">xml 배열 읽기 #4</button>
+	</div>
+	<div class="result" style="font-size: 20px; margin:30px 20px;">
+		위치 확인용
+	</div>
+</body>
+
+</html>
