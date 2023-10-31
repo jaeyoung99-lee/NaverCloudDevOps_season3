@@ -10,7 +10,8 @@ import java.sql.Statement;
 public class DbConnect {
 	// MySQL
 	static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String MYSQL_URL = "jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul";
+	// static final String MYSQL_URL = "jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul";
+	static final String MYSQL_URL = "jdbc:mysql://db-jbnls-kr.vpc-pub-cdb.ntruss.com/studydb?serverTimezone=Asia/Seoul";
 	
 	// Oracle
 	static final String ORACLE_DRIVER = "oracle.jdbc.driver.OracleDriver";
@@ -49,7 +50,11 @@ public class DbConnect {
 	public Connection getMysqlConnection() {
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(MYSQL_URL, "root", "1234");
+			// local 연결
+			// conn = DriverManager.getConnection(MYSQL_URL, "root", "1234");
+			
+			// 원격 mysql 연결
+			conn = DriverManager.getConnection(MYSQL_URL, "study", "bitcamp123!@#");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("MySQL Connection Error : " + e.getMessage());

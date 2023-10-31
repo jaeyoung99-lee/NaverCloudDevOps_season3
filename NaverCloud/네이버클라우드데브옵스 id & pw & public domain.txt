@@ -1,0 +1,11 @@
+네이버클라우드데브옵스
+
+- 서버 -
+공인 IP : 110.165.19.109
+비밀번호 : L53%RNPm9Jh
+
+- db -
+비밀번호 : bitcamp123!@#
+
+- mysql public domain -
+db-jbnls-kr.vpc-pub-cdb.ntruss.com

@@ -72,16 +72,16 @@
 						let s = "";
 						s += "총 개수 : " + $(res).length + "개<br><hr>";
 						// 배열은 each 문으로 반복
-						$.each(res, function(idx, item){
+						$.each(res, function (idx, item) {
 							s +=
-							`
+								`
 							번호 : ${idx + 1}<br>
 							이름 : ${item.name}<br>
 							취미 : ${item.hobby}<br>
 							핸드폰 : ${item.hp}<hr>
-							`;	
+							`;
 						});
-						
+
 						$(".result").html(s);
 					},
 					statusCode: {
@@ -94,8 +94,8 @@
 					}
 				});
 			});
-			
-			$("#btn4").click(function(){
+
+			$("#btn4").click(function () {
 				$.ajax({
 					type: "get",
 					dataType: "xml",
@@ -103,7 +103,7 @@
 					success: function (res) {
 						let s = "";
 						s += "총 인원 : " + $(res).find("stu").length + "명<hr>";
-						$(res).find("stu").each(function(idx, item){
+						$(res).find("stu").each(function (idx, item) {
 							// 먼저 3과목을 읽어서 총점, 평균 구하기
 							let java = $(item).find("java").text();
 							let spring = $(item).find("spring").text();
@@ -112,9 +112,9 @@
 							let avg = (total / 3).toFixed(2); // 소수점 둘째짜리까지 나타냄
 							let name = $(item).attr("name");
 							let ban = $(item).find("ban").text();
-							
+
 							s +=
-							`
+								`
 							반 : ${ban}<br>
 							이름 : ${name}<br>
 							Java 점수 : ${java}<br>
@@ -124,7 +124,7 @@
 							평균 : ${avg}<hr>
 							`;
 						});
-						
+
 						$(".result").html(s);
 					},
 					statusCode: {
