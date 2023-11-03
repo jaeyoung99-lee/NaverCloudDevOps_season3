@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+	
+	.container {
+		display: flex;
+	}
+</style>
+<script>
+	$(function(){
+		list("");
+		$(".div_tog").hide();
+		
+		$("#txtword").keyup(function(e){
+			let search = e.target.value;
+			list(search);
+		});
+		
+		$(document).on("click", ".findLostdel", function(){
+			let num = $(this).attr("num");
+			let check = confirm("Are you really delete it?");
+			if(!check) return;
+			
+			$.ajax({
+				type: "get",
+				dataType: "html",
+				url: "findLostDelete.jsp",
+				data: {"num":num},
+				success: function (res) {
+					list("");
+					$("#txtword").val("");
+				},
+				statusCode: {
+					404: function () {
+						alert("Can't find json file!");
+					},
+					500: function () {
+						alert("server error. one more view your code.");
+					}
+				}
+			});
+		});
+		
+		$(document).on("click", ".findLostadd", function(){
+			$(".div_tog").toggle('slow');
+		});
+		
+		$(".add").click(function(){
+			let name = $("#txtname").val();
+			let photo = $("#txtphoto").val();
+			let lostplace = $("#txtlostplace").val();
+			let lostday = $("#txtlostday").val();
+			let money = $("#txtmoney").val();
+			
+			if(name.length == 0){
+				alert("Input name");
+				return;
+			}
+				
+			
+			if(photo.length == 0){
+				alert("Input photo");
+				return;
+			}
+
+			$.ajax({
+				type: "get",
+				dataType: "html",
+				data: {"name":name, "photo":photo, "lostplace":lostplace, "lostday":lostday, "money":money},
+				url: "findLostAdd.jsp",
+				success: function (res) {
+					list("");
+				},
+				statusCode: {
+					404: function () {
+						alert("Can't find json file!");
+					},
+					500: function () {
+						alert("server error. one more view your code.");
+					}
+				}
+			});
+		});
+		
+	});
+	
+	function list(search){
+		$.ajax({
+			type: "get",
+			dataType: "json",
+			url: "findLostList.jsp",
+			data: {"search":search},
+			success: function (res) {
+				let s = `<table class="table table-striped" style="width: 500px;">`;
+				$.each(res, function(idx, item){
+					s +=
+					`
+					<tr>
+						<td>
+							이름 : <b style="font-size: 20px;">${item.name}</b>
+						</td>
+						<td>
+							사진 : <b style="font-size: 20px;">${item.photo}</b>
+						</td>
+						<td>
+							잃어버린 장소 : <b style="font-size: 20px;">${item.lostplace}</b>
+						</td>
+						<td>
+							잃어버린 시간 : <b style="font-size: 20px;">${item.lostday}</b>
+						</td>
+						<td>
+							보상금 : <b style="font-size: 20px;">${item.money}</b>
+						</td>
+						<td>							
+							<i class = "bi bi-trash findLostdel" style="cursor: pointer; float: right; font-size: 20px;" num="${item.num}"></i>
+						</td>
+					</tr>
+					`;
+				});
+				
+				s += "</table>";
+				
+				$(".result").html(s);
+			},
+			statusCode: {
+				404: function () {
+					alert("Can't find json file!");
+				},
+				500: function () {
+					alert("server error. one more view your code.");
+				}
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<div class="container">
+	<div style="margin: 30px;">
+		<div class="input-group" style="width: 400px;">
+			<h5 style="margin-left: 30px; margin-top: 10px;">상품 검색</h5>
+			<input type="text" class="form-control" style="width: 150px; margin-left: 20px;" autofocus placeholder="찾고 싶은 분실물 검색" id="txtword">
+			<div style="margin-left: 15px; margin-top: 7px;"><i class="bi bi-plus-circle findLostadd" style="cursor: pointer; font-size: 20px; color: red;"></i></div>
+		</div>
+		<div class="result" style="margin: 20px; font-size: 22px;">
+			출력 부분
+		</div>
+	</div>
+	
+	<div class="div_tog" style="margin-top: 70px;">
+		<table class="table table-striped" style="width: 500px; border: 1px solid black; margin: 20px;">
+			<tr>
+				<td>
+					<b style="font-size: 20px;">이름</b>
+				</td>
+				<td>
+					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="분실물 이름 입력" id="txtname">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b style="font-size: 20px;">사진</b>
+				</td>
+				<td>
+					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="사진 첨부" id="txtphoto">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b style="font-size: 20px;">잃어버린 장소</b>
+				</td>
+				<td>
+					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="잃어버린 장소 입력" id="txtlostplace">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b style="font-size: 20px;">잃어버린 시간</b>
+				</td>
+				<td>
+					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="잃어버린 시간 입력" id="txtlostday">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b style="font-size: 20px;">보상금</b>
+				</td>
+				<td>
+					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="보상금 입력" id="txtmoney">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center;" class="add">
+				<b style="font-size: 20px; cursor: pointer;">추가</b>
+			</tr>
+		</table>
+	</div>
+	</div>
+</body>
+</html>

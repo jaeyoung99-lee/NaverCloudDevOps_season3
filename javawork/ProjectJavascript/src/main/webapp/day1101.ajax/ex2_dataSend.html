@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+	
+	img.photo {
+		position: absolute;
+		left: 400px;
+		top: 80px;
+		width: 200px;
+		border: 5px groove orange;
+	}
+	
+	.result {
+		margin: 30px 100px;
+		font-size: 25px;
+	}
+</style>
+<script>
+	$(function(){
+		$("#myshopfrm").submit(function(e){
+			e.preventDefault(); // 기본 이벤트(action 호출되는 기능)를 무효화시킴
+			// alert("submit");
+			// 전체 데이터를 각각 읽어도 되지만 form 단위로도 읽을 수 있음
+			let formData = $(this).serialize();
+			// alert(formData); // name으로 된 form데이터만 읽어옴
+			
+			$.ajax({
+					type: "get",
+					dataType: "xml",
+					url: "ex2_dataRead.jsp",
+					data: formData,
+					success: function (res) {
+						let sang=$(res).find("sangpum").text();
+						let photo=$(res).find("photo").text();
+						let total=$(res).find("total").text();
+						
+						$(".result").html(
+							`${total}번째 상품을 DB에 등록했습니다.<br>
+							<img src="../shop/${photo}" width=50 height=50 border=1 hspace=20>
+							'${sang}' 상품이 등록되었습니다.`
+						);
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+				});
+		});
+	});
+</script>
+</head>
+<body>
+	<form id="myshopfrm">
+	<table class="table table-bordered" style="width:300px; margin:30px 100px;">
+		<caption align="top"><b>상품 등록</b></caption>
+		<tr>
+			<td align="center" width="100">상품명</td>
+			<td>
+				<input type="text" name="sangpum" class="form-control" required="required" autofocus="autofocus">
+			</td>
+		</tr>
+		
+		<tr>
+			<td align="center" width="100">사진 선택</td>
+			<td>
+				<select class="form-select" name="photo" id="photo">
+				<script>
+					for(let i = 1; i <= 34; i++){
+						document.write(`<option value="${i}.${i == 24 ? "gif" : "jpg"}">상품 ${i}</option>`);
+					}
+				</script>
+				</select>
+				<script type="text/javascript">
+					// select로 사진 선택 시, .photo의 사진 변경하기
+					$("#photo").change(function(){
+						let img_val = $(this).val();
+						// .photo의 src에 적용
+						$(".photo").attr("src", "../shop/" + img_val);
+					});
+				</script>
+			</td>
+		</tr>
+		
+		<tr>
+			<td align="center" width="100">색상</td>
+			<td>
+				<input type="color" name="color" class="form-control" value="#cccccc">
+			</td>
+		</tr>
+		
+		<tr>
+			<td align="center" width="100">가격</td>
+			<td>
+				<input type="number" name="price" class="form-control" required="required" step=500 min=1000 max=100000>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				<button type="submit">DB 저장</button>
+				<button type="button" onclick="location.href='myshop.jsp'">목록 보기</button>
+			</td>
+		</tr>
+	</table>
+</form>
+<img src="../shop/1.jpg" class="photo">
+
+<div class="result">결과</div>
+</body>
+</html>

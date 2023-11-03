@@ -16,7 +16,7 @@
 	for(simpleBoardDTO dto : list){
 		JSONObject ob = new JSONObject();
 		ob.put("num", dto.getNum());
-		ob.put("writer", dto.getNum());
+		ob.put("writer", dto.getWriter());
 		ob.put("subject", dto.getSubject());
 		ob.put("content", dto.getContent());
 		ob.put("photo", dto.getPhoto());

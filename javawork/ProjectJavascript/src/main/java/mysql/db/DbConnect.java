@@ -8,7 +8,8 @@ import java.sql.SQLException;
 
 public class DbConnect {
 	static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String MYSQL_URL = "jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul";
+	// static final String MYSQL_URL = "jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul";
+	static final String MYSQL_URL = "jdbc:mysql://db-jbnls-kr.vpc-pub-cdb.ntruss.com/studydb?serverTimezone=Asia/Seoul";
 	
 	public DbConnect() {
 		try {
@@ -22,7 +23,8 @@ public class DbConnect {
 	public Connection getConnection() {
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection(MYSQL_URL, "root", "1234");
+			// conn = DriverManager.getConnection(MYSQL_URL, "root", "1234");
+			conn = DriverManager.getConnection(MYSQL_URL, "study", "bitcamp123!@#");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Mysql Local 연결 실패 : " + e.getMessage());

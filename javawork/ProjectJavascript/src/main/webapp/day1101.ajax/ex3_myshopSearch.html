@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+<style>
+	body * {
+		font-family: 'Jua';
+	}
+</style>
+<script>
+	$(function(){
+		// 처음 시작 시 모든 데이터 출력
+		list("");
+		
+		$("#txtword").keyup(function(e){
+			let search = e.target.value;
+			// $(".result").html(search);
+			
+			list(search);
+		});
+		
+		// 삭제 아이콘 클릭 시
+		$(document).on("click", ".myshopdel", function(){
+			let num = $(this).attr("num");
+			let check = confirm("Are you really delete it?");
+			if(!check) return;
+			
+			// alert(num);
+			$.ajax({
+					type: "get",
+					dataType: "html",
+					url: "ex3_myshopDelete.jsp",
+					data: {"num":num},
+					success: function (res) {
+						// 삭제 성공 후 목록 다시 출력
+						list("");
+						
+						// search의 검색 글자 삭제
+						$("#txtword").val("");
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+				});
+		});
+	});
+	
+	function list(search){
+		$.ajax({
+					type: "get",
+					dataType: "json",
+					url: "ex3_searchData.jsp",
+					data: {"search":search},
+					success: function (res) {
+						let s = `<table class="table table-striped" style="width: 500px;">`;
+						$.each(res, function(idx, item){
+							s += 
+							`
+							<tr>
+								<td colspan="2">
+									<b style="font-size: 20px;">${item.sangpum}</b>
+									<!-- 삭제 아이콘 -->
+									&nbsp;&nbsp;
+									<i class="bi bi-trash myshopdel" style="cursor: pointer; float: right; font-size: 20px;" num="${item.num}"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<img src="../shop/${item.photo}" style="width: 250px; height: 270px; border: 1px solid gray">
+								</td>
+								<td>
+									가격 : ${item.price}<br>
+									색상 : <div class="color" style="background-color: ${item.color}; width: 100px; height: 30px; border: 1px solid black;"></div>
+									등록일 : <span style="font-size: 15px; color: gray;">${item.writeday}</span>
+								</td>
+							</tr>
+							`;
+						});
+						
+						s += "</table>";
+						
+						$(".result").html(s);
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+			});
+	}
+</script>
+</head>
+<body>
+	<div style="margin: 30px;">
+		<div class="input-group" style="width: 400px;">
+			<h5>상품명 검색</h5>
+			<input type="text" class="form-control" style="width: 150px; margin-left: 50px;" autofocus placeholder="검색 단어 입력" id="txtword">
+		</div>
+		<div class="result" style="margin: 20px; font-size: 22px;">
+			출력
+		</div>
+	</div>	
+</body>
+</html>
