@@ -9,6 +9,15 @@
 	String lostday = request.getParameter("lostday");
 	String money = request.getParameter("money");
 	
+	// 기존 경로명 --> C:\fakepath\마우스.jpg
+	// 수정 경로명 --> fakepath -> Images
+	//             --> C: -> .
+	//			   --> \ -> /
+	
+	photo = photo.replace("fakepath", "Images");
+	photo = photo.replace("C:", ".");
+	photo = photo.replaceAll("\\\\", "/");
+	
 	findLostDao dao = new findLostDao();
 	
 	findLostDto dto = new findLostDto();
