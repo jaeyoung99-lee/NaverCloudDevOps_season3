@@ -10,12 +10,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <style>
 	body * {
-		font-family: 'Jua';
+		font-family: 'Single Day';
 	}
 	
 	.container {
 		display: flex;
-		margin-left: 10px;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	 	text-align: center;
+		min-height: 100vh;
+		margin: 0 auto; /* 가운데 정렬 */
+		width: 100%; /* 너비를 100%로 설정하여 오른쪽과 왼쪽 간격 균등하게 설정 */
+		background-color: #FFFFE0;
 	}
 	
 	td {
@@ -73,25 +80,25 @@
 					`
 					<tr style="text-align: center;">
 						<th>
-							<span style="font-size: 30px;">이름</span><br><b style="font-size: 20px;">${item.name}</b>
+							<span style="font-size: 30px;">분실물명</span><br><br><b style="font-size: 20px;">${item.name}</b>
 						</th>
 						<th>
 							<span style="font-size: 30px;">사진</span><br><a href="./findLostReadCount.jsp?id=${item.id}"><img src="${item.photo}" style="width: 100px; height: 100px; alt="photo"></a>
 						</th>
 						<th>
-							<span style="font-size: 30px;">잃어버린 장소</span><br><b style="font-size: 20px;">${item.lostplace}</b>
+							<span style="font-size: 30px;">잃어버린 장소</span><br><br><b style="font-size: 20px;">${item.lostplace}</b>
 						</th>
 						<th>
-							<span style="font-size: 30px;">잃어버린 시간</span><br><b style="font-size: 20px;">${item.lostday}</b>
+							<span style="font-size: 30px;">잃어버린 시간</span><br><br><b style="font-size: 20px;">${item.lostday}</b>
 						</th>
 						<th>
-							<span style="font-size: 30px;">보상금</span><br><b style="font-size: 20px;">${item.money}</b>
+							<span style="font-size: 30px;">보상금</span><br><br><b style="font-size: 20px;">${item.money}</b>
 						</th>
 						<th>
-							<span style="font-size: 30px;">조회</span><br><b style="font-size: 20px;">${item.readcount}</b>
+							<span style="font-size: 30px;">조회</span><br><br><b style="font-size: 20px;">${item.readcount}</b>
 						</th>
 						<th>							
-							<i class = "bi bi-trash findLostdel" style="cursor: pointer; float: right; font-size: 20px;" id="${item.id}"></i>
+							<i class = "bi bi-trash findLostdel" style="cursor: pointer; color: blue; float: right; font-size: 20px;" id="${item.id}"></i>
 						</th>
 					</tr>
 					`;
@@ -115,17 +122,16 @@
 </head>
 <body>
 	<div class="container">
-	<div style="margin: 10px;">
-		<div class="input-group" style="width: 400px;">
-			<h5 style="margin-left: 10px; margin-top: 10px;">상품 검색</h5>
-			<input type="text" class="form-control" style="width: 150px; margin-left: 20px;" autofocus placeholder="찾고 싶은 분실물 검색" id="txtword">
-			<div style="margin-left: 15px; margin-top: 7px;"><i class="bi bi-plus-circle findLostadd" style="cursor: pointer; font-size: 20px; color: red;" onclick="location.href='findLostAdd.jsp'""></i></div>
+		<div style="margin: 10px;">
+			<div class="input-group search" style="width: 400px; margin: 0 auto;">
+				<h5 style="margin-left: 10px; margin-top: 10px;">분실물 검색</h5>
+				<input type="text" class="form-control" style="width: 150px; margin-left: 20px;" autofocus placeholder="찾고 싶은 분실물 검색" id="txtword">
+				<div style="margin-left: 15px; margin-top: 7px;"><i class="bi bi-plus-circle findLostadd" style="cursor: pointer; font-size: 20px; color: red;" onclick="location.href='findLostAdd.jsp'""></i></div>
+			</div>
+			<div class="result" style="margin: 10px; font-size: 22px;">
+				출력 부분
+			</div>
 		</div>
-		<div class="result" style="margin: 10px; font-size: 22px;">
-			출력 부분
-		</div>
-	</div>
-	 
 	</div>
 </body>
 </html>

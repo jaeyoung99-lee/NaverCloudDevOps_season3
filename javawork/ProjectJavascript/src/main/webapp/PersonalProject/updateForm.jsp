@@ -13,13 +13,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 <style>
 	body * {
-		font-family: 'Jua';
+		font-family: 'Single Day';
 	}
 	
 	.uploadcamera {
 		font-size: 25px;
 		cursor: pointer;
 	}
+	
+	.content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        min-height: 100vh;
+        margin: 0 auto;
+        background-color: #FFFFE0;
+    }
 </style>
 <script type="text/javascript">
 
@@ -63,17 +74,16 @@
 %>
 <body>
 <!-- 이미지 출력할곳 -->
-
+<div class="content-container">
  <img id="showimg" src="<%=dto.getPhoto() %>" 
 
- style="position: absolute;left:600px;top:50px;max-width: 300px;" onerror="this.style.display='none';"> <!-- error가 발생하면 안보이게 처리(해당 파일이 없는 경우) -->
-
+ style="position: absolute; left: 1200px; display: block; max-width: 300px;" onerror="this.style.display='none';"> <!-- error가 발생하면 안보이게 처리(해당 파일이 없는 경우) -->
 	<div style="margin: 30px 50px;">
 		<form action="./updateAction.jsp" method="post" enctype="multipart/form-data">
 			<!-- num은 hidden으로 전달 -->
 			<input type="hidden" name="findLostId" value="<%=id %>">
 			<table class="table table-bordered" style="width:500px;">
-				<caption align="top">분실물 정보 수정</caption>
+				<caption align="top" style="text-align: center; font-size: 30px;">분실물 정보 수정</caption>
 				<tr>
 					<th width="150">분실물명</th>
 					<td>
@@ -120,5 +130,6 @@
 			</table>
 		</form>
 	</div>
+</div>
 </body>
 </html>
