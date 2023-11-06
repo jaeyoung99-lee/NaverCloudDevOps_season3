@@ -27,7 +27,6 @@
 <script>
 	$(function(){
 		list("");
-		$(".div_tog").hide();
 		
 		$("#txtword").keyup(function(e){
 			let search = e.target.value;
@@ -35,7 +34,7 @@
 		});
 		
 		$(document).on("click", ".findLostdel", function(){
-			let num = $(this).attr("num");
+			let id = $(this).attr("id");
 			let check = confirm("Are you really delete it?");
 			if(!check) return;
 			
@@ -43,57 +42,10 @@
 				type: "get",
 				dataType: "html",
 				url: "findLostDelete.jsp",
-				data: {"num":num},
+				data: {"id":id},
 				success: function (res) {
 					list("");
 					$("#txtword").val("");
-				},
-				statusCode: {
-					404: function () {
-						alert("Can't find json file!");
-					},
-					500: function () {
-						alert("server error. one more view your code.");
-					}
-				}
-			});
-		});
-		
-		$(document).on("click", ".findLostadd", function(){
-			$(".div_tog").toggle('slow');
-		});
-		
-		$(".add").click(function(){
-			let name = $("#txtname").val();
-			let photo = $("#txtphoto").val();
-			let lostplace = $("#txtlostplace").val();
-			let lostday = $("#txtlostday").val();
-			let money = $("#txtmoney").val();
-			alert(photo);
-			if(name.length == 0){
-				alert("Input name");
-				return;
-			}
-				
-			if(photo.length == 0){
-				alert("Input photo");
-				return;
-			}
-			
-			$("#txtname").val("");
-		    $("#txtphoto").val("");
-		    $("#txtlostplace").val("");
-		    $("#txtlostday").val("");
-		    $("#txtmoney").val("");
-		    $("#preview").attr("src", "");
-			
-			$.ajax({
-				type: "get",
-				dataType: "html",
-				data: {"name":name, "photo":photo, "lostplace":lostplace, "lostday":lostday, "money":money},
-				url: "findLostAdd.jsp",
-				success: function (res) {
-					list("");
 				},
 				statusCode: {
 					404: function () {
@@ -124,7 +76,7 @@
 							<span style="font-size: 30px;">이름</span><br><b style="font-size: 20px;">${item.name}</b>
 						</th>
 						<th>
-							<span style="font-size: 30px;">사진</span><br><img src="${item.photo}" style="width: 100px; height: 100px; alt="photo">
+							<span style="font-size: 30px;">사진</span><br><a href="./findLostReadCount.jsp?id=${item.id}"><img src="${item.photo}" style="width: 100px; height: 100px; alt="photo"></a>
 						</th>
 						<th>
 							<span style="font-size: 30px;">잃어버린 장소</span><br><b style="font-size: 20px;">${item.lostplace}</b>
@@ -135,8 +87,11 @@
 						<th>
 							<span style="font-size: 30px;">보상금</span><br><b style="font-size: 20px;">${item.money}</b>
 						</th>
+						<th>
+							<span style="font-size: 30px;">조회</span><br><b style="font-size: 20px;">${item.readcount}</b>
+						</th>
 						<th>							
-							<i class = "bi bi-trash findLostdel" style="cursor: pointer; float: right; font-size: 20px;" num="${item.num}"></i>
+							<i class = "bi bi-trash findLostdel" style="cursor: pointer; float: right; font-size: 20px;" id="${item.id}"></i>
 						</th>
 					</tr>
 					`;
@@ -156,19 +111,6 @@
 			}
 		});
 	}
-	
-	function readURL(input) {
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function(e) {
-	      document.getElementById('preview').src = e.target.result;
-	    };
-	    reader.readAsDataURL(input.files[0]);
-	  }
-	  else {
-	    document.getElementById('preview').src = "";
-	  }
-	}
 </script>
 </head>
 <body>
@@ -177,62 +119,13 @@
 		<div class="input-group" style="width: 400px;">
 			<h5 style="margin-left: 10px; margin-top: 10px;">상품 검색</h5>
 			<input type="text" class="form-control" style="width: 150px; margin-left: 20px;" autofocus placeholder="찾고 싶은 분실물 검색" id="txtword">
-			<div style="margin-left: 15px; margin-top: 7px;"><i class="bi bi-plus-circle findLostadd" style="cursor: pointer; font-size: 20px; color: red;"></i></div>
+			<div style="margin-left: 15px; margin-top: 7px;"><i class="bi bi-plus-circle findLostadd" style="cursor: pointer; font-size: 20px; color: red;" onclick="location.href='findLostAdd.jsp'""></i></div>
 		</div>
 		<div class="result" style="margin: 10px; font-size: 22px;">
 			출력 부분
 		</div>
 	</div>
-	
-	<div class="div_tog" style="margin-top: 45px;">
-		<table class="table table-striped" style="width: 500px; border: 1px solid black; margin: 20px;">
-			<tr>
-				<td>
-					<b style="font-size: 20px;">이름</b>
-				</td>
-				<td>
-					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="분실물 이름 입력" id="txtname">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b style="font-size: 20px;">사진</b>
-				</td>
-				<td>
-					<input type="file" class="form-control" style="width: 300px; margin-left: 20px;" autofocus onchange="readURL(this);" id="txtphoto">
-					<img id="preview" style="width: 200px; height: 200px; margin-left: 20px; margin-top: 10px;"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b style="font-size: 20px;">잃어버린 장소</b>
-				</td>
-				<td>
-					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="잃어버린 장소 입력" id="txtlostplace">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b style="font-size: 20px;">잃어버린 시간</b>
-				</td>
-				<td>
-					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="잃어버린 시간 입력" id="txtlostday">
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b style="font-size: 20px;">보상금</b>
-				</td>
-				<td>
-					<input type="text" class="form-control" style="width: 300px; margin-left: 20px;" autofocus placeholder="보상금 입력" id="txtmoney">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" style="text-align: center;" class="add">
-				<b style="font-size: 20px; cursor: pointer;">추가</b>
-			</tr>
-		</table>
-	</div>
+	 
 	</div>
 </body>
 </html>

@@ -14,14 +14,16 @@
 	List<findLostDto> list = dao.getSearchName(search);
 	
 	JSONArray arr = new JSONArray();
+	
 	for(findLostDto dto : list){
 		JSONObject ob = new JSONObject();
-		ob.put("num", dto.getNum());
+		ob.put("id", dto.getId());
 		ob.put("name", dto.getName());
 		ob.put("photo", dto.getPhoto());
 		ob.put("lostplace", dto.getLostplace());
 		ob.put("lostday", dto.getLostday());
 		ob.put("money", dto.getMoney());
+		ob.put("readcount", dto.getReadcount());
 		
 		arr.add(ob);
 	}
