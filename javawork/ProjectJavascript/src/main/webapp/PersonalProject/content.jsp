@@ -79,7 +79,7 @@ $(function(){
 	});
 });
 </script>
-<body>
+<body style="background-color: #FFFFE0;">
 <div class="container">
 	<div class="content-container">
 		<div style="margin: 30px 50px;">

@@ -75,7 +75,7 @@
 	});
 </script>
 </head>
-<body>
+<body style="background-color: #FFFFE0;">
 <!-- 이미지 출력할곳 -->
 <div class="container">
 
