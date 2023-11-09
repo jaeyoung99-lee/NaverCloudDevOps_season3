@@ -15,4 +15,7 @@
 	<bean id="car2" class="day1109.test5.Car">
 		<constructor-arg ref="ktire"/>
 	</bean>
+	
+	<!-- 어노테이션을 사용하려면 해당 패키지를 등록해야만 함 -->
+	<context:component-scan base-package="day1109.test6.anno"/>
 </beans>
