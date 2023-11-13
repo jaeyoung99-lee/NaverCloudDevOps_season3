@@ -1,0 +1,16 @@
+$.ajax({
+					type: "get",
+					dataType: "json",
+					url: "data1.json",
+					success: function (res) {
+
+					},
+					statusCode: {
+						404: function () {
+							alert("Can't find json file!");
+						},
+						500: function () {
+							alert("server error. one more view your code.");
+						}
+					}
+				});

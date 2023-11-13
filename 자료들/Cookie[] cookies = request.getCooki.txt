@@ -1,0 +1,13 @@
+<%
+Cookie[] cookies = request.getCookies(); // 배열로 반환됨
+		boolean find = false;
+		if(cookies != null){
+			for(Cookie ck : cookies){
+				// 저장된 쿠키 이름을 얻기
+				String name = ck.getName();
+				if(name.equals("loginok")){
+					find = true; // 해당 쿠키가 존재하면 true
+				}
+			}
+		}
+%>

@@ -1,0 +1,57 @@
+# Spring Legacy Project 새로 만들 때 해줘야 할 설정들 #
+
+=================================================================================================================================
+
+<pom.xml>
+롬복 넣고 버전 체인지, commons-io, commons-fileupload
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.24</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.2.2</version>
+		</dependency>
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+<web.xml>
+한글 엔코딩
+
+<!-- hangul encoding -->
+	<filter>
+          <filter-name>encodingFilter</filter-name>
+          <filter-class>
+                  org.springframework.web.filter.CharacterEncodingFilter
+          </filter-class>
+          <init-param>
+                <param-name>encoding</param-name>
+                <param-value>utf-8</param-value>
+          </init-param>
+    </filter>
+    <filter-mapping>
+           <filter-name>encodingFilter</filter-name>
+           <url-pattern>/*</url-pattern>
+     </filter-mapping>
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+<servlet-context.xml>
+파일 업로드 세팅
+
+<!-- File Upload Setting -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+		<beans:property name="maxUploadSize" value="4000000"></beans:property> <!-- 3기가 살짝 넘는 정도 -->
+	</beans:bean>

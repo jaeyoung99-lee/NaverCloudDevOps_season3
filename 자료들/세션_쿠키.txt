@@ -1,0 +1,128 @@
+세션 
+  서버의 인증,  서버에서 제공하는 서비스의 제한을 둠 
+  서버영역에 저장 
+  request객체에의해서 생성 
+
+생성 :	HttpSession ses = request.getSession();
+저장 :  ses.setAttribute(name, value);
+
+
+얻기 : HttpSession ses = request.getSession();
+	 Object value = ses.getAttribute(name);
+	String value = (String)ses.getAttribute(name);
+
+        if(value != null) 
+	if(value == null) 
+
+제거 : 
+     - 세션값을 얻어오기 
+       -- 세션값이 존재한다 면 (로그인했다면)
+	HttpSession ses = request.getSession();
+	String value = (String)ses.getAttribute(name);
+
+	if(value != null){
+    	 ---제거 --  ses.removeAttribute(name);
+	}else {
+       --세션값이 존재하지 않는다면 (로그인안했다면)
+            --- 로그인상태가 아니거나 이미 로그아웃되었습니다 
+       }
+     
+
+ ---------------------------------------------------- ---    
+
+쿠키
+  클라이언트의 웹브라우저나 특정 폴더에 저장
+  컨테이너가 쿠키 생성시 서버영역에 저장되는 세션id(JSESSIONID)를 생성시킴 
+	
+	String cname= "cookieok";
+	String cvalue = "korea";
+ 
+  생성 :  Cookie  cok = new Cookie(cname, cvalue);
+  저장(클라이언트로):
+	//cok.setMaxAge(60*60);
+         response.addCookie(cok);
+
+  얻기 :  Cookie[]  c= request.getCookies();
+	
+   if(c != null) 쿠키을 얻어온 경우 
+   {
+	for(int i=0; i < c.length ; i++)
+	{
+          String name =  c[i].getName();
+          String value  = c[i].getValue()
+
+	  if(name.equals("cookieok") )
+	  { 
+		로그인 또는 인증이 된상태
+		서비스 권한 
+                break;
+	  }
+	}
+	
+
+     }else {
+	쿠키를 얻지 못한경우 
+     }
+
+	
+제거 :
+
+   - 쿠키값을 얻어오기 
+	Cookie[]  c= request.getCookies();
+
+       -- 쿠키값이 존재한다 면 (로그인했다면)
+    	 ---제거 --  
+		 c[i].setMaxAge(0); 
+      		 response.addCookie(c[i]);
+
+       --쿠키값이 존재하지 않는다면 (로그인안했다면)
+            --- 로그인상태가 아니거나 이미 로그아웃되었습니다 
+     
+
+      
+---------------------------------------
+
+String sid = request.getParameter("id");
+String spass = request.getParameter("pass");
+
+
+if(rs.next()) 
+{
+     String rpass = rs.getString("pass");
+
+    if(rpass.equals(spass))
+    {
+             로그인성공 
+              세션 생성 
+             세션 저장 
+
+	 HttpSession ses = request.getSession();
+	 ses.setAttribute("sesok", sid);
+    }
+    else 
+         비밀번호 오류 
+}
+else 
+    등록된 회원이 아니거나 id오류입니다 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
