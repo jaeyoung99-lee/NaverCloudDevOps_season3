@@ -6,5 +6,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="board.data.BoardDto" alias="BoardDto"/>
+		<typeAlias type="board.data.AnswerDto" alias="AnswerDto"/>
 	</typeAliases>
 </configuration>

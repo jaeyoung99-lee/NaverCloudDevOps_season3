@@ -4,4 +4,26 @@
 	<select id="totalCountOfBoard" resultType="int">
 		select count(*) from simpleboard;
 	</select>
+	<insert id="insertBoard" parameterType="BoardDto">
+		insert into simpleboard values (null, #{writer}, #{subject}, #{content}, #{photo}, 0, now())
+	</insert>
+	<select id="selectAllBoard" resultType="BoardDto">
+		select * from simpleboard order by num desc;
+	</select>
+	<update id="updateReadCount" parameterType="int">
+		update simpleboard set readcount = readcount + 1 where num = #{num};
+	</update>
+	<select id="selectOneData" parameterType="int" resultType="BoardDto">
+		select * from simpleboard where num = #{num};
+	</select>
+	<delete id="deleteBoard" parameterType="int">
+		delete from simpleboard where num = #{num}; 
+	</delete>
+	<update id="updateBoard" parameterType="BoardDto">
+		update simpleboard set writer=#{writer}, subject=#{subject}, content=#{content}
+		<if test="photo != null">
+			,photo=#{photo}
+		</if>
+		where num=#{num};
+	</update>
 </mapper>
