@@ -7,4 +7,7 @@
 	<select id="selectAnswerByNum" parameterType="int" resultType="AnswerDto">
 		select * from answerboard where num=#{num} order by idx desc;
 	</select>
+	<delete id="deleteAnswer" parameterType="int">
+		delete from answerboard where idx=${idx};
+	</delete>
 </mapper>

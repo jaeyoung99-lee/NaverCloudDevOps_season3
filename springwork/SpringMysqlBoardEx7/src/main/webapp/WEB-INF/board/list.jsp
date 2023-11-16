@@ -42,6 +42,10 @@
 								<c:if test="${dto.photo !=  'no photo'}">
 									<i class="bi bi-image photoicon"></i>		
 								</c:if>
+								<c:if test="${dto.acount > 0}">
+									&nbsp;
+									<span style="color: red;">(${dto.acount})</span>
+								</c:if>
 							</a>
 						</td>
 						<td>${dto.writer}</td>

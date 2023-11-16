@@ -13,4 +13,5 @@ public class BoardDto {
 	private String photo;
 	private int readcount;
 	private Timestamp writeday;
+	private int acount; // 댓글 개수 추가
 }

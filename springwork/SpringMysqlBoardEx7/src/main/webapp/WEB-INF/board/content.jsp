@@ -21,6 +21,19 @@
    	   float: right;
    }
 </style>
+<script type="text/javascript">
+	$(function(){
+		$(".answerdel").click(function(){
+			let idx = $(this).attr("idx");
+			let num = $(this).attr("num");
+			
+			let a = confirm("해당 댓글을 삭제하려면 [확인]을 눌러주세요.");
+			if(a){
+				location.href=`./answerdel?num=\${num}&idx=\${idx}`;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<div style="margin: 30px; width: 500px;">
@@ -45,7 +58,7 @@
 					<span style="margin-left: 20px; color: gray; font-size: 0.9em;">
 						<fmt:formatDate value="${adto.writeday}" pattern="yyyy-MM-dd HH:mm"/>
 					</span>
-					<i class="bi bi-trash" style="cursor: pointer;"></i>
+					<i class="bi bi-trash answerdel" style="cursor: pointer;" idx="${adto.idx}" num="${dto.num}"></i>
 					<br>
 				</c:forEach>
 			</div>
