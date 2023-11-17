@@ -7,4 +7,13 @@
 	<select id="selectAllMemos" resultType="MemoDto">
 		select * from memodb order by num desc;
 	</select>
+	<delete id="deleteMemo" parameterType="int">
+		delete from memodb where num=#{num};
+	</delete>
+	<update id="updateLikesByNum" parameterType="int">
+		update memodb set  likes = likes + 1 where num=#{num};
+	</update>
+	<select id="countLikes" parameterType="int" resultType="int">
+		select likes from memodb where num=#{num};
+	</select>
 </mapper>

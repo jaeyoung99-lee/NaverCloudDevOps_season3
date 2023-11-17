@@ -22,4 +22,16 @@ public class MemoDao {
 	public List<MemoDto> getAllMemos(){
 		return session.selectList(nameSpace+"selectAllMemos");
 	}
+	
+	public void deleteMemo(int num) {
+		session.delete(nameSpace + "deleteMemo", num);
+	}
+	
+	public void updateLikes(int num) {
+		session.update(nameSpace + "updateLikesByNum",num);
+	}
+	
+	public int getCountLikes(int num) {
+		return session.selectOne(nameSpace + "countLikes", num);
+	}
 }

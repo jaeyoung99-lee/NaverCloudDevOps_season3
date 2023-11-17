@@ -6,5 +6,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="data.dto.MemoDto" alias="MemoDto"/>
+		<typeAlias type="data.dto.PhotoDto" alias="PhotoDto"/>
 	</typeAliases>
 </configuration>
