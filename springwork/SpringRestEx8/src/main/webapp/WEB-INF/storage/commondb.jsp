@@ -13,6 +13,16 @@
    body * {
        font-family: 'Jua';
    }  
+   
+   div.list .box {
+   	   width: 400px;
+   	   height: 100px;
+   	   margin-bottom: 10px;
+   	   border: 2px solid gray;
+   	   border-radius: 30px;
+   	   box-shadow: 3px 3px 3px gray;
+   	   padding : 10px;
+   }
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -51,12 +61,94 @@
 		});
 		
 		$("#btnsend").click(function(){
-			
+			let title = $("#title").val();
+			if(title.length == 0){
+				alert("제목을 입력해주세요");
+				return;
+			}
+			$.ajax({
+				type: "post",
+				dataType: "text",
+				url: "./adddb",
+				data: {"title":title},
+				success: function (res) {
+					list(); // 목록 다시 출력
+					
+					// 제목 지우기
+					$("#title").val("");
+				},
+			});
+		});
+		
+		// photo150 이벤트
+		$(document).on("mouseover", ".photo150", function(){
+			$(this).next().css("display", "block");
+		});
+		$(document).on("mouseout", ".photo150", function(){
+			$(this).next().css("display", "none");
+		});
+		
+		// photo_original 이벤트
+		$(document).on("mouseover", ".photo_original", function(){
+			$(this).next().css("display", "block");
+		});
+		$(document).on("mouseout", ".photo_original", function(){
+			$(this).next().css("display", "none");
+		});
+		
+		// 삭제
+		$(document).on("click", ".photodel", function(){
+			let num = $(this).attr("num");
+			$.ajax({
+				type: "get",
+				dataType: "text",
+				url: "./delete",
+				data: {"num":num},
+				success: function (res) {
+					list(); // 삭제 후 목록 다시 출력
+				},
+				statusCode: {
+					404: function () {
+						alert("Can't find json file!");
+					},
+					500: function () {
+						alert("server error. one more view your code.");
+					}
+				}
+			});
 		});
 	});
 	
 	function list(){
-		
+		$.ajax({
+			type: "get",
+			dataType: "json",
+			url: "./list",
+			success: function (res) {
+				let s = "";
+				$.each(res, function(idx, item){
+					s += 
+						// jsp이므로 $ 앞에 역슬래시를 붙임	
+						`
+						<div class="box">
+							<img src="\${item.photo80}" onerror="this.src='../res/upload/noimage.jpg'; this.width=80; this.height=80;" align="left" hspace="10">
+							<span>\${item.title}</span>
+							<span style="margin-left: 20px; cursor: pointer; color: red;" class="photodel" num="\${item.num}">삭제</span>
+							<br>
+							<div class="photo150" style="cursor: pointer;">150 사진 확인</div>
+							<div class="photo1" style="display: none;">
+								<img src="\${item.photo150}">
+							</div>
+							<div class="photo_original" style="cursor: pointer;">원본 사진 확인</div>
+							<div class="photo2" style="display: none;">
+								<img src="\${item.photo}">
+							</div>
+						</div>
+						`;
+				});
+			$("div.list").html(s);
+			}
+		});
 	}
 </script>
 </head>
