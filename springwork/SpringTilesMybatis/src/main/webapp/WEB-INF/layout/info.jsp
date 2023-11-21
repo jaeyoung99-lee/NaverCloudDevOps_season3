@@ -10,12 +10,18 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <style>
-   body * {
-       font-family: 'Jua';
-   }  
+	body * {
+		font-family: 'Jua';
+    } 
 </style>
 </head>
+<c:set var="root" value="<%=request.getContextPath() %>"/>
 <body>
-	<h2>info</h2>
+	<div>
+		<h1>Info</h1>
+		<h3>Manager : Chunsik</h3>
+		<h5><i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;010 - 5431 - 7193</h5>
+		<img src="${root}/res/photo/꾸벅인사.gif" width="170">
+	</div>
 </body>
 </html>

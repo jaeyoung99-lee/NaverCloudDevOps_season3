@@ -49,10 +49,12 @@
    
    div.main_container div.info {
    	   position: absolute;
-   	   left: 30px;
+   	   left: 100px;
    	   top: 250px;
-   	   width: 150px;
-   	   height: 200px;
+   	   width: 250px;
+   	   height: 300px;
+   	   background-color: #E6E6FA;
+   	   text-align: center;
    }
    
    div.main_container div.home {
@@ -60,18 +62,20 @@
        left: 50%;
        top: 50%;
        transform: translate(-50%, -50%);
-       width: 700px;
+       width: 1000px;
        height: 550px;
+       text-align: center;
    }
-   
+
    div.main_container div.footer {
-   	   position: absolute;
+   	   position: fixed;
    	   left: 0px;
    	   top: 950px;
    	   width: 100%;
    	   height: 100px;
    	   line-height: 100px;
    	   text-align: center;
+       bottom: 0;
    }
 </style>
 </head>

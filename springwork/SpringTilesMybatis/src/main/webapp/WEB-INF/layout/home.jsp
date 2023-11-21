@@ -15,7 +15,9 @@
    }  
 </style>
 </head>
+<c:set var="root" value="<%=request.getContextPath() %>"/>
 <body>
-	<h2>home</h2>
+	<h1 style="color: #F4A460;">저희 집에 온 것을 환영합니다!</h1>
+	<h2><img src="${root}/res/photo/환영.gif" width="500"></h2>
 </body>
 </html>
