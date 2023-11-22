@@ -20,4 +20,19 @@
 	<delete id="deleteMember" parameterType="int">
 		delete from memberdb where num = #{num};
 	</delete>
+	<select id="loginCheck" parameterType="Map" resultType="int">
+		select count(*) from memberdb where myid = #{myid} and pass = #{pass};
+	</select>
+	<select id="selectDataById" parameterType="String" resultType="MemberDto">
+		select * from memberdb where myid = #{myid};
+	</select>
+	<select id="selectDataByNum" parameterType="int" resultType="MemberDto">
+		select * from memberdb where num = #{num};
+	</select>
+	<update id="updatePhotoById" parameterType="Map">
+		update memberdb set photo = #{photo} where myid = #{myid};
+	</update>
+	<update id="updatePhotoByNum" parameterType="Map">
+		update memberdb set photo = #{photo} where num = #{num};
+	</update>
 </mapper>

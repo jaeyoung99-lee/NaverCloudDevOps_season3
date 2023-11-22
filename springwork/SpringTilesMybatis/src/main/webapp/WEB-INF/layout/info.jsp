@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +23,10 @@
 		<h3>Manager : Chunsik</h3>
 		<h5><i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;010 - 5431 - 7193</h5>
 		<img src="${root}/res/photo/꾸벅인사.gif" width="170">
+		<br><br>
+		<audio controls autoplay style="width: 250px;">
+			<source src="" type="audio/mp3">
+		</audio>
 	</div>
 </body>
 </html>

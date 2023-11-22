@@ -31,10 +31,9 @@
    
    div.main_container div.header {
    	   width: 100%;
-   	   height: 100px;
-   	   line-height: 100px;
+   	   height: 130px;
    	   text-align: center;
-   	   font-size: 30px;
+   	   font-size: 15px;
    	   font-weight: bold;
    }
    
@@ -45,6 +44,7 @@
    	   text-align: center;
    	   display: flex;
        justify-content: center;
+       margin-top: 10px;
    }
    
    div.main_container div.info {
@@ -60,13 +60,13 @@
    div.main_container div.home {
        position: absolute;
        left: 50%;
-       top: 50%;
+       top: 580px;
        transform: translate(-50%, -50%);
        width: 1000px;
-       height: 550px;
+       height: 700px;
        text-align: center;
    }
-
+      
    div.main_container div.footer {
    	   position: fixed;
    	   left: 0px;

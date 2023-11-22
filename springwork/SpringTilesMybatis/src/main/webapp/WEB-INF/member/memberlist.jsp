@@ -17,7 +17,6 @@
 <script type="text/javascript">
 	let field = "";
 	let word = "";
-	
 	$(function(){
 		list(); // 처음 로딩 시 전체 회원 출력
 		
@@ -66,7 +65,7 @@
 				
 				s += 
 					`
-					<table class="table table-bordered" style="width: 800px; margin: 0 auto;">
+					<table class="table table-bordered" style="width: 900px; margin: 0 auto;">
 						<thead>
 							<tr>
 								<th width=200>닉네임</th>
@@ -113,22 +112,27 @@
 </script>
 </head>
 <body>
-	<div>
-		<h4>현재 총 <b style="color: orange; font-size: 40px;">${totalCount}</b>명의 회원이 있습니다.</h4>
-		<br><br>
-		<div class="input-group" style="width: 400px; margin: 0 auto;">
-			<select id="field" class="form-select">
-				<option hidden disabled selected>검색할 필드</option>
-				<option value="name">닉네임</option>
-				<option value="myid">아이디</option>
-				<option value="hp">전화번호</option>
-				<option value="email">이메일</option>
-			</select>
-			<input type="text" class="form-control" style="margin-left: 10px;" id="word" placeholder="검색 값 입력">
-			<button type="button" class="btn btn-success btm-sm" id="btnsearch"	style="margin-left: 10px;">검색</button>
+	<c:if test="${sessionScope.loginok == null}">
+			<h3 style="margin: 50px; color: red;">회원명단을 보려면 먼저 로그인을 해주세요.</h3>
+	</c:if>
+	<c:if test="${sessionScope.loginok != null}">
+		<div>
+			<br>
+			<h4>현재 총 <b style="color: orange; font-size: 40px;">${totalCount}</b>명의 회원이 있습니다.</h4>
+			<br>
+			<div class="input-group" style="width: 400px; margin: 0 auto;">
+				<select id="field" class="form-select">
+					<option hidden disabled selected>검색할 필드</option>
+					<option value="name">닉네임</option>
+					<option value="myid">아이디</option>
+					<option value="hp">전화번호</option>
+					<option value="email">이메일</option>
+				</select>
+				<input type="text" class="form-control" style="margin-left: 10px;" id="word" placeholder="검색 값 입력">
+				<button type="button" class="btn btn-success btm-sm" id="btnsearch"	style="margin-left: 10px;">검색</button>
+			</div>
 		</div>
-		<br>
-	</div>
-		<div class="searchlist" style="width: 100%; margin-top: 20px;"></div>			
+			<div class="searchlist" style="width: 100%; margin-top: 20px; height: 500px; overflow: auto;"></div>
+	</c:if>	
 </body>
 </html>

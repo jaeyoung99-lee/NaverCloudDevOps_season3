@@ -6,5 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="mini.dto.MemberDto" alias="MemberDto"/>
+		<typeAlias type="mini.dto.BoardDto" alias="BoardDto"/>
+		<typeAlias type="mini.dto.BoardFileDto" alias="BoardFileDto"/>
 	</typeAliases>
 </configuration>

@@ -42,4 +42,36 @@ public class MemberDao {
 	public void deleteMember(int num) {
 		session.delete(nameSpace + "deleteMember", num);
 	}
+	
+	public boolean isLoginCheck(String myid, String pass) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("myid", myid);
+		map.put("pass", pass);
+		
+		int n = session.selectOne(nameSpace + "loginCheck", map);
+		
+		return n == 0 ? false : true;
+	}
+	
+	public MemberDto getData(String myid) {
+		return session.selectOne(nameSpace + "selectDataById", myid);
+	}
+	
+	public MemberDto getData(int num) {
+		return session.selectOne(nameSpace + "selectDataByNum", num);
+	}
+	
+	public void updatePhoto(String photo, String myid) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("photo", photo);
+		map.put("myid", myid);
+		session.update(nameSpace + "updatePhotoById", map);
+	}
+	
+	public void updatePhoto(String photo, int num) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("photo", photo);
+		map.put("num", num);
+		session.update(nameSpace + "updatePhotoByNum", map);
+	}
 }

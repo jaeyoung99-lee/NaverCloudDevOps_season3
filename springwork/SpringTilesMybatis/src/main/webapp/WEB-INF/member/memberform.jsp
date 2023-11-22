@@ -97,9 +97,11 @@
 </head>
 <body>
 	<div>
+		<br>
 		<button type="button" class="btn btn-outline-success" style="width: 100px; margin-left: auto;" onclick="location.href='./list'">회원현황</button>
-		<form action="./addmember" method="post" enctype="multipart/form-data" onsubmit="return check()" style="margin-left: 70px;">
-			<table class="table table-bordered" style="width: 500px; margin: 30px; text-align: center;">
+		<br><br>
+		<form action="./addmember" method="post" enctype="multipart/form-data" onsubmit="return check()">
+			<table class="table table-bordered" style="width: 500px; margin: auto; text-align: center;">
 				<caption align="top"><b>회원가입</b></caption>
 				<tr>
 					<td rowspan="4" width="150" align="center">
