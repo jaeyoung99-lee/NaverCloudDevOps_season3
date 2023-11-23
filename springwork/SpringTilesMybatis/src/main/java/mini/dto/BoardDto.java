@@ -12,10 +12,10 @@ public class BoardDto {
 	private String myid;
 	private String subject;
 	private String content;
-	private String readcount;
-	private String regroup;
-	private String restep;
-	private String relevel;
+	private int readcount;
+	private int regroup;
+	private int restep;
+	private int relevel;
 	private List<String> photoNames;
 	private Timestamp writeday;
 }

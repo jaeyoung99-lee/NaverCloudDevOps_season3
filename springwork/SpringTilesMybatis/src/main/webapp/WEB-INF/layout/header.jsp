@@ -153,7 +153,7 @@
 		</c:if>
 	</div>
 	<br>
-	<h6>Spring5 + Tiles3 + Mybatis3 Mini Project</h6>
+	<h6 style="font-style: italic;">Spring5 + Tiles3 + Mybatis3 Mini Project</h6>
 	
 	<script type="text/javascript">
 		// 셋팅 아이콘 클릭 시 파일 업로드 이벤트 트리거

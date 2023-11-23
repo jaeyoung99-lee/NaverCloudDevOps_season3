@@ -8,5 +8,5 @@ import lombok.Data;
 public class BoardFileDto {
 	private int idx;
 	private int num;
-	private String photoNames;
+	private String photoname;
 }
