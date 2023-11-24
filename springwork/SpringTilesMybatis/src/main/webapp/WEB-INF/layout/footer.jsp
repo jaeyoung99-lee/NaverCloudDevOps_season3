@@ -16,6 +16,6 @@
 </style>
 </head>
 <body>
-	<h3>Copyright 2023 All ⓒ rights JYC</h3>
+	<h6>Copyright 2023 All ⓒ rights JYC</h6>
 </body>
 </html>

@@ -7,4 +7,10 @@
 	<select id="selectAllPhotoByNum" parameterType="int" resultType="String">
 		select photoname from board_file where num = #{num};
 	</select>
+	<select id="selectAllDataByNum" parameterType="int" resultType="BoardFileDto">
+		select * from board_file where num = #{num};
+	</select>
+	<delete id="deletePhotoByIdx" parameterType="int">
+		delete from board_file where idx = #{idx};
+	</delete>
 </mapper>

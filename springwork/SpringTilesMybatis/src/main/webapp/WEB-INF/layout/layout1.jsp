@@ -70,7 +70,7 @@
    div.main_container div.footer {
    	   position: fixed;
    	   left: 0px;
-   	   top: 950px;
+   	   top: 1000px;
    	   width: 100%;
    	   height: 100px;
    	   line-height: 100px;

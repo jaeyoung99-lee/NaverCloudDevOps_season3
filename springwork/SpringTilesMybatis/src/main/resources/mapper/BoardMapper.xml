@@ -25,4 +25,10 @@
 	<select id="selectDataByNum" parameterType="int" resultType="BoardDto">
 		select * from boarddb where num = #{num};
 	</select>
+	<update id="updateBoard" parameterType="BoardDto">
+		update boarddb set subject = #{subject}, content = #{content} where num=#{num};
+	</update>
+	<delete id="deleteBoard" parameterType="int">
+		delete from boarddb where num = #{num};
+	</delete>
 </mapper>

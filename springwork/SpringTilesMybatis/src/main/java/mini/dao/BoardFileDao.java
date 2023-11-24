@@ -22,4 +22,12 @@ public class BoardFileDao {
 		public List<String> getPhotoByNum(int num) {
 			return session.selectList(nameSpace + "selectAllPhotoByNum", num);
 		}
+		
+		public List<BoardFileDto> getFileDataByNum(int num){
+			return session.selectList(nameSpace + "selectAllDataByNum", num);
+		}
+		
+		public void deletePhoto(int idx) {
+			session.delete(nameSpace + "deletePhotoByIdx", idx);
+		}
 }
