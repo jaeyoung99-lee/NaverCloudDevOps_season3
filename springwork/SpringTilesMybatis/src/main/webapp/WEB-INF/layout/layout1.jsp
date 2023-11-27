@@ -76,6 +76,7 @@
    	   line-height: 100px;
    	   text-align: center;
        bottom: 0;
+       margin-top: 15px;
    }
 </style>
 </head>

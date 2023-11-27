@@ -134,7 +134,7 @@
 	</div>
 		<a href="${root}/" style="font-size: 40px; line-height: 100px; margin-left: auto;">
 			<img src="${root}/res/photo/고구마.gif" width="150" hspace="20">
-			Chunsik's Home
+			Choonsik's Home
 			<img src="${root}/res/photo/고구마.gif" width="150" hspace="20">
 		</a>
 	<div style="text-align: center; width: 200px; position: fixed; right: 50px; top: 30px;">

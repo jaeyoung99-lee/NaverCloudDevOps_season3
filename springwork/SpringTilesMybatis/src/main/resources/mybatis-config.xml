@@ -8,5 +8,7 @@
 		<typeAlias type="mini.dto.MemberDto" alias="MemberDto"/>
 		<typeAlias type="mini.dto.BoardDto" alias="BoardDto"/>
 		<typeAlias type="mini.dto.BoardFileDto" alias="BoardFileDto"/>
+		<typeAlias type="mini.dto.BoardAnswerDto" alias="BoardAnswerDto"/>
+		<typeAlias type="mini.dto.GuestDto" alias="GuestDto"/>
 	</typeAliases>
 </configuration>

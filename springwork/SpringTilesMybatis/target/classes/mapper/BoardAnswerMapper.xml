@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mini.dao.BoardAnswerDao">
+	<insert id="insertBoardAnswer" parameterType="BoardAnswerDto">
+		insert into board_answer (ansname, ansid, ansphoto, ansmsg, num, writeday) values (#{ansname}, #{ansid}, #{ansphoto}, #{ansmsg}, #{num}, now());
+	</insert>
+	<select id="selectAnswerOfNum" parameterType="int" resultType="BoardAnswerDto">
+		select * from board_answer where num = #{num} order by ansidx asc;
+	</select>
+	<delete id="deleteAnswer" parameterType="int">
+		delete from board_answer where ansidx = #{ansidx};
+	</delete>
+</mapper>

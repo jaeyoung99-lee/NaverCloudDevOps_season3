@@ -68,12 +68,12 @@
 					<table class="table table-bordered" style="width: 900px; margin: 0 auto;">
 						<thead>
 							<tr>
-								<th width=200>닉네임</th>
-								<th width=115>아이디</th>
-								<th width=150>전화번호</th>
-								<th width=200>이메일</th>
-								<th width=200>가입일</th>
-								<th width=55>탈퇴</th>
+								<th width=200 style="position: sticky; top: 0px;">닉네임</th>
+								<th width=115 style="position: sticky; top: 0px;">아이디</th>
+								<th width=150 style="position: sticky; top: 0px;">전화번호</th>
+								<th width=200 style="position: sticky; top: 0px;">이메일</th>
+								<th width=200 style="position: sticky; top: 0px;">가입일</th>
+								<th width=55 style="position: sticky; top: 0px;">탈퇴</th>
 							</tr>
 						</thead>
 						<tbody>

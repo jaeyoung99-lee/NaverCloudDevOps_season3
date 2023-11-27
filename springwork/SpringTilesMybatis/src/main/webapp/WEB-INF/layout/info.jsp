@@ -20,7 +20,7 @@
 <body>
 	<div>
 		<h1>Info</h1>
-		<h3>Manager : Chunsik</h3>
+		<h3>Manager : Choonsik</h3>
 		<h5><i class="bi bi-telephone-fill"></i>&nbsp;&nbsp;010 - 5431 - 7193</h5>
 		<img src="${root}/res/photo/꾸벅인사.gif" width="170">
 		<br><br>
