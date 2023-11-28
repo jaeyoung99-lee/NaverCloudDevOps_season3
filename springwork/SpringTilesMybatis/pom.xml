@@ -211,6 +211,13 @@
 		    <version>1.12.416</version>
 		</dependency>
 		
+		<dependency>
+	      <groupId>org.json</groupId>
+	      <artifactId>json</artifactId>
+	      <version>20210307</version> <!-- 최신 버전 확인 -->
+    	</dependency>
+		
+		
 	</dependencies>
     <build>
         <plugins>

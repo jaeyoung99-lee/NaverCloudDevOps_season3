@@ -59,9 +59,8 @@
    
    div.main_container div.home {
        position: absolute;
-       left: 50%;
-       top: 580px;
-       transform: translate(-50%, -50%);
+       left: 555px;
+       top: 250px;
        width: 1000px;
        height: 700px;
        text-align: center;
@@ -97,7 +96,6 @@
 		<div class="footer">
 			<tiles:insertAttribute name="footer"/>
 		</div>
-		
 	</div>
 </body>
 </html>

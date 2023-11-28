@@ -5,10 +5,10 @@ SELECT * FROM studydb.memberdb;
 SELECT * FROM studydb.boarddb;
 
 # 게시판에 있는 사진들 관리
-select * from board_file;
+select * from studydb.board_file;
 
 # 댓글 관리
-select * from board_answer;
+select * from studydb.board_answer;
 
 # 비회원 관리
-select * from guestdb;
+select * from studydb.guestdb;

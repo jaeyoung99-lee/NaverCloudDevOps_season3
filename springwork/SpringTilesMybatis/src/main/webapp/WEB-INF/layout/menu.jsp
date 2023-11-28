@@ -70,6 +70,9 @@
 			<a href="${root}/guest/list">방명록</a>
 		</li>
 		<li>
+			<a href="${root}/face">얼굴인식</a>
+		</li>
+		<li>
 			<a href="${root}/map">오시는 길</a>
 		</li>
 	</ul>	
