@@ -2,10 +2,16 @@
 
 - 서버 -
 공인 IP : 110.165.19.109
-비밀번호 : L53%RNPm9Jh
+비밀번호 : L53%RNPm9Jh -> bitcamp
 
 - db -
 비밀번호 : bitcamp123!@#
 
 - mysql public domain -
 db-jbnls-kr.vpc-pub-cdb.ntruss.com
+
+jenkins 접속
+http://110.165.19.109:8080/
+
+tomcat 접속
+http://110.165.19.109:8090/
