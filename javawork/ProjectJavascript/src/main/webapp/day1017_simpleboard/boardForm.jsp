@@ -32,15 +32,15 @@
 			console.log("2:" + $(this)[0].files[0]);
 
 			//정규표현식
-			var reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
-			var f = $(this)[0].files[0];//현재 선택한 파일
-
+			let reg = /(.*?)\/(jpg|jpeg|png|bmp)$/;
+			let f = $(this)[0].files[0];//현재 선택한 파일
+			
 			if (!f.type.match(reg)) {
 				alert("확장자가 이미지파일이 아닙니다");
 				return;
 			}
 			if ($(this)[0].files[0]) {
-				var reader = new FileReader();
+				let reader = new FileReader();
 				reader.onload = function(e) {
 					$("#showimg").attr("src", e.target.result);
 				}

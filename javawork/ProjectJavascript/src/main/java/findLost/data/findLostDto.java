@@ -1,17 +1,29 @@
 package findLost.data;
 
+import java.sql.Timestamp;
+
 public class findLostDto {
-	private int num;
+	private int id;
 	private String name;
 	private String photo;
 	private String lostplace;
 	private String lostday;
 	private String money;
-	public int getNum() {
-		return num;
+	private int readcount;
+	private int answercount;
+	private Timestamp writeday;
+	
+	public Timestamp getWriteday() {
+		return writeday;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setWriteday(Timestamp writeday) {
+		this.writeday = writeday;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -43,6 +55,16 @@ public class findLostDto {
 	public void setMoney(String money) {
 		this.money = money;
 	}
-	
-	
+	public int getReadcount() {
+		return readcount;
+	}
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
+	}
+	public int getAnswercount() {
+		return answercount;
+	}
+	public void setAnswercount(int answercount) {
+		this.answercount = answercount;
+	}
 }
