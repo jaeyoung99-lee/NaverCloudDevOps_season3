@@ -15,6 +15,16 @@
 </head>
 
 <body>
-	
+	<h2>dto 그대로 출력해보기</h2>
+	<h4>[[${dto}]]</h4> <!--/* th 안 쓸거면 [[]] 이용 */-->
+	<h3>
+		상품명 : 
+		<span th:text="${dto.sangpum}"></span> <!-- 출력 방법 1 -->
+		,
+		[[${dto.sangpum}]] <!-- 출력 방법 2 -->
+	</h3>
+	<h3>색상 : [[${dto.color}]]</h3>
+	<h3>수량 : [[${dto.su}]]</h3>
+	<h3>단가 : [[${dto.dan}]]</h3>
 </body>
 </html>

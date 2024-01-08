@@ -15,19 +15,6 @@
 </head>
 
 <body>
-	<h3>
-		오늘 날짜 및 시간 : 
-		<span th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm')}"></span> <!-- 라이브러리 가져올 땐 # 사용 -->
-	</h3>
-	<h2>타임리프 공부하기</h2>
-	<a th:href="@{/hello}">
-		hello.html
-	</a>
-	
-	<br><br>
-	
-	<a th:href="@{/list}">
-		list.html
-	</a>
+	<h2><b>총 [[${totalCount}]] 개의 상품이 있습니다.</b></h2>
 </body>
 </html>
