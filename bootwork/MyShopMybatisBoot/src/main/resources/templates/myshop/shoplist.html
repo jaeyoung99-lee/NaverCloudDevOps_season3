@@ -15,6 +15,36 @@
 </head>
 
 <body>
-	<h2><b>총 [[${totalCount}]] 개의 상품이 있습니다.</b></h2>
+	<h2>
+		<b>총 [[${totalCount}]] 개의 상품이 있습니다.</b>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='./form'" style="margin-left:100px;">상품추가</button>
+	</h2>
+	<hr>
+	<table class="table table-bordered" style="width:500px;">
+		<tr>
+			<th style="width:50px;">번호</th>
+			<th style="width:200px;">상품명</th>
+			<th style="width:120px;">가격</th>
+			<th>날짜</th>
+		</tr>
+		<tr th:each="dto,iter:${list}">
+			<td>[[${iter.count}]]</td>
+			<td>
+				<a th:href="@{/detail(num=${dto.num})}" style="color: black; cursor: pointer;">
+					<!-- 타임리프로 썸네일 사진 넣기 -->
+					<img th:src="@{https://o8pdrovm2109.edge.naverncp.com/OkHqFOUkAL/bootmyshop/{photo}?type=f&w=40&h=40&faceopt=true&ttype=jpg(photo = ${dto.photo})}" border="1" hspace="10">
+					
+					<!-- 상품명 -->
+					[[${dto.sangpum}]]
+				</a>
+			</td>
+			<td align="right">
+				<span th:text="${#numbers.formatInteger(dto.price, 0, 'COMMA')}"></span>
+			</td>
+			<td>
+				<span th:text="${#calendars.format(dto.writeday, 'yyyy-MM-dd')}"></span>
+			</td>
+		</tr>
+	</table>
 </body>
 </html>

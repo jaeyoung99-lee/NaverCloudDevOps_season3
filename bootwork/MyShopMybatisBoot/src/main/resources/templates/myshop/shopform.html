@@ -15,6 +15,41 @@
 </head>
 
 <body>
+	<form action="insert" method="post" enctype="multipart/form-data">
+	<table class="table table-bordered" style="width: 400px;">
+		<tr>
+			<th style="width: 120px;">상품명</th>
+			<td>
+				<input type="text" name="sangpum" class="form-control" required="required">
+			</td>
+		</tr>
+		<tr>
+			<th style="width: 120px;">색상</th>
+			<td>
+				<input type="color" name="color" class="form-control"  value="#ffcccc">
+			</td>
+		</tr>
+		<tr>
+			<th style="width: 120px;">가격</th>
+			<td>
+				<input type="text" name="price" class="form-control" required="required">
+			</td>
+		</tr>		
+		<tr>
+			<th style="width: 120px;">상품사진</th>
+			<td>
+				<input type="file" name="upload" class="form-control" required="required">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<button type="submit" class="btn btn-info">Submit</button>
+				<button type="button" class="btn btn-danger"
+				onclick="location.href='/'">상품목록</button>
+			</td>
+		</tr>
+	</table>
+</form>
 	
 </body>
 </html>

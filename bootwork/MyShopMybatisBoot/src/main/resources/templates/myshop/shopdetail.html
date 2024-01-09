@@ -11,10 +11,36 @@
 	body * {
 		font-family: 'Jua';
 	}
+	
+	div.box {
+		width: 200px;
+		border:1px solid gray;
+		font-size: 20px;
+	}
 </style>
 </head>
 
 <body>
-	
+	<div style="margin: 50px, 100px;">
+		<h2>[[${dto.sangpum}]] 상세보기</h2>
+		<hr>
+		<h2>원본사진</h2>
+		<img th:src="@{'https://kr.object.ncloudstorage.com/bitcamp-701ex/bootmyshop/' + ${dto.photo}}">
+		<hr>
+		<div th:object="${dto}">
+			<img th:src="@{'https://kr.object.ncloudstorage.com/bitcamp-701ex/bootmyshop/' + ${dto.photo}}" style="width:60px;"> <!-- object 안에서 보여줄 때는 * 사용 -->
+			<!-- dto의 멤버 접근은 *{변수명}으로 출력하는 방법도 있다. -->
+			<h3>상품명 : [[*{sangpum}]]</h3>
+			<div class="box" th:style="'background-color:' + *{color}">
+				색상 : [[*{color}]]
+			</div>
+			<h3>가격 : [[*{price}]]</h3>
+			<h3>날짜 : <span th:text="${#calendars.format(dto.writeday, 'yyyy-MM-dd HH:mm')}"></span></h3>
+		</div>
+		<br>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='./'">목록</button>
+		<button type="button" class="btn btn-outline-secondary" onclick="location.href='./form'">상품추가</button>
+		<button type="button" class="btn btn-outline-secondary" th:onclick="|location.href='@{./delete(num=${dto.num})}'|">상품삭제</button>	
+	</div>
 </body>
 </html>
