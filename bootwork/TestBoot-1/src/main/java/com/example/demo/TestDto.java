@@ -1,4 +1,4 @@
-package data.dto;
+package com.example.demo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,12 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class ShopDto {
-	String sangpum;
-	String color;
-	int su;
-	int dan;
+public class TestDto {
+	private String name;
+	private String addr;
+	private String hp;	
 }

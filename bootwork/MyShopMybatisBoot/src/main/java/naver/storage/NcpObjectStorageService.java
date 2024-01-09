@@ -41,11 +41,11 @@ public class NcpObjectStorageService implements ObjectStorageService {
 		}
 
 		try (InputStream fileIn = file.getInputStream()) {
-			String uuid = UUID.randomUUID().toString(); 
-			// 파일명 : 년 월 시 분_UUID의 절반만 추출
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm_");
-			String filename = sdf.format(new Date()) + uuid.substring(0, 10) + ".jpg"; // uuid 10개만 받기, 확장자는 jpg	
-			
+			String uuid = UUID.randomUUID().toString();
+			//년월일시분_UUID의 절반만추출-이렇게 파일명을 수정해보자
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmm_");
+			String filename=sdf.format(new Date())+uuid.substring(0,10)+".jpg";
+
 			ObjectMetadata objectMetadata = new ObjectMetadata();
 			objectMetadata.setContentType(file.getContentType());
 

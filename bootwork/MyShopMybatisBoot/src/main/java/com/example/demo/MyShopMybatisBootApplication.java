@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"myshop.*", "naver.storage"})
+@ComponentScan({"myshop.*","naver.storage"})
 @MapperScan("myshop.mapper")
 public class MyShopMybatisBootApplication {
 

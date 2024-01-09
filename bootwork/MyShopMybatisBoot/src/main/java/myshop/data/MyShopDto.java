@@ -20,5 +20,5 @@ public class MyShopDto {
 	private String photo;
 	private int price;
 	private String color;
-	private Timestamp writeday;
+	private Timestamp writeday;	
 }

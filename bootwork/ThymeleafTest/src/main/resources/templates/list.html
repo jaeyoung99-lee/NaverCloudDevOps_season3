@@ -6,35 +6,52 @@
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-
 <style>
-	body * {
-		font-family: 'Jua';
-	}
+  body * {
+      font-family: 'Jua';
+  } 
 </style>
 </head>
-
 <body>
 	<table style="width:500px;" class="table table-bordered">
 		<tr>
-			<th style="width:50px;">번호</th>
-			<th style="width:150px;">상품명</th>
-			<th style="width:80px;">색상</th>
-			<th style="width:60px;">수량</th>
-			<th style="width:100px;">단가</th>
+			<th style="width:50px">번호</th>
+			<th style="width:150px">상품명</th>
+			<th style="width:80px">색상</th>
+			<th style="width:60px">수량</th>
+			<th style="width:100px">단가</th>
 		</tr>
-		
-		<!-- 반복해서 출력하는 방법 -->
-		<tr th:each="dto,iter:${list}"> <!-- iter 변수는 일련 번호를 출력하는 변수 -->
+		<!--반복해서 출력하는 방법-->
+		<tr th:each="dto,iter:${list}">
 			<td>[[${iter.count}]]</td>
 			<td>[[${dto.sangpum}]]</td>
 			<td>[[${dto.color}]]</td>
 			<td>[[${dto.su}]]</td>
-			<!-- <td>[[${dto.dan}]]</td> -->
+			<!--<td>[[${dto.dan}]]</td>	-->
 			<td>
-				[[${#numbers.formatInteger(dto.dan, 0, 'COMMA')}]] <!-- 0은 소수점 이하 자리수를 의미 -->
-			</td>
+				[[${#numbers.formatInteger(dto.dan,0,'COMMA')}]]
+			</td>		
 		</tr>
 	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
