@@ -20,5 +20,5 @@ spring:
 #api 호출시 실행되는 sql 문을 콘솔에 보여줄것인가        
     show-sql: true
 #Mysql 상세지정    
-    database-platform: org.hibernate.dialect.MySQLDialect 
+    database-platform: org.hibernate.dialect.MySQLDialect  
    
