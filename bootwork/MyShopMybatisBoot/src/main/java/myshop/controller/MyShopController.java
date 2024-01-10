@@ -23,7 +23,7 @@ public class MyShopController {
 	private final NcpObjectStorageService storageService;
 	
 	//버켓네임 지정
-	private String bucketName="bitcamp-lmh";
+	private String bucketName="bitcamp-701ex";
 	//저장할 폴더네임 지정
 	private String folderName="bootmyshop";
 	

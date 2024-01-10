@@ -23,10 +23,10 @@
 		<h2>[[${dto.sangpum}]] 상세보기</h2>
 		<hr>
 		<h2>원본사진</h2>
-		<img th:src="@{'https://kr.object.ncloudstorage.com/bitcamp-lmh/bootmyshop/'+${dto.photo}}">
+		<img th:src="@{'https://kr.object.ncloudstorage.com/bitcamp-701ex/bootmyshop/'+${dto.photo}}">
 		<hr>
 		<div th:object="${dto}">
-			<img th:src="@{'https://kr.object.ncloudstorage.com/bitcamp-lmh/bootmyshop/'+*{photo}}"
+			<img th:src="@{'https://kr.object.ncloudstorage.com/bitcamp-701ex/bootmyshop/'+*{photo}}"
 			style="width:60px;">
 			<!--dto 의 멤버 접근은 *{변수명} 으로 출력하는 방법도 있다-->
 			<h3>상품명 : [[*{sangpum}]]</h3>
