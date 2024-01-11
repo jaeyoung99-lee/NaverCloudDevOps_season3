@@ -17,6 +17,38 @@
 		font-size: 20px;
  	}
 </style>
+<script>
+	$(function(){
+		// 처음 시작 시 댓글 출력
+		comment_list();
+	});
+
+	function comment_list(){
+		let num = "[[${dto.num}]]";
+		console.log("num=" + num); // 테스트
+		
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			url:"./commentlist",
+			data:{"num":num},
+			success:function(res){
+				let s =`댓글 &nbsp; ${res.length}개`;
+				$.each(res, function(idx, item){
+					s += 
+						`
+						<div style="margin-left: 20px;">
+							${item.comment}
+							<span style="color: gray; font-size: 0.9em;">${item.writeday}</span>
+						</div>
+						`;
+				});
+				
+				$(".comment-list").html(s);
+			}
+		});
+	}
+</script>
 </head>
 <body>
 	<div style="margin:50px 100px;">
@@ -36,6 +68,40 @@
 			<h3>구입일 : [[*{carguip}]]</h3>
 			<h3>등록날짜 : <span th:text="${#calendars.format(dto.writeday, 'yyyy-MM-dd HH:mm')}"></span></h3>
 		</div>
+		
+		<!-- 댓글부분 여기부터 추가 -->
+		<hr>
+		<div class="comment-list" style="margin-left: 10px;">
+			코멘트 목록
+		</div>
+		<div class="input-group" style="width: 400px;">
+			<h5>댓글</h5>
+			<input type="text" class="form-control" id="comment" style="margin-left: 10px; border: 1px solid black;">
+			<button type="button" class="btn btn-success btn-sm" id="btncomment">저장</button>
+		</div>
+		
+		<!-- 댓글 추가 이벤트 -->
+		<script>
+			$("#btncomment").click(function(){
+				let num = "[[${dto.num}]]";
+				console.log("num=" + num); // 테스트
+				
+				let comment = $("#comment").val();
+				
+				$.ajax({
+					type:"get",
+					dataType:"text",
+					url:"./addcomment",
+					data:{"num":num, "comment":comment},
+					success:function(res){
+						// 댓글 부분 초기화 후 포커스
+						$("#comment").val("").focus();
+					}
+				});
+				
+			});
+		</script>
+		
 		<br>
 		<button type="button" class="btn btn-outline-secondary"
 		  onclick="location.href='./'">자동차 목록</button>
