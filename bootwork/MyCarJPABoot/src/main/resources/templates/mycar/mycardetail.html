@@ -94,6 +94,7 @@
 					url:"./addcomment",
 					data:{"num":num, "comment":comment},
 					success:function(res){
+						comment_list(); // 댓글 다시 출력
 						// 댓글 부분 초기화 후 포커스
 						$("#comment").val("").focus();
 					}
