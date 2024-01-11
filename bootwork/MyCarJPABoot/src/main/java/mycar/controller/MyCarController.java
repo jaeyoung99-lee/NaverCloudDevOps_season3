@@ -25,6 +25,7 @@ import naver.storage.NcpObjectStorageService;
 public class MyCarController {
 	private final MyCarDao myCarDao;
 	private final MyCarCommentDao commentDao;
+	
 	//storage class 선언
 	private final NcpObjectStorageService storageService;
 	
