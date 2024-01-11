@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import mycar.data.MyCarDto;
+import mycar.repository.MyCarCommentDao;
 import mycar.repository.MyCarDao;
 import naver.storage.NcpObjectStorageService;
 
@@ -23,7 +24,7 @@ import naver.storage.NcpObjectStorageService;
 @RequiredArgsConstructor
 public class MyCarController {
 	private final MyCarDao myCarDao;
-	
+	private final MyCarCommentDao commentDao;
 	//storage class 선언
 	private final NcpObjectStorageService storageService;
 	
@@ -66,6 +67,13 @@ public class MyCarController {
 		
 		// 페이지에 필요한 만큼만 가져오기
 		Page<MyCarDto> result = myCarDao.getAllCars(pageable);
+		
+		List<MyCarDto> list = result.getContent();
+		for(MyCarDto dto:list) {
+			// 댓글 개수 저장
+			int acount = commentDao.getMyCarCommentList(dto.getNum()).size();
+			dto.setCommentcount(acount);
+		}
 		
 		model.addAttribute("totalCount", result.getTotalElements());
 		model.addAttribute("totalPage", result.getTotalPages());

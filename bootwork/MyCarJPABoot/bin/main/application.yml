@@ -11,7 +11,7 @@ spring:
    
 
 #JPA setting
-#스키마 생성 create:기존테이블삭제후 생성, update:변경된 부분만 반영
+#스키마 생성 create:기존 테이블 삭제 후 생성, update:변경된 부분만 반영
   jpa:
     hibernate:
       ddl-auto: update
