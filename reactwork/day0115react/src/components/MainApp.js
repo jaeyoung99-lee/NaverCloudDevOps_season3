@@ -5,6 +5,9 @@ import TwoApp from './TwoApp';
 import ThreeApp from './ThreeApp';
 import FourApp from './FourApp';
 import FiveApp from './FiveApp';
+import SixApp from './SixApp';
+import SevenApp from './SevenApp';
+import EightApp from './EightApp';
 
 function MainApp(props) {
     // radio 방식
@@ -30,10 +33,33 @@ function MainApp(props) {
             <label style={{marginLeft: '20px'}}>
                 <input type='radio' name='myapp' defaultValue={5} onClick={onChangeApp}/>FiveApp
             </label>
-            
+            <label style={{marginLeft: '20px'}}>
+                <input type='radio' name='myapp' defaultValue={6} onClick={onChangeApp}/>SixApp
+            </label>
+            <label style={{marginLeft: '20px'}}>
+                <input type='radio' name='myapp' defaultValue={7} onClick={onChangeApp}/>SevenApp
+            </label>
+            <label style={{marginLeft: '20px'}}>
+                <input type='radio' name='myapp' defaultValue={8} onClick={onChangeApp}/>EightApp
+            </label>
+
+            <hr/>
+            <h4 style={{color: 'blue'}}>
+                수업 내용 :&nbsp;
+                {
+                    index === 1 ? "useEffect" : 
+                    index === 2 ? <div>조건에 따라 이미지 보이기 / 안보이기 <br/> src의 이미를 import 없이 출력하는 방법 : require</div> : 
+                    index === 3 ? "map 반복문" : 
+                    index === 4 ? "map으로 이미지 배열 출력" : 
+                    index === 5 ? "배열 추가 / 삭제" : 
+                    index === 6 ? "연습문제" : 
+                    index === 7 ? "테이블 사용하여 배열 출력" : "mui 이미지 사용 연습"
+                }
+            </h4>
+
             <hr/>
             {
-                index === 1 ? <OneApp/> : index === 2 ? <TwoApp/> : index === 3 ? <ThreeApp/> : index === 4 ? <FourApp/> : <FiveApp/>
+                index === 1 ? <OneApp/> : index === 2 ? <TwoApp/> : index === 3 ? <ThreeApp/> : index === 4 ? <FourApp/> : index === 5 ? <FiveApp/> : index === 6 ? <SixApp/> : index === 7 ? <SevenApp/> : <EightApp/> 
             }
         </div>
 

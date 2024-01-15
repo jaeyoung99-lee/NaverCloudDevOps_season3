@@ -1,0 +1,19 @@
+.box {
+    width: 250px;
+    height: 300px;
+    padding: 10px;
+    border: 2px solid greenyellow;
+    border-radius: 30px;
+    text-align: center;
+    margin: 10px;
+    float: left;
+}
+
+h6.select {
+    cursor: pointer;
+}
+
+h6.select:hover {
+    background-color: aquamarine;
+    color: red;
+}
