@@ -1,0 +1,39 @@
+.box {
+    border: 5px groove gold;
+    width: 400px;
+    height: 130px;
+    line-height: 130px;
+    background-color: khaki;
+    margin: 10px;
+}
+
+.nav_category {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    list-style: none;
+    width: 100%;
+    position: absolute;
+    margin: 0;
+}
+
+.nav_container {
+    display: block;
+    overflow: auto;
+    width: 100%;
+    height: 165px;
+    max-width: 1256px;
+    /* margin: 0 auto; */
+    /* margin-top: 5%; */
+    box-sizing: border-box;
+}
+
+img.imgcategory {
+    width: 90px;
+    height: 80px;
+}
+
+img.imgcategory:hover {
+    cursor: pointer;
+}
