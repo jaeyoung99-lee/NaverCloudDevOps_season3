@@ -41,7 +41,7 @@ const MainApp = () => {
             <h4 style={{color: 'blue'}}>
                 수업 내용 :&nbsp;
                 {
-                    index === 1 ? "1" : 
+                    index === 1 ? "person DB 추가 / 목록" : 
                     index === 2 ? "2" : 
                     index === 3 ? "3" : 
                     index === 4 ? "4" : 
