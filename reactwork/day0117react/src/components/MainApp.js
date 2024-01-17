@@ -10,13 +10,14 @@ import './MyStyle.css';
 const MainApp = () => {
     // radio 방식
     const [index, setIndex] = useState(1);
+
     const onChangeApp = (e) => {
         setIndex(Number(e.target.value));
     }
 
     return (
         <div style={{margin: '30px'}}>
-            <h3 className='alert alert-success'>2024년 1월 17일 수요일 React 수업</h3>
+            <h3 className='alert alert-success'>2024년 1월 17일 수요일 React 수업 : Axios</h3>
             <label>
                 <input type='radio' name='myapp' defaultValue={1} onClick={onChangeApp} defaultChecked/>OneApp
             </label>
