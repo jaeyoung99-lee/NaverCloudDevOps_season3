@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"mycar.*","naver.storage", "person.*"})
-@EntityScan({"mycar.data", "person.data"}) // @EntityScan("*.data")
-@EnableJpaRepositories({"mycar.repository", "person.data"})
+@ComponentScan({"mycar.*","naver.storage", "person.*", "guest.*"})
+@EntityScan({"mycar.data", "person.data", "guest.data"}) // @EntityScan("*.data")
+@EnableJpaRepositories({"mycar.repository", "person.data", "guest.data"})
 public class MyCarJpaBootApplication {
 
 	public static void main(String[] args) {

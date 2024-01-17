@@ -1,9 +1,17 @@
+// guest DB
+
+
+import { Alert } from '@mui/material';
 import React from 'react';
+import FourGuestForm from './FourGuestForm';
 
 const FourApp = () => {
     return (
         <div>
-            <h3 className='alert alert-danger'>FourApp</h3>
+            <Alert severity='primary' variant='filled'>
+                <h3>FourApp - guest DB</h3>
+            </Alert>
+            <FourGuestForm/>
         </div>
     );
 };

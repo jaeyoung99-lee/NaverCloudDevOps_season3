@@ -43,8 +43,8 @@ const MainApp = () => {
                 {
                     index === 1 ? "person DB 추가 / 목록" : 
                     index === 2 ? "person 데이터 중 이미지만 출력하기" : 
-                    index === 3 ? "3" : 
-                    index === 4 ? "4" : 
+                    index === 3 ? "mui Card를 이용한 목록 출력" : 
+                    index === 4 ? "guest DB" : 
                     index === 5 ? "5" : "6"
                 }
             </h4>
