@@ -3,6 +3,7 @@ package person.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ public class PersonController {
 	private final PersonDao personDao;
 	
 	// 추가
-	@GetMapping("/person/add")
+	@PostMapping("/person/add")
 	public void insert(@RequestBody PersonDto dto) {
 		System.out.println("add >> " + dto); // 호출되는지 확인용, 자동으로 toString 함수 호출됨
 		
