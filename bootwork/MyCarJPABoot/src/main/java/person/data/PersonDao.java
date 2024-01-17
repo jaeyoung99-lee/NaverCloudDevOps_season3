@@ -20,4 +20,9 @@ public class PersonDao {
 	public List<PersonDto> getAllPersons(){
 		return personRepository.findAll();
 	}
+	
+	// 삭제
+	public void deletePerson(int num) {
+		personRepository.deleteById(num);
+	}
 }

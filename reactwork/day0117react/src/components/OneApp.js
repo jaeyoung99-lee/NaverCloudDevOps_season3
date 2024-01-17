@@ -32,6 +32,16 @@ const OneApp = () => {
         })
     }
 
+    const deletePerson = (pnum) => {
+        let url = "/person/delete?pnum=" + pnum;
+        axios.delete(url)
+        .then(res => {
+            // 삭제 성공 후 목록 다시 출력
+            alert("삭제 성공!!!");
+            list();
+        })
+    }
+
     useEffect(() => {
         console.log("useEffect")
         list(); // 처음 시작 시 무조건 호출
@@ -49,7 +59,7 @@ const OneApp = () => {
                 <tbody>
                     {
                         personList.map((rowData, idx) => 
-                        <PersonRowItem key={idx} row={rowData} idx={idx}/>)
+                        <PersonRowItem key={idx} row={rowData} idx={idx} onDelete={deletePerson}/>)
                     }
                 </tbody>
             </table>

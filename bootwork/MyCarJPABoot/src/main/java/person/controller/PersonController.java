@@ -2,9 +2,11 @@ package person.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
@@ -30,5 +32,12 @@ public class PersonController {
 	public List<PersonDto> list(){
 		System.out.println("list >> "); // 호출되는지 확인용
 		return personDao.getAllPersons();
+	}
+	
+	// 삭제
+	@DeleteMapping("/person/delete")
+	public void delete(@RequestParam("pnum") int num) {
+		System.out.println("delete >> " + num);
+		personDao.deletePerson(num);
 	}
 }
