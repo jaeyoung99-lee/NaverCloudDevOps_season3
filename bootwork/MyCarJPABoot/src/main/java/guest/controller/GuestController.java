@@ -1,5 +1,9 @@
 package guest.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +41,7 @@ public class GuestController {
 		return photo;
 	}
 	
+	// 사진 db에 넣기
 	@PostMapping("/guest/insert")
 	public void insert(@RequestBody GuestDto dto) {
 		// 미리 업로드한 photo를 dto에 넣기
@@ -47,5 +52,17 @@ public class GuestController {
 		
 		// photo 초기화 : 초기화를 해줘야지 같은 사진이 안 들어감
 		photo = null;
+	}
+	
+	// 목록 출력
+	@GetMapping("/guest/list")
+	public List<GuestDto> list(){
+		return guestDao.getAllGuests();
+	}
+	
+	// 삭제
+	@DeleteMapping("/guest/delete")
+	public void delete(@RequestParam("gnum") int gnum) {
+		guestDao.deleteGuest(gnum);
 	}
 }
