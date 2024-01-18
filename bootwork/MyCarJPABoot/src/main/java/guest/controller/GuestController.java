@@ -16,53 +16,62 @@ import lombok.RequiredArgsConstructor;
 import naver.storage.NcpObjectStorageService;
 
 @RestController
-@RequiredArgsConstructor // final 붙은 것만 자동 주입
+@RequiredArgsConstructor
 public class GuestController {
-	//storage class 선언
+
+	//storage class �꽑�뼵
 	private final NcpObjectStorageService storageService;
 	
-	// dao
+	//dao
 	private final GuestDao guestDao;
 	
-	// 업로드한 파일명 저장
+	//�뾽濡쒕뱶�븳 �뙆�씪紐� ���옣
 	String photo;
-	
-	//버켓네임 지정
+
+	//踰꾩폆�꽕�엫 吏��젙
 	private String bucketName="bitcamp-701ex";
-	
-	//저장할 폴더네임 지정
+	//���옣�븷 �뤃�뜑�꽕�엫 吏��젙
 	private String folderName="bootmyshop";
 	
-	// 사진만 먼저 업로드하기
+	//�궗吏꾨쭔 癒쇱� �뾽濡쒕뱶�븯湲�
 	@PostMapping("/guest/upload")
-	public String uploadFile(@RequestParam("upload") MultipartFile upload) {
-		System.out.println("upload : " + upload.getOriginalFilename());
-		photo = storageService.uploadFile(bucketName, folderName, upload);
+	public String uploadFile(@RequestParam("upload") MultipartFile upload)
+	{
+		System.out.println("upload:"+upload.getOriginalFilename());
+		photo=storageService.uploadFile(bucketName, folderName, upload);
 		return photo;
 	}
 	
-	// 사진 db에 넣기
 	@PostMapping("/guest/insert")
-	public void insert(@RequestBody GuestDto dto) {
-		// 미리 업로드한 photo를 dto에 넣기
+	public void insert(@RequestBody GuestDto dto)
+	{
+		//誘몃━ �뾽濡쒕뱶�븳 photo 瑜� dto �뿉 �꽔湲�
 		dto.setPhoto(photo);
-		
-		// db insert
+		//db insert
 		guestDao.addGuest(dto);
-		
-		// photo 초기화 : 초기화를 해줘야지 같은 사진이 안 들어감
-		photo = null;
+		//photo 珥덇린�솕
+		photo=null;
 	}
 	
-	// 목록 출력
 	@GetMapping("/guest/list")
-	public List<GuestDto> list(){
+	public List<GuestDto> list()
+	{
 		return guestDao.getAllGuests();
 	}
 	
-	// 삭제
 	@DeleteMapping("/guest/delete")
-	public void delete(@RequestParam("gnum") int gnum) {
+	public void delete(@RequestParam("gnum") int gnum)
+	{
+		System.out.println("delete>>"+gnum);
 		guestDao.deleteGuest(gnum);
 	}
+
 }
+
+
+
+
+
+
+
+

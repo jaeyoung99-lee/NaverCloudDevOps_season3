@@ -13,31 +13,44 @@ import lombok.RequiredArgsConstructor;
 import person.data.PersonDao;
 import person.data.PersonDto;
 
-@RestController // @ResponseBody 안 써도 됨
+@RestController
 @RequiredArgsConstructor
 public class PersonController {
 	private final PersonDao personDao;
 	
-	// 추가
+	//추가
 	@PostMapping("/person/add")
-	public void insert(@RequestBody PersonDto dto) {
-		System.out.println("add >> " + dto); // 호출되는지 확인용, 자동으로 toString 함수 호출됨
-		
-		// db insert
+	public void insert(@RequestBody PersonDto dto)
+	{
+		System.out.println("add>>"+dto);
+		//db insert
 		personDao.insertPerson(dto);
 	}
 	
-	// 출력
+	//출력
 	@GetMapping("/person/list")
-	public List<PersonDto> list(){
-		System.out.println("list >> "); // 호출되는지 확인용
+	public List<PersonDto> list()
+	{
+		System.out.println("list>>");
 		return personDao.getAllPersons();
 	}
 	
-	// 삭제
+	//삭제
 	@DeleteMapping("/person/delete")
-	public void delete(@RequestParam("pnum") int num) {
-		System.out.println("delete >> " + num);
-		personDao.deletePerson(num);
+	public void delete(@RequestParam("pnum") int pnum)
+	{
+		System.out.println("delete>>"+pnum);
+		personDao.deletePerson(pnum);
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+

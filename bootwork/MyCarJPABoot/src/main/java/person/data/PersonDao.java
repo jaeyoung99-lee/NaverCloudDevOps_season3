@@ -11,18 +11,36 @@ import lombok.AllArgsConstructor;
 public class PersonDao {
 	private PersonRepository personRepository;
 	
-	// 추가
-	public void insertPerson(PersonDto dto) {
+	//추가
+	public void insertPerson(PersonDto dto)
+	{
 		personRepository.save(dto);
 	}
 	
-	// 전체 출력
-	public List<PersonDto> getAllPersons(){
+	//전체 출력
+	public List<PersonDto> getAllPersons()
+	{
 		return personRepository.findAll();
 	}
 	
-	// 삭제
-	public void deletePerson(int num) {
-		personRepository.deleteById(num);
+	//삭제
+	public void deletePerson(int pnum)
+	{
+		personRepository.deleteById(pnum);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

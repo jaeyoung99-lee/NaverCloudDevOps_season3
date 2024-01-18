@@ -39,6 +39,16 @@ public class GuestDto {
 	
 	@CreationTimestamp
 	@Column(updatable = false)
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
-	private Timestamp writeday;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "Asia/Seoul")
+	private Timestamp writeday;	
 }
+
+
+
+
+
+
+
+
+
+

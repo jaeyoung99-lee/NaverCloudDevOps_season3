@@ -28,7 +28,6 @@ dependencies {
 	implementation group: 'io.awspring.cloud', name: 'spring-cloud-starter-aws', version: '2.4.4'
 	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.416'
 	
-	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

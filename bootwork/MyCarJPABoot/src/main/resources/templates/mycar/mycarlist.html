@@ -7,60 +7,86 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <style>
-	body * {
-		font-family: 'Jua';
-	} 
-	div.box {
-		width: 30px;
-		height: 30px;
-		border: 1px solid black;
-		border-radius: 100px;
-	}
+  body * {
+      font-family: 'Jua';
+  } 
+  
+  div.box{
+	  width:30px;
+	  height: 30px;
+	  border:1px solid black;
+	  border-radius: 100px;
+  }
 </style>
 </head>
 <body>
-	<div style="margin:30px;">
-		<h3 class="alert alert-danger">MyCar 목록 출력</h3>
-		<h4><b>총 [[${totalCount}]]개의 자동차 정보가 등록되어 있습니다.(페이지 수 : [[${totalPage}]])</b>
-			<button type="button" class="btn btn-outline-success" style="margin-left: 50px;" onclick="location.href='./addcar'">자동차 등록</button>
-		</h4>
-		<hr>
-		<table class="table table-bordered" style="width: 700px;">
-			<tr>
-				<th style="width: 50px;">번호</th>
-				<th style="width: 250px;">자동차명</th>
-				<th style="width: 70px;">색상</th>
-				<th style="width: 150px;">단가</th>
-				<th>구입일</th>
-			</tr>
-			
-			<!-- 반복문으로 전체 list 출력 -->
-			<tr th:each="dto,iter:${list}">
-				<td>[[${iter.count}]]</td>
-				<td>
-					<a th:href="@{/detail(num=${dto.num})}" style="color: black; cursor: pointer; text-decoration: none;">
-						<!-- 타임리프로 썸네일 사진 넣기 -->
-						<img th:src="@{https://o8pdrovm2109.edge.naverncp.com/OkHqFOUkAL/bootmyshop/{photo}?type=f&w=40&h=40&faceopt=true&ttype=jpg(photo=${dto.carphoto})}" border="1" hspace="10">
-						[[${dto.carname}]]
-						
-						<!-- 댓글 개수 -->
-						<span th:if="${dto.commentcount > 0}" style="margin-left: 10px; color: red;">([[${dto.commentcount}]])</span>
-					</a>
-				</td>
-				<td align="center">
-					<div class="box" th:style="'background-color: ' + ${dto.carcolor} + ';'"></div>
-				</td>
-				<td align="right">
-					<span th:text="${#numbers.formatInteger(dto.carprice, 0, 'COMMA')}"></span>
-				</td>
-				<td style="text-align: center">
-					[[${dto.carguip}]]
-				</td>
-			</tr>
-		</table>
-		<div th:if="${pageSize < totalCount}">
-			<button type="button" th:onclick="|location.href='@{./(more=2)}'|">More</button> <!-- 파이프(|) 쓰는 이유 : 문자열로 일일이 더하기 기호 사용 안 해주기 위해서  -->
-		</div>
+<div style="margin: 30px;">
+	<h3 class="alert alert-danger">MyCar 목록 출력</h3>
+	<h4><b>총 [[${totalCount}]]개의 자동차 정보가 등록되어있습니다(페이지수:[[${totalPage}]])</b>
+	<button type="button" class="btn btn-outline-success" style="margin-right: 100px;"
+	  onclick="location.href='./addcar'">자동차등록</button>
+	</h4>
+	<hr>
+	<table class="table table-bordered" style="width:600px;">
+		<tr>
+			<th style="width:50px;">번호</th>
+			<th style="width:210px;">자동차명</th>
+			<th style="width:70px;">색상</th>
+			<th style="width:100px;">단가</th>
+			<th>구입일</th>
+		</tr>
+		<!--반목문으로 전체 list 출력-->
+		<tr th:each="dto,iter:${list}">
+			<td>[[${iter.count}]]</td>
+			<td>
+				<a th:href="@{/detail(num=${dto.num})}" 
+				style="color:black;cursor: pointer;text-decoration: none;">
+					<!--타임리프로 썸네일 사진넣기-->
+					<img th:src="@{https://mtl6hh132102.edge.naverncp.com/zLNiguzHsI/bootmyshop/{photo}?type=f&w=40&h=40&faceopt=true&ttype=jpg(photo=${dto.carphoto})}"
+					  border="1" hspace="10">
+					  
+					<!--자동차명-->
+					[[${dto.carname}]]
+					
+					<!--댓글 갯수-->
+					<span style="margin-left:10px;color:red;" 
+					 th:if="${dto.commentcount>0}">
+						([[${dto.commentcount}]])
+					</span>
+				</a>
+			</td>
+			<td align="center">
+				<div class="box" th:style="'background-color:'+${dto.carcolor}"></div>
+			</td>
+			<td align="right">
+				<span th:text="${#numbers.formatInteger(dto.carprice,0,'COMMA')}"></span>
+			</td>
+			<td align="center">
+				[[${dto.carguip}]]
+			</td>
+		</tr>
+	</table>
+	 <div th:if="${pageSize<totalCount}">
+		 <button type="button" th:onclick="|location.href='@{./(more=2)}'|">More</button>
 	</div>
+</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

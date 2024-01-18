@@ -39,8 +39,25 @@ public class PersonDto {
 	
 	private int age;
 	
+	
 	@CreationTimestamp
-	@Column(updatable = false) // 수정 시 컬럼 제외
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
-	private Timestamp writeday;
+	@Column(updatable = false)  //수정시 컬럼 제외
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "Asia/Seoul")
+	private Timestamp writeday;	
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

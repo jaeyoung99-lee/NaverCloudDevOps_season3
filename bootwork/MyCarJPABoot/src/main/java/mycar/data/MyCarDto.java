@@ -30,22 +30,22 @@ public class MyCarDto {
 	@Column(name = "carname",length = 30)  //컬럼명은 변수명과 같을경우 생략가능
 	private String carname;
 	
-	private int carprice; // length 생략 시 11
+	private int carprice;
 	
 	@Column(length = 20)
 	private String carcolor;
 	
-	@Column(length = 30)  // length 생략 시 255
+	@Column(length = 30)  //length 생략시 255
 	private String carguip;
 	
 	@Column(length = 100)
 	private String carphoto;
 	
-	@Column(updatable = false) // 수정시 컬럼 제외
+	@Column(updatable = false) //수정시 컬럼 제외
 	@CreationTimestamp
 	private Timestamp writeday;	
 	
-	// @Transient: 테이블의 컬럼으로는 생성되지 않고 객체에서만 사용 가능한 멤버 변수
+	//@Transient: 테이블의 컬럼으로는 생성되지 않고 객체에서만 사용가능한 멤버변수
 	@Transient 
 	private int commentcount;
 	
