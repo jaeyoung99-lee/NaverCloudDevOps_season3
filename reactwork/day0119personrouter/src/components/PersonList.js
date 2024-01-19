@@ -16,12 +16,26 @@ const PersonList = () => {
         });
     }
 
-    const PersonDelete = (pnum) => {
-        axios.delete("person/delete?pnum=" + pnum)
-        .then(res => {
+
+    // 강사님 코드
+    //삭제
+    const onPersonDelete=(pnum)=>{
+        const url="/person/delete?pnum="+pnum;
+        axios.delete(url)
+        .then(res=>{
+            //삭제후 목록 다시 출력
             PersonList();
         })
     }
+
+
+    // 내 코드
+    // const PersonDelete = (pnum) => {
+    //     axios.delete("person/delete?pnum=" + pnum)
+    //     .then(res => {
+    //         PersonList();
+    //     })
+    // }
 
     useEffect(() => {
         PersonList();
@@ -50,7 +64,7 @@ const PersonList = () => {
                     {
                         list &&
                         list.map((row, idx) => (
-                            <PersonRowItem key={idx} row={row} idx={idx} onDelete={PersonDelete}/>
+                            <PersonRowItem key={idx} row={row} idx={idx} onDelete={onPersonDelete}/>
                         ))
                     }
                 </tbody>
