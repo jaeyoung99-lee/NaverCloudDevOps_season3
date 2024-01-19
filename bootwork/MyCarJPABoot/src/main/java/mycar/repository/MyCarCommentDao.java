@@ -13,13 +13,13 @@ public class MyCarCommentDao {
 	
 	private MyCarCommentDaoInter commentDaoInter;
 	
-	//ëŒ“ê¸€ ì €ì¥
+	// ´ñ±Û ÀúÀå
 	public void insertComment(MyCarCommentDto dto)
 	{
 		commentDaoInter.save(dto);
 	}
 	
-	//ëŒ“ê¸€ ëª©ë¡
+	// ´ñ±Û ¸ñ·Ï
 	public List<MyCarCommentDto> getMyCarCommentList(Long num)
 	{
 		return commentDaoInter.getMyCarCommentList(num);

@@ -10,19 +10,19 @@ import mycar.data.MyCarDto;
 
 public interface MyCarDaoInter extends JpaRepository<MyCarDto,Long>{
 
-	//ì§ì ‘ ì¿¼ë¦¬ë¬¸ì„ ì´ìš©í•´ì„œ ìˆ˜ì •í•˜ëŠ” ë©”ì„œë“œë¥¼ ì¶”ê°€í•´ë³´ì
-	//ìë™ì°¨ëª…,ê°€ê²©,ìƒ‰ìƒë§Œ ìˆ˜ì •í•˜ëŠ” ë©”ì„œë“œë¥¼ ë§Œë“¤ì–´ë³´ì
+	// Á÷Á¢ Äõ¸®¹®À» ÀÌ¿ëÇØ¼­ ¼öÁ¤ÇÏ´Â ¸Ş¼­µå¸¦ Ãß°¡ÇØº¸ÀÚ
+	// ÀÚµ¿Â÷¸í, °¡°İ, »ö»ó¸¸ ¼öÁ¤ÇÏ´Â ¸Ş¼­µå¸¦ ¸¸µé¾îº¸ÀÚ
 
-	//@Query: repositoryì— ì›í•˜ëŠ” ì¿¼ë¦¬ë¥¼ ì‘ì„±í•˜ê²Œ í•´ì£¼ëŠ” ì–´ë…¸í…Œì´ì…˜
-	//value ì†ì„±: ì¿¼ë¦¬ ì‘ì„±ë¶€
-	//nativeQuery: JPAì—ì„œ ì§€ì •í•œ ê·œì¹™ì„ ëª¨ë‘ ë¬´ì‹œí•  ìˆ˜ ìˆëŠ” ì†ì„±
+	// @Query : repository¿¡ ¿øÇÏ´Â Äõ¸®¸¦ ÀÛ¼ºÇÏ°Ô ÇØÁÖ´Â ¾î³ëÅ×ÀÌ¼Ç
+	// value ¼Ó¼º : Äõ¸® ÀÛ¼ººÎ
+	// nativeQuery : JPA¿¡¼­ ÁöÁ¤ÇÑ ±ÔÄ¢À» ¸ğµÎ ¹«½ÃÇÒ ¼ö ÀÖ´Â ¼Ó¼º
 	@Query(value = 
 			"""
 			update mycar set carname=:carname,carprice=:carprice,carcolor=:carcolor
 			 where num=:num
 			""",nativeQuery = true)
-	@Modifying  //@Modifyingì€ insert, update, delete ë¿ë§Œ ì•„ë‹ˆë¼ DDLêµ¬ë¬¸ì„ ì‚¬ìš©í•  ë•Œë„ í‘œê¸°ë¥¼ í•´ì¤˜ì•¼ ë©ë‹ˆë‹¤.
-	@Transactional  //@Transactionalì€ update, deleteë¥¼ í•  ë•Œ í‘œê¸°ë¥¼ í•´ì¤˜ì•¼ ì •ìƒ ì‹¤í–‰ì´ ë©ë‹ˆë‹¤.
+	@Modifying // @ModifyingÀº insert, update, delete »Ó¸¸ ¾Æ´Ï¶ó DDL ±¸¹®À» »ç¿ëÇÒ ¶§µµ Ç¥±â¸¦ ÇØÁà¾ß ÇÑ´Ù.
+	@Transactional // @TransactionalÀº update, delete¸¦ ÇÒ ¶§ Ç¥±â¸¦ ÇØÁà¾ß Á¤»ó ½ÇÇàÀÌ µÈ´Ù.
 	public void updateMycarNoPhoto(@Param("num") Long num,@Param("carname") String carname,
 			@Param("carprice") int carprice,@Param("carcolor") String carcolor);
 
@@ -33,11 +33,11 @@ public interface MyCarDaoInter extends JpaRepository<MyCarDto,Long>{
 			carcolor=:#{#dto.carcolor},carguip=:#{#dto.carguip}
 			 where num=:#{#dto.num}
 			""",nativeQuery = true)
-	@Modifying  //@Modifyingì€ insert, update, delete ë¿ë§Œ ì•„ë‹ˆë¼ DDLêµ¬ë¬¸ì„ ì‚¬ìš©í•  ë•Œë„ í‘œê¸°ë¥¼ í•´ì¤˜ì•¼ ë©ë‹ˆë‹¤.
-	@Transactional  //@Transactionalì€ update, deleteë¥¼ í•  ë•Œ í‘œê¸°ë¥¼ í•´ì¤˜ì•¼ ì •ìƒ ì‹¤í–‰ì´ ë©ë‹ˆë‹¤.
+	@Modifying // @ModifyingÀº insert, update, delete »Ó¸¸ ¾Æ´Ï¶ó DDL ±¸¹®À» »ç¿ëÇÒ ¶§µµ Ç¥±â¸¦ ÇØÁà¾ß ÇÑ´Ù.
+	@Transactional // @TransactionalÀº update, delete¸¦ ÇÒ ¶§ Ç¥±â¸¦ ÇØÁà¾ß Á¤»ó ½ÇÇàÀÌ µÈ´Ù.
 	public void updateMycarDTONoPhoto(@Param("dto") MyCarDto dto);
 
-	//ê¸°ì¡´ count() ë¡œ í•´ë„ ë˜ì§€ë§Œ í…ŒìŠ¤íŠ¸ë¡œ ë§Œë“¤ì–´ë´…ì‹œë‹¤
+	// ±âÁ¸ count()·Î ÇØµµ µÇÁö¸¸ Å×½ºÆ®·Î ¸¸µé¾îº¸ÀÚ.
 	@Query(value = "select count(*) from mycar",nativeQuery = true)
 	public Long getTotalMyCount();
 }

@@ -10,7 +10,7 @@ import mycar.data.MyCarCommentDto;
 
 public interface MyCarCommentDaoInter extends JpaRepository<MyCarCommentDto, Integer>{
 
-	//num ì— í•´ë‹¹í•˜ëŠ” ëŒ“ê¸€ ëª©ë¡ ì¶œë ¥í•˜ëŠ” ë©”ì„œë“œë¥¼ ì§ì ‘ ë§Œë“¤ì–´ë³´ì
+	// num¿¡ ÇØ´çÇÏ´Â ´ñ±Û ¸ñ·Ï Ãâ·ÂÇÏ´Â ¸Ş¼­µå¸¦ Á÷Á¢ ¸¸µé¾îº¸ÀÚ
 	@Query(value = "select * from mycar_comment where num=:num order by idx desc",nativeQuery = true)
 	public List<MyCarCommentDto> getMyCarCommentList(@Param("num") Long num);
 }

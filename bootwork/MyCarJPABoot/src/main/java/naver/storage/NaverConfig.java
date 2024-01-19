@@ -9,8 +9,8 @@ import lombok.Data;
 @Configuration
 @Data
 @PropertySource("classpath:/naver.properties")
-// í”„ë¡œí¼í‹° íŒŒì¼ì—ì„œ ì„ ì–¸ëœ ê°’ ì¤‘ì—ì„œ
-// ncp.* ì´ë¦„ìœ¼ë¡œ ëœ í”„ë¡œí¼í‹° ê°’ì„ ë°›ì„ í•„ë“œë¥¼ ì„ ì–¸í•œë‹¤.
+// ÇÁ·ÎÆÛÆ¼ ÆÄÀÏ¿¡¼­ ¼±¾ğµÈ °ª Áß¿¡¼­
+// ncp.* ÀÌ¸§À¸·Î µÈ ÇÁ·ÎÆÛÆ¼ °ªÀ» ¹ŞÀ» ÇÊµå¸¦ ¼±¾ğÇÑ´Ù.
 @ConfigurationProperties(prefix = "ncp")
 public class NaverConfig {
 	private String endPoint;

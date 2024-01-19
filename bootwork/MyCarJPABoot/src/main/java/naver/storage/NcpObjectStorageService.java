@@ -42,7 +42,7 @@ public class NcpObjectStorageService implements ObjectStorageService {
 
 		try (InputStream fileIn = file.getInputStream()) {
 			String uuid = UUID.randomUUID().toString();
-			//년월일시분_UUID의 절반만추출-이렇게 파일명을 수정해보자
+			// 년월일시분_UUID의 절반만 추출 : 이렇게 파일명을 수정해보자
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmm_");
 			String filename=sdf.format(new Date())+uuid.substring(0,10)+".jpg";
 
@@ -70,10 +70,10 @@ public class NcpObjectStorageService implements ObjectStorageService {
 		// TODO Auto-generated method stub
 		String path=directoryPath+"/"+fileName;
 		System.out.println("path="+path);
-		//해당 버킷에 파일이 존재하면 true 반환
+		// 해당 버킷에 파일이 존재하면 true 반환
 		boolean isfind=s3.doesObjectExist(bucketName, path);
 		System.out.println("isfind="+isfind);
-		//존재할경우 삭제
+		// 존재할 경우 삭제
 		if(isfind) {
 			s3.deleteObject(bucketName, path);
 			System.out.println(path+":삭제완료!");

@@ -43,7 +43,7 @@ public class PersonDto {
 	
 	
 	@CreationTimestamp
-	@Column(updatable = false)  //�닔�젙�떆 而щ읆 �젣�쇅
+	@Column(updatable = false)  // 수정 시 컬럼 제외
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "Asia/Seoul")
 	private Timestamp writeday;	
 

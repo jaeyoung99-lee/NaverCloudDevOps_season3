@@ -27,11 +27,12 @@ public class MyCarController {
 	private final MyCarDao myCarDao;
 	private final MyCarCommentDao commentDao;
 
-	// storage class선언
+	// storage class 선언
 	private final NcpObjectStorageService storageService;
 
 	// 버켓 네임 지정
 	private String bucketName="bitcamp-701ex";
+	
 	// 저장할 폴더 네임 지정
 	private String folderName="bootmyshop";
 
@@ -90,6 +91,7 @@ public class MyCarController {
 	@PostMapping("/insert")
 	public String insert(@ModelAttribute MyCarDto dto,@RequestParam("upload") MultipartFile upload)
 	{
+		// 이미지를 스토리지에 저장 후 저장된 파일명 반환
 		String carphoto=storageService.uploadFile(bucketName, folderName, upload);
 		
 		// dto에 사진 파일명 저장
@@ -115,8 +117,10 @@ public class MyCarController {
 		// 스토리지의 사진부터 삭제하기
 		String carphoto=myCarDao.getData(num).getCarphoto();
 		storageService.deleteFile(bucketName, folderName, carphoto);
+		
 		//db 삭제
 		myCarDao.deleteMyCar(num);
+		
 		// 목록으로 이동
 		return "redirect:./";
 	}

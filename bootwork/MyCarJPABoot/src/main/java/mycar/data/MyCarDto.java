@@ -23,11 +23,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MyCarDto {	
-	@Id  //ê° ì—”í„°í‹°ë¥¼ êµ¬ë³„í• ìˆ˜ ìˆë„ë¡ ì‹ë³„ ì•„ì´ë””ë¥¼ ê°–ë„ë¡ ì„¤ê³„
+	@Id // °¢ ¿£ÅÍÆ¼¸¦ ±¸º°ÇÒ ¼ö ÀÖµµ·Ï ½Äº° ¾ÆÀÌµğ¸¦ °®µµ·Ï ¼³°è
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long num;
 	
-	@Column(name = "carname",length = 30)  //ì»¬ëŸ¼ëª…ì€ ë³€ìˆ˜ëª…ê³¼ ê°™ì„ê²½ìš° ìƒëµê°€ëŠ¥
+	@Column(name = "carname",length = 30) // ÄÃ·³¸íÀº º¯¼ö¸í°ú °°À» °æ¿ì »ı·« °¡´É
 	private String carname;
 	
 	private int carprice;
@@ -35,17 +35,17 @@ public class MyCarDto {
 	@Column(length = 20)
 	private String carcolor;
 	
-	@Column(length = 30)  //length ìƒëµì‹œ 255
+	@Column(length = 30)  //length »ı·« ½Ã 255
 	private String carguip;
 	
 	@Column(length = 100)
 	private String carphoto;
 	
-	@Column(updatable = false) //ìˆ˜ì •ì‹œ ì»¬ëŸ¼ ì œì™¸
+	@Column(updatable = false) // ¼öÁ¤ ½Ã ÄÃ·³ Á¦¿Ü
 	@CreationTimestamp
 	private Timestamp writeday;	
 	
-	//@Transient: í…Œì´ë¸”ì˜ ì»¬ëŸ¼ìœ¼ë¡œëŠ” ìƒì„±ë˜ì§€ ì•Šê³  ê°ì²´ì—ì„œë§Œ ì‚¬ìš©ê°€ëŠ¥í•œ ë©¤ë²„ë³€ìˆ˜
+	//@Transient: Å×ÀÌºíÀÇ ÄÃ·³À¸·Î´Â »ı¼ºµÇÁö ¾Ê°í °´Ã¼¿¡¼­¸¸ »ç¿ë °¡´ÉÇÑ ¸â¹ö º¯¼ö
 	@Transient 
 	private int commentcount;
 	
