@@ -18,7 +18,7 @@ const OneApp = () => {
         axios.post("/person/add", data)
         .then((res) => {
             // 추가 성공 후 목록 다시 출력
-
+            list();
         }).catch(error => {
             console.log("추가 시 에러 발생 : " + error);
         }) 

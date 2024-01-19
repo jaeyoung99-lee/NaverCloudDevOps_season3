@@ -1,0 +1,7 @@
+.mainbox {
+    width: 500px;
+    height: auto;
+    padding: 10px;
+    margin: 30px 50px;
+    border: 3px solid gray;
+}

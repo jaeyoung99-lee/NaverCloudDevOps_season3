@@ -19,21 +19,22 @@ import naver.storage.NcpObjectStorageService;
 @RequiredArgsConstructor
 public class GuestController {
 
-	//storage class �꽑�뼵
+	// storage class 선언
 	private final NcpObjectStorageService storageService;
 	
-	//dao
+	// dao
 	private final GuestDao guestDao;
 	
-	//�뾽濡쒕뱶�븳 �뙆�씪紐� ���옣
+	// 업로드한 파일명 저장
 	String photo;
 
-	//踰꾩폆�꽕�엫 吏��젙
+	// 버켓 네임 지정
 	private String bucketName="bitcamp-701ex";
-	//���옣�븷 �뤃�뜑�꽕�엫 吏��젙
+	
+	// 저장할 폴더 네임 지정
 	private String folderName="bootmyshop";
 	
-	//�궗吏꾨쭔 癒쇱� �뾽濡쒕뱶�븯湲�
+	// 사진만 먼저 업로드 하기
 	@PostMapping("/guest/upload")
 	public String uploadFile(@RequestParam("upload") MultipartFile upload)
 	{
@@ -45,11 +46,11 @@ public class GuestController {
 	@PostMapping("/guest/insert")
 	public void insert(@RequestBody GuestDto dto)
 	{
-		//誘몃━ �뾽濡쒕뱶�븳 photo 瑜� dto �뿉 �꽔湲�
+		// 미리 업로드한 photo를 dto에 넣기
 		dto.setPhoto(photo);
 		//db insert
 		guestDao.addGuest(dto);
-		//photo 珥덇린�솕
+		//photo 초기화
 		photo=null;
 	}
 	

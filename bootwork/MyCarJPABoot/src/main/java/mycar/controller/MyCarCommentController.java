@@ -11,18 +11,18 @@ import mycar.data.MyCarCommentDto;
 import mycar.data.MyCarDto;
 import mycar.repository.MyCarCommentDao;
 
-@RestController
-@RequiredArgsConstructor  //final ë˜ëŠ” @NonNull ë©¤ë²„ë³€ìˆ˜ë§Œ ìë™ì£¼ì…
+@RestController // ÀÌ°Å ¾È¾²¸é ajax ¹ŞÀ» ¶§ responsebody·Î ¹Ş¾Æ¾ß ÇÏ´Âµ¥ ±×°É »ı·«ÇÏ±â À§ÇØ¼­ ¾¸
+@RequiredArgsConstructor  //final ¶Ç´Â nonnull¸¸ »ı¼ºÀÚ·Î ¸¸µê
 public class MyCarCommentController {
 	private final MyCarCommentDao commentDao;
 	
 	@GetMapping("/addcomment")
 	public void addComment(@RequestParam("num") Long num,@RequestParam("comment") String comment)
 	{
-		//ë¨¼ì € MyCarDto ì— num ê°’ì„ ë„£ì€í›„ MyCarCommentDto ì— ë„£ëŠ”ë‹¤(ì™¸ë¶€í‚¤ë¡œ ì§€ì •ëœê°’)
+		// ¸ÕÀú MyCarDto¿¡ num °ªÀ» ³ÖÀº ÈÄ MyCarCommentDto¿¡ Ãß°¡ÇÑ´Ù
 		MyCarDto dto=MyCarDto.builder().num(num).build();
 		
-		//dto ì— ê°’ì„ ì €ì¥í•œë‹¤
+		//dto¿¡ °ªÀ» ÀúÀåÇÑ´Ù
 		MyCarCommentDto commentDto=MyCarCommentDto.builder()
 				.comment(comment)
 				.mycar(dto)
@@ -31,7 +31,7 @@ public class MyCarCommentController {
 		commentDao.insertComment(commentDto);
 	}
 	
-	//íŠ¹ì •ê¸€ì— ë‹¬ë¦° ëŒ“ê¸€ ë°˜í™˜
+	// Æ¯Á¤ ±Û¿¡ ´Ş¸° ´ñ±Û ¹İÈ¯
 	@GetMapping("/commentlist")
 	public List<MyCarCommentDto> commnetList(@RequestParam("num") Long num)
 	{
