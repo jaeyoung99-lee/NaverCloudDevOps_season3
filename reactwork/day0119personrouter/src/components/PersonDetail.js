@@ -40,7 +40,9 @@ const PersonDetail = () => {
                 <h6>가입일 : {selectData.writeday}
                 <ArrowBack 
                 // -1 : 이전 페이지로 이동
-                onClick={() => navi(-1)}
+                // onClick={() => navi(-1)}
+                //목록으로 이동
+                onClick={()=>navi("/")}
                 style={{fontSize: '2em', float: 'right', cursor: 'pointer'}}/> 
                 </h6>
             </div>
