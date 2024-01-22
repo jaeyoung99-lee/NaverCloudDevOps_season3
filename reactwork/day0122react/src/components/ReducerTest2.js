@@ -3,7 +3,7 @@ import Student from './Student';
 
 // reducer 설정 시 초기값으로 미리 지정
 const initialState = {
-    count : 2,
+    count : 3,
     students : [
         {
         id : new Date(),
@@ -14,6 +14,11 @@ const initialState = {
         id : new Date(),
         name : '캔디',
         isHere : true
+        },
+        {
+            id : new Date(),
+            name : '강호동',
+            isHere : true
         }
     ]
 }
