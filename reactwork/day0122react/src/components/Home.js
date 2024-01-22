@@ -6,8 +6,8 @@ const Home = () => {
         <div>
             <img alt='' src={img1}/>
             <h4 className='alert alert-danger'>
-                오늘(2024-01-22) 공부할 내용
-                <br/>
+                [오늘(2024-01-22) 공부할 내용]
+                <br/><br/>
                 1. useCallback <br/>
                 2. useMemo <br/>
                 3. useReducer <br/>
