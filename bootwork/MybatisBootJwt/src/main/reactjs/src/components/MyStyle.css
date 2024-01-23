@@ -1,0 +1,32 @@
+ul.menu {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+ul.menu li {
+    float: left;
+    width: 110px;
+    height: 60px;
+    font-size: 20px;
+    border: 1px solid gray;
+    line-height: 60px;
+    text-align: center;
+    margin-right: 10px;
+    box-shadow: 5px 5px 5px gray;
+    border-radius: 20px;
+    background-color: darkseagreen;
+}
+
+ul.menu li a {
+    text-decoration: none;
+    color: yellow;
+    cursor: pointer;
+}
+
+ul.menu li:hover {
+    background-color: aquamarine;
+}
+
+ul.menu li a:hover {
+    color: palevioletred;
+}

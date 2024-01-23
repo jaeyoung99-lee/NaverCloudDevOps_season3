@@ -23,7 +23,7 @@ public class MemberDto {
 	private String pass;
 	private String photo;
 	private String hp;
-	private String email;
+	private String addr;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
 	private Timestamp gaipday;
 }
