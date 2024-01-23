@@ -1,0 +1,17 @@
+# port 기본은 8080
+server:
+  port: 9003
+  
+# MySQL
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-jbnls-kr.vpc-pub-cdb.ntruss.com:3306/studydb?serverTimezone=Asia/Seoul
+    username: study
+    password: bitcamp123!@#
+    
+#Mybatis
+mybatis:
+  type-aliases-package: data.dto
+  mapper-locations:
+  - /mapper/**/*.xml
