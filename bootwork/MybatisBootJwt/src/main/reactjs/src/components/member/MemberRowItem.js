@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MemberRowItem = ({row}) => {
+const MemberRowItem = ({row, deleteMember}) => {
     const imageUrl = process.env.REACT_APP_STORAGE;
 
     return (
@@ -16,7 +16,8 @@ const MemberRowItem = ({row}) => {
                 <b>주소 : {row.addr}</b><br/>
                 <b>가입일 : {row.gaipday}</b><br/>
                 <br/>
-                <button type='button' className='btn btn-outline-danger btn-sm'>
+                <button type='button' className='btn btn-outline-danger btn-sm'
+                onClick={() => deleteMember(row.num)}>
                     회원 삭제
                 </button>
             </td>

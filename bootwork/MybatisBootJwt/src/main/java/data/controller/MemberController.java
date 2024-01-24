@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -79,5 +80,15 @@ public class MemberController {
 	@GetMapping("/member/idcheck")
 	public int idcheck(@RequestParam("myid") String myid) {
 		return memberService.getIdCheck(myid);
+	}
+	
+	@DeleteMapping("/member/delete")
+	public void delete(@RequestParam("num") int num) {
+		// db 삭제 전에 스토리지의 사진부터 먼저 삭제
+		String dbPhotoname = memberService.getMember(num).getPhoto();
+		storageService.deleteFile(bucketName, folderName, dbPhotoname);
+		
+		// db 삭제
+		memberService.deleteMember(num);
 	}
 }

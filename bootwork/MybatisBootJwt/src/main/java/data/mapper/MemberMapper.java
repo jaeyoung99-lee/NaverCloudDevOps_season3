@@ -2,6 +2,7 @@ package data.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -21,4 +22,10 @@ public interface MemberMapper {
 	// 해당 아이디가 있는지 확인, count 이용
 	@Select("select count(*) from memberdb where myid = #{myid}")
 	public int getIdCheck(String myid);
+	
+	@Delete("delete from memberdb where num = #{num}")
+	public void deleteMember(int num);
+	
+	@Select("select * from memberdb where num = #{num}")
+	public MemberDto getMember(int num);
 }
