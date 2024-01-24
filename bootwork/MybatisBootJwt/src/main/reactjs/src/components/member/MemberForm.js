@@ -9,12 +9,20 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DaumPostcodeEmbed from 'react-daum-postcode';
+import { useNavigate } from 'react-router-dom';
 
 const MemberForm = () => {
     const [photo, setPhoto] = useState('');
     const [addr, setAddr] = useState('');
     const [open, setOpen] = useState(false); // 다이얼로그 open/close
     const [openPostcode, setOpenPostcode] = useState(false); // 카카오 주소록 open/close
+    const [idcheck, setIdcheck] = useState(false); // 아이디 중복 확인을 했는지 체크하기 위한 변수
+    const [myid, setMyid] = useState('');
+    const [name, setName] = useState('');
+    const [pass, setPass] = useState('');
+    const [hp, setHp] = useState('');
+
+    const navi = useNavigate();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -49,6 +57,51 @@ const MemberForm = () => {
             headers:{'Content-Type' : 'multipart/form-data'}
         }).then(res => {
             setPhoto(res.data); // 사진 변경 - 스토리지에 업로드된 파일명을 서버가 반환
+        })
+    }
+
+    // 중복 확인 버튼 이벤트
+    const buttonIdCheck = () => {
+        const url = "/member/idcheck?myid=" + myid;
+        axios.get(url)
+        .then(res => {
+            if(Number(res.data) === 0){
+                alert("사용 가능한 아이디입니다.");
+                setIdcheck(true);
+            }
+            else{
+                alert("이미 사용중인 아이디입니다.");
+                setMyid('');
+                setIdcheck(false);
+            }
+        })
+    }
+
+    const saveMemberEvent = () => {
+        if(myid.length === 0){
+            alert("아이디를 입력 후 중복 확인을 클릭해주세요.");
+            return;
+        }
+
+        if(!idcheck){
+            alert("아이디 중복 확인 버튼을 눌러주세요.");
+            return;
+        }
+
+        if(name.length === 0){
+            alert("이름을 입력해주세요.");
+            return;
+        }
+        if(pass.length === 0){
+            alert("비밀번호를 입력해주세요.");
+            return;
+        }
+
+        // db 저장
+        axios.post("/member/insert", {name, myid, pass, hp, addr})
+        .then(res => {
+            // 멤버 추가 후 어디로 갈지
+            navi("/member/list");
         })
     }
 
@@ -101,26 +154,34 @@ const MemberForm = () => {
                         </td>
                         <td width={100} style={{backgroundColor: 'lightgray'}}>이름</td>
                         <td>
-                            <input type='text' className='form-control'/>
+                            <input type='text' className='form-control'
+                            value={name} onChange={(e) => setName(e.target.value)}/>
                         </td>
                     </tr>
                     <tr>
                         <td width={100} style={{backgroundColor: 'lightgray'}}>아이디</td>
                         <td className='input-group'>
-                            <input type='text' className='form-control' style={{width: '120px'}}/>
-                            <button type='button' className='btn btn-sm btn-outline-danger'>중복확인</button>
+                            <input type='text' className='form-control' style={{width: '120px'}} value={myid}
+                            onChange={(e) => {
+                                setIdcheck(false); // 아이디 입력 시 중복 체크 버튼 다시 눌러야 함
+                                setMyid(e.target.value);
+                            }}/>
+                            <button type='button' className='btn btn-sm btn-outline-danger'
+                            onClick={buttonIdCheck}>중복확인</button>
                         </td>
                     </tr>
                     <tr>
                         <td width={100} style={{backgroundColor: 'lightgray'}}>비밀번호</td>
                         <td>
-                            <input type='password' className='form-control'/>
+                            <input type='password' className='form-control'
+                            value={pass} onChange={(e) => setPass(e.target.value)}/>
                         </td>
                     </tr>
                     <tr>
                         <td width={100} style={{backgroundColor: 'lightgray'}}>핸드폰</td>
                         <td>
-                            <input type='text' className='form-control'/>
+                            <input type='text' className='form-control'
+                            value={hp} onChange={(e) => setHp(e.target.value)}/>
                         </td>
                     </tr>
                     <tr>
@@ -137,7 +198,8 @@ const MemberForm = () => {
                     </tr>
                     <tr>
                         <td colSpan={3} align='center'>
-                            <button type='button' className='btn btn-outline-success'>저장하기</button>
+                            <button type='button' className='btn btn-outline-success'
+                            onClick={saveMemberEvent}>저장하기</button>
                         </td>
                     </tr>
                 </tbody>

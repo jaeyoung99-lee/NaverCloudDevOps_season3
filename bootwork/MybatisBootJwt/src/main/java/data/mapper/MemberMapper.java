@@ -17,4 +17,8 @@ public interface MemberMapper {
 	
 	// @Insert로 쿼리문을 여기서 직접 써도 되지만 xml에서 해보자
 	public void insertMember(MemberDto dto);
+	
+	// 해당 아이디가 있는지 확인, count 이용
+	@Select("select count(*) from memberdb where myid = #{myid}")
+	public int getIdCheck(String myid);
 }

@@ -24,4 +24,8 @@ public class MemberService {
 	public void insertMember(MemberDto dto) {
 		memberMapper.insertMember(dto);
 	}
+	
+	public int getIdCheck(String myid) {
+		return memberMapper.getIdCheck(myid);
+	}
 }
