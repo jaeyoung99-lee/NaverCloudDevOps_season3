@@ -125,7 +125,7 @@ const MemberForm = () => {
                         <DaumPostcodeEmbed
                             onComplete={selectAddress} // 값을 선택할 경우 실행되는 이벤트
                             autoClose={false} // 값을 선택할 경우 사용되는 DOM을 제거하여 자동 닫힘 설정
-                            defaultQuery='강남대로 24길' // 팝업을 열 때 검색창의 기본 주소
+                            defaultQuery='' // 팝업을 열 때 검색창의 기본 주소
                         />
                     }
                 </DialogContentText>
