@@ -28,4 +28,7 @@ public interface MemberMapper {
 	
 	@Select("select * from memberdb where num = #{num}")
 	public MemberDto getMember(int num);
+	
+	@Select("select * from memberdb where myid = #{myid}")
+	public MemberDto getLogin(String myid);
 }

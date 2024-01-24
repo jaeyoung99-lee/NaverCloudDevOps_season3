@@ -36,4 +36,8 @@ public class MemberService {
 	public MemberDto getMember(int num) {
 		return memberMapper.getMember(num);
 	}
+	
+	public MemberDto getLogin(String myid) {
+		return memberMapper.getLogin(myid);
+	}
 }

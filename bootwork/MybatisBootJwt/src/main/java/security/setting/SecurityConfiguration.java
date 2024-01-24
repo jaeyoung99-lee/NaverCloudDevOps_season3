@@ -15,7 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 // Security filterchain을 구성하기 위한 어노테이션
 @EnableWebSecurity
 public class SecurityConfiguration {
-	// private JwtAuthenticationEntryPoint unauthorizedHandler;
+	private JwtAuthenticationEntryPoint unauthorizedHandler;
 	// 비밀번호 암호화를 위한 PasswordEncoder
 	// 복호화가 불가능. match라는 메소드를 이용해서 사용자의 입력값과 DB의 저장값을 비교
 	/*
@@ -44,6 +44,7 @@ public class SecurityConfiguration {
 		 * 특성에 따라, 공격자는 사용자의 계정에 대한 완전한 제어권을 얻을 수 있을 수도 있습니다.
 		 */
 		.csrf(AbstractHttpConfigurer::disable)
+		.addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 		// 요청 주소에 대한 권한 설정
 		.authorizeHttpRequests((authorizeRequests) -> {
 			// '/'요청은 모든 사용자가 이용가능
@@ -57,6 +58,7 @@ public class SecurityConfiguration {
 			.requestMatchers("/upload/**").permitAll()
 			.requestMatchers("/images/**").permitAll()
 			.requestMatchers("/member/*").permitAll()			
+			.requestMatchers("/login/auth").permitAll()			
 			
 			// 이외의 요청은 인증된 사용자만 사용자만 사용가능
 			.anyRequest().authenticated();					
