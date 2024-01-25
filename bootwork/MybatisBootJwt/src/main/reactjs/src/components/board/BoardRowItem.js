@@ -4,13 +4,12 @@ import { NavLink } from 'react-router-dom';
 
 const BoardRowItem = (props) => {
     const {row, idx, no} = props;
-    console.log(1);
-    console.log(props);
+    
     return (
         <tr>
             <td align='center'>{no-idx}</td>
             <td>
-                <NavLink style={{cursor: 'pointer', textDecoration: 'none', color: 'black'}}>
+                <NavLink to={`/board/select/${row.num}`} style={{cursor: 'pointer', textDecoration: 'none', color: 'black'}}>
                     {row.subject}
                     &nbsp;
                     <span style={{color: 'gray'}}>
