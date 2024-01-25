@@ -46,8 +46,8 @@ public class BoardController {
 		
 		// 사진 업로드하고 dto의 photo 변경
 		if(upload != null) {
-		String photo = storageService.uploadFile(bucketName, folderName, upload);
-		dto.setPhoto(photo);
+			String photo = storageService.uploadFile(bucketName, folderName, upload);
+			dto.setPhoto(photo);
 		}
 		else {
 			dto.setPhoto(""); // 사진 업로드 안했을 경우
