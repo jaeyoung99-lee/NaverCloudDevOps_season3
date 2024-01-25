@@ -35,3 +35,14 @@ ul.menu li a:hover {
     text-decoration: none;
     margin-right: 5px;
 }
+
+body {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
