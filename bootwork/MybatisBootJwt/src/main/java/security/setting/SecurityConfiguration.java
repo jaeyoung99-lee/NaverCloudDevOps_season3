@@ -49,8 +49,8 @@ public class SecurityConfiguration {
 		.authorizeHttpRequests((authorizeRequests) -> {
 			// '/'요청은 모든 사용자가 이용가능
 			authorizeRequests
-//			.requestMatchers("/*").permitAll()
-			.requestMatchers("/").permitAll()
+			.requestMatchers("/*").permitAll()
+//			.requestMatchers("/").permitAll()
 			.requestMatchers("/favicon.ico").permitAll()
 			.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 			// css, js, images, upload 같은 정적 리소스들도 권한처리 필수

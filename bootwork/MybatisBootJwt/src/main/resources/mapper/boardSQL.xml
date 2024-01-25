@@ -8,6 +8,6 @@
 		select * from simpleboard where subject like concat('%', #{search}, '%') order by num desc limit #{start}, #{perpage}
 	</select>
 	<insert id = "insertBoard" parameterType = "BoardDto">
-		insert into simpleboard (wrtier, myid, subject, content, photo, readcount, writeday) values (#{wrtier}, #{myid}, #{subject}, #{content}, #{photo}, 0, now())
+		insert into simpleboard (writer, myid, subject, content, photo, readcount, writeday) values (#{writer}, #{myid}, #{subject}, #{content}, #{photo}, 0, now())
 	</insert>
 </mapper>
