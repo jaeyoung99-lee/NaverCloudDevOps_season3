@@ -1,6 +1,12 @@
 package data.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,5 +62,56 @@ public class BoardController {
 		
 		// db insert
 		boardService.insertBoard(dto);
+	}
+	
+	@GetMapping("/board/list")
+	public Map<String, Object> boardList(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage, @RequestParam(value = "search", defaultValue = "") String search){
+		System.out.println("currentPage="+currentPage);
+        // 페이징 처리
+        int totalCount; // 총 갯수
+        int perPage=3; // 한 페이지 당 출력할 글 갯수
+        int perBlock=5; // 출력할 페이지 갯수
+        int startNum;  // db에서 가져올 시작 번호
+        int startPage; // 출력할 시작 페이지
+        int endPage; // 출력할 끝 페이지
+        int totalPage; // 총 페이지 수
+        int no; // 출력할 시작 번호
+
+        // 총 갯수
+        totalCount=boardService.getTotalCount(search);
+        // 총 페이지 수
+        totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+        // 시작 페이지
+        startPage=(currentPage-1)/perBlock*perBlock+1;
+        // 끝 페이지
+        endPage=startPage+perBlock-1;
+        if(endPage>totalPage)
+            endPage=totalPage;
+
+        // 시작번호
+        startNum=(currentPage-1)*perPage;
+        // 각 페이지 당 출력할 번호
+        no=totalCount-(currentPage-1)*perPage;
+
+        List<BoardDto> list=boardService.getAllDatas(search, startNum, perPage);
+
+        // 출력할 페이지 번호들을 Vector에 담아서 보내기
+        Vector<Integer> parr=new Vector<>();
+        for(int i=startPage;i<=endPage;i++){
+            parr.add(i);
+        }
+
+        // 리액트로 필요한 변수들을 Map 에 담아서 보낸다
+        Map<String,Object> smap=new HashMap<>();
+        smap.put("totalCount",totalCount);
+        smap.put("list",list);
+        smap.put("parr",parr);
+        smap.put("startPage",startPage);
+        smap.put("endPage",endPage);
+        smap.put("no",no);
+        smap.put("totalPage",totalPage);
+
+        return  smap;
+
 	}
 }

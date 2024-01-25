@@ -25,6 +25,7 @@ const RouterMain = () => {
 
                     <Route path='/board'>
                         <Route path='list' element={<BoardList/>}/>
+                        <Route path='list/:currentPage' element={<BoardList/>}/>
                         <Route path='form' element={<BoardForm/>}/>
                     </Route>
 

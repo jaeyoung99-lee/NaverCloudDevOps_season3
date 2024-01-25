@@ -30,3 +30,8 @@ ul.menu li:hover {
 ul.menu li a:hover {
     color: palevioletred;
 }
+
+.pagenum {
+    text-decoration: none;
+    margin-right: 5px;
+}
