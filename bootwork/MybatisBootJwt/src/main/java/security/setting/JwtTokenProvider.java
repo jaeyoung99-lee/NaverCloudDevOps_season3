@@ -59,11 +59,11 @@ public class JwtTokenProvider {
 		log.info("id:"+claims.getId());
 		log.info("issuer:"+claims.getIssuer());
 		log.info("issue:"+claims.getIssuedAt().toString());
-		log.info("subject:"+claims.getSubject());
+		log.info("subject:"+claims.getSubject()); // 로그인한 아이디
 		log.info("Audience:"+claims.getAudience());
 		log.info("expire:"+claims.getExpiration().toString());
 		log.info("userName:"+claims.get("userName"));
-    log.info("userId:"+claims.get("userId"));
+    log.info("userId:"+claims.get("userId")); // 로그인한 아이디
 
 		return claims.getSubject();
 	}

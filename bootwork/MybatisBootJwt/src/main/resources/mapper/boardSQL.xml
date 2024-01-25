@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.BoardMapper">
+	<select id ="getTotalCount" parameterType = "String">
+		select count(*) from simpleboard where subject like concat('%', #{search}, '%')
+	</select>
+	<select id = "getAllDatas" parameterType = "HashMap" resultType = "BoardDto">
+		select * from simpleboard where subject like concat('%', #{search}, '%') order by num desc limit #{start}, #{perpage}
+	</select>
+	<insert id = "insertBoard" parameterType = "BoardDto">
+		insert into simpleboard (wrtier, myid, subject, content, photo, readcount, writeday) values (#{wrtier}, #{myid}, #{subject}, #{content}, #{photo}, 0, now())
+	</insert>
+</mapper>

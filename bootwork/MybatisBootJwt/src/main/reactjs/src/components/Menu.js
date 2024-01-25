@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
+    const[loginStatus, setLoginStatus] = useState('');
+
+    useEffect(() => {
+        if(sessionStorage.token == null){
+            setLoginStatus("로그인");
+        }
+        else{
+            setLoginStatus("로그아웃");
+        }
+    }, [sessionStorage.token]);
+    
     return (
         <div>
             <ul className='menu'>
@@ -18,7 +29,7 @@ const Menu = () => {
                     <NavLink to={'/board/list'}>회원 게시판</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/login'}>로그인</NavLink>
+                    <NavLink to={'/login'}>{loginStatus}</NavLink>
                 </li>
             </ul>
         </div>

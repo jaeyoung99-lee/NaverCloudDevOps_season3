@@ -25,7 +25,10 @@ const LoginForm = () => {
             else{
                 // 토큰을 얻어서 세션 스토리지에 token이라는 이름으로 저장
                 sessionStorage.token = res.data.token;
+                // 아이디도 세션 스토리지에 저장(창 닫는 순간 기록 없애려면 세션 스토리지에 저장하고 창 닫아도 기록 안 없애려면 로컬 스토리지에 저장)
+                sessionStorage.myid = myid;
                 setToken(res.data.token); // 비동기라서 바로 위에 줄이 먼저 실행될 수 있으므로 res.data.token 대신 sessionStorage.token을 넣으면 안됨
+                window.location.reload();
             }
         })
     }
@@ -65,7 +68,7 @@ const LoginForm = () => {
                 </div>
                 :
                 <div>
-                    <h4 className='alert alert-danger'>로그인 중입니다.</h4>
+                    <h4 className='alert alert-danger'>{sessionStorage.myid}님이 로그인 중입니다.</h4>
                     <br/><br/>
                     <img alt='' src={require("../../image/증명사진.png")} style={{width: '130px'}}/>
                     <br/><br/>
@@ -75,6 +78,7 @@ const LoginForm = () => {
                         setToken(null);
                         setMyid('');
                         setPass('');
+                        window.location.reload();
                     }}>
                         로그아웃
                     </button>    
