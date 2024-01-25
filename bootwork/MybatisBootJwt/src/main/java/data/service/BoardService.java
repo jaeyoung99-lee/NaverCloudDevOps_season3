@@ -26,7 +26,16 @@ public class BoardService {
 		
 		return boardMapper.getAllDatas(map);
 	}
+	
 	public void insertBoard(BoardDto dto) {
 		boardMapper.insertBoard(dto);
+	}
+	
+	public BoardDto getSelectPage(int num) {
+		return boardMapper.getSelectPage(num);
+	}
+	
+	public void updateReadcount(int num) {
+		boardMapper.updateReadcount(num);
 	}
 }

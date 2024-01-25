@@ -112,6 +112,12 @@ public class BoardController {
         smap.put("totalPage",totalPage);
 
         return  smap;
-
 	}
+
+	@GetMapping("/board/detail")
+	public BoardDto selectPage(@RequestParam("num") int num)
+	{
+		boardService.updateReadcount(num);
+		return boardService.getSelectPage(num);
+	}		
 }
